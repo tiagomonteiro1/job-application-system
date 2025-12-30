@@ -30,9 +30,10 @@ interface Vaga {
 interface JobCardProps {
   vaga: Vaga;
   onEnviarCurriculo: (vagaId: number) => Promise<void>;
+  onAnalisarCompatibilidade?: (vagaId: number) => void;
 }
 
-export default function JobCard({ vaga, onEnviarCurriculo }: JobCardProps) {
+export default function JobCard({ vaga, onEnviarCurriculo, onAnalisarCompatibilidade }: JobCardProps) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleEnviar = async () => {
@@ -162,7 +163,19 @@ export default function JobCard({ vaga, onEnviarCurriculo }: JobCardProps) {
       </CardContent>
 
       <CardFooter className="flex gap-2">
-        {getStatusButton()}
+        {onAnalisarCompatibilidade && (
+          <Button 
+            onClick={() => onAnalisarCompatibilidade(vaga.id)}
+            variant="outline"
+            className="flex-1"
+          >
+            <Star className="w-4 h-4 mr-2" />
+            Analisar
+          </Button>
+        )}
+        <div className="flex-1">
+          {getStatusButton()}
+        </div>
         <Button
           variant="outline"
           size="icon"

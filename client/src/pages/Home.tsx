@@ -13,7 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
 import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu } from "lucide-react";
@@ -121,12 +122,15 @@ export default function Home() {
 
   const [selectedVaga, setSelectedVaga] = useState<Vaga | null>(null);
   const [showCandidaturaDialog, setShowCandidaturaDialog] = useState(false);
+  const [showCompatibilidadeDialog, setShowCompatibilidadeDialog] = useState(false);
+  const [analiseCompatibilidade, setAnaliseCompatibilidade] = useState<any>(null);
 
   const { data: curriculos } = trpc.curriculo.list.useQuery(undefined, {
     enabled: isAuthenticated,
   });
   const criarCandidaturaMutation = trpc.candidatura.criar.useMutation();
   const enviarCandidaturaMutation = trpc.candidatura.enviar.useMutation();
+  const analisarCompatibilidadeMutation = trpc.compatibilidade.analisar.useMutation();
 
   const curriculoAnalisado = curriculos?.find(c => c.status === "analyzed");
 
@@ -181,6 +185,45 @@ export default function Home() {
       toast.error("Erro ao enviar candidatura");
       console.error(error);
       setShowCandidaturaDialog(false);
+    }
+  };
+
+  const handleAnalisarCompatibilidade = async (vagaId: number) => {
+    const vaga = vagas.find(v => v.id === vagaId);
+    if (!vaga) return;
+
+    if (!isAuthenticated) {
+      toast.error("Faça login para analisar compatibilidade");
+      return;
+    }
+
+    if (!curriculoAnalisado) {
+      toast.error("Você precisa fazer upload e analisar um currículo primeiro", {
+        description: "Acesse a página 'Meu Currículo' para começar"
+      });
+      return;
+    }
+
+    try {
+      const analise = await analisarCompatibilidadeMutation.mutateAsync({
+        curriculoId: curriculoAnalisado.id,
+        vaga: {
+          id: vaga.id,
+          titulo: vaga.titulo,
+          empresa: vaga.empresa,
+          area: vaga.area,
+          requisitos: vaga.requisitos,
+          beneficios: vaga.beneficios,
+          motivo: vaga.motivo,
+        },
+      });
+
+      setAnaliseCompatibilidade(analise);
+      setSelectedVaga(vaga);
+      setShowCompatibilidadeDialog(true);
+    } catch (error) {
+      toast.error("Erro ao analisar compatibilidade");
+      console.error(error);
     }
   };
 
@@ -441,6 +484,7 @@ export default function Home() {
                     key={vaga.id}
                     vaga={vaga}
                     onEnviarCurriculo={handleEnviarCurriculo}
+                    onAnalisarCompatibilidade={handleAnalisarCompatibilidade}
                   />
                 ))}
               </div>
@@ -448,6 +492,32 @@ export default function Home() {
           </main>
         </div>
       </div>
+
+      {/* Dialog de Análise de Compatibilidade */}
+      <Dialog open={showCompatibilidadeDialog} onOpenChange={setShowCompatibilidadeDialog}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">
+              Análise de Compatibilidade
+            </DialogTitle>
+            <DialogDescription>
+              {selectedVaga && `${selectedVaga.titulo} - ${selectedVaga.empresa}`}
+            </DialogDescription>
+          </DialogHeader>
+          {analiseCompatibilidade && (
+            <CompatibilidadeAnalise
+              score={analiseCompatibilidade.score}
+              requisitosAtendidos={analiseCompatibilidade.requisitosAtendidos}
+              requisitosFaltantes={analiseCompatibilidade.requisitosFaltantes}
+              competenciasDestacadas={analiseCompatibilidade.competenciasDestacadas}
+              gaps={analiseCompatibilidade.gaps}
+              recomendacoes={analiseCompatibilidade.recomendacoes}
+              pontosFortesParaVaga={analiseCompatibilidade.pontosFortesParaVaga}
+              observacoes={analiseCompatibilidade.observacoes}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
