@@ -17,6 +17,7 @@ export default function Curriculo() {
   const uploadMutation = trpc.curriculo.upload.useMutation();
   const analisarMutation = trpc.curriculo.analisar.useMutation();
   const aplicarSugestoesMutation = trpc.curriculo.aplicarSugestoes.useMutation();
+  const gerarPDFMutation = trpc.curriculo.gerarPDFPremium.useMutation();
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -100,9 +101,25 @@ export default function Curriculo() {
       element.click();
       document.body.removeChild(element);
       
-      toast.success("Currículo baixado! Converta para PDF usando ferramentas online ou o sistema.");
+      toast.success("Currículo baixado em Markdown!");
     } catch (error) {
       toast.error("Erro ao baixar currículo");
+      console.error(error);
+    }
+  };
+
+  const handleGerarPDFPremium = async (curriculoId: number) => {
+    try {
+      toast.info("Gerando PDF premium... Isso pode levar alguns segundos.");
+      const result = await gerarPDFMutation.mutateAsync({ curriculoId });
+      
+      // Abrir PDF em nova aba
+      window.open(result.pdfUrl, '_blank');
+      
+      toast.success("✅ PDF Premium gerado com sucesso! Design elegante e profissional.");
+      utils.curriculo.list.invalidate();
+    } catch (error) {
+      toast.error("Erro ao gerar PDF premium");
       console.error(error);
     }
   };
@@ -297,14 +314,33 @@ export default function Curriculo() {
                           <div className="p-4 rounded-lg bg-background/50 text-sm">
                             <Streamdown>{curriculo.curriculoRefatorado}</Streamdown>
                           </div>
-                          <Button
-                            onClick={() => handleDownloadPDF(curriculo.curriculoRefatorado || "", curriculo.id)}
-                            variant="outline"
-                            className="w-full mt-2"
-                          >
-                            <Download className="w-4 h-4 mr-2" />
-                            Baixar PDF
-                          </Button>
+                          <div className="flex gap-2 mt-2">
+                            <Button
+                              onClick={() => handleDownloadPDF(curriculo.curriculoRefatorado || "", curriculo.id)}
+                              variant="outline"
+                              className="flex-1"
+                            >
+                              <Download className="w-4 h-4 mr-2" />
+                              Baixar Markdown
+                            </Button>
+                            <Button
+                              onClick={() => handleGerarPDFPremium(curriculo.id)}
+                              disabled={gerarPDFMutation.isPending}
+                              className="flex-1 glow-effect bg-gradient-to-r from-primary to-accent"
+                            >
+                              {gerarPDFMutation.isPending ? (
+                                <>
+                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                  Gerando...
+                                </>
+                              ) : (
+                                <>
+                                  <Sparkles className="w-4 h-4 mr-2" />
+                                  Gerar PDF Premium
+                                </>
+                              )}
+                            </Button>
+                          </div>
                         </div>
                       )}
 

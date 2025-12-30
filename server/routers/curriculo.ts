@@ -2,6 +2,10 @@ import { z } from "zod";
 import { protectedProcedure, router } from "../_core/trpc";
 import { createCurriculo, getCurriculoById, getCurriculosByUserId, updateCurriculo } from "../db";
 import { storagePut } from "../storage";
+import { gerarPDFPremium } from "../utils/pdf-generator";
+import path from "path";
+import fs from "fs/promises";
+import os from "os";
 import { invokeLLM } from "../_core/llm";
 import { nanoid } from "nanoid";
 
@@ -234,6 +238,50 @@ Retorne o currículo refatorado em Markdown.`,
         id: input.curriculoId,
         curriculoRefatorado: curriculoRefatoradoNovo,
         message: "Sugestões aplicadas com sucesso!",
+      };
+    }),
+
+  /**
+   * Gerar PDF premium do currículo refatorado
+   */
+  gerarPDFPremium: protectedProcedure
+    .input(z.object({ curriculoId: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user.id;
+
+      // Buscar currículo
+      const curriculo = await getCurriculoById(input.curriculoId);
+      if (!curriculo || curriculo.userId !== userId) {
+        throw new Error("Currículo não encontrado");
+      }
+
+      if (!curriculo.curriculoRefatorado) {
+        throw new Error("Currículo precisa ser refatorado primeiro");
+      }
+
+      // Gerar PDF em arquivo temporário
+      const tempDir = os.tmpdir();
+      const tempPdfPath = path.join(tempDir, `curriculo-${nanoid()}.pdf`);
+
+      await gerarPDFPremium(curriculo.curriculoRefatorado, tempPdfPath);
+
+      // Upload do PDF para S3
+      const pdfBuffer = await fs.readFile(tempPdfPath);
+      const pdfKey = `curriculos/${userId}/premium-${nanoid()}.pdf`;
+      const { url } = await storagePut(pdfKey, pdfBuffer, "application/pdf");
+
+      // Limpar arquivo temporário
+      await fs.unlink(tempPdfPath);
+
+      // Atualizar currículo com URL do PDF premium
+      await updateCurriculo(input.curriculoId, {
+        refatoradoPdfUrl: url,
+        refatoradoPdfKey: pdfKey,
+      });
+
+      return {
+        pdfUrl: url,
+        message: "PDF premium gerado com sucesso!",
       };
     }),
 });

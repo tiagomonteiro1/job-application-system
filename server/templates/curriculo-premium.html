@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{nome}} - Currículo Profissional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+        }
+        
+        /* Header Premium */
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2563eb;
+            margin-bottom: 25px;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            font-size: 11pt;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 9pt;
+            color: #475569;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .contact-item::before {
+            content: "●";
+            color: #2563eb;
+            font-size: 6pt;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+            border-radius: 2px;
+        }
+        
+        /* Summary Box */
+        .summary-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #2563eb;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-box p {
+            font-size: 10pt;
+            line-height: 1.7;
+            color: #334155;
+        }
+        
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .highlight-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14pt;
+            flex-shrink: 0;
+        }
+        
+        .highlight-content {
+            flex: 1;
+        }
+        
+        .highlight-value {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            line-height: 1.2;
+        }
+        
+        .highlight-label {
+            font-size: 8pt;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .skill-category h4 {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .skill-category h4::before {
+            content: "▸";
+            color: #2563eb;
+        }
+        
+        .skill-list {
+            list-style: none;
+            font-size: 9pt;
+            color: #475569;
+        }
+        
+        .skill-list li {
+            padding: 3px 0;
+            padding-left: 12px;
+            position: relative;
+        }
+        
+        .skill-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: 700;
+        }
+        
+        /* Experience Items */
+        .experience-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 2px solid #e2e8f0;
+        }
+        
+        .experience-header {
+            margin-bottom: 10px;
+        }
+        
+        .experience-title {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+        
+        .experience-company {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 2px;
+        }
+        
+        .experience-period {
+            font-size: 9pt;
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        .experience-description {
+            font-size: 9.5pt;
+            color: #475569;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .achievements-list {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        
+        .achievements-list li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+            font-size: 9.5pt;
+            color: #334155;
+            line-height: 1.5;
+        }
+        
+        .achievements-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+            font-size: 11pt;
+        }
+        
+        .achievements-list li strong {
+            color: #1e3a8a;
+            font-weight: 700;
+        }
+        
+        .tech-stack {
+            font-size: 8.5pt;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 8px;
+        }
+        
+        .tech-stack strong {
+            color: #475569;
+            font-weight: 600;
+        }
+        
+        /* Education */
+        .education-item {
+            margin-bottom: 12px;
+        }
+        
+        .education-degree {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        
+        .education-institution {
+            font-size: 10pt;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        
+        .education-year {
+            font-size: 9pt;
+            color: #64748b;
+        }
+        
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .cert-list li {
+            padding: 8px 12px;
+            background: #f8fafc;
+            border-left: 3px solid #10b981;
+            border-radius: 4px;
+            font-size: 9pt;
+            color: #334155;
+        }
+        
+        /* Projects */
+        .project-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .project-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+        
+        .project-description {
+            font-size: 9pt;
+            color: #475569;
+            line-height: 1.5;
+        }
+        
+        .project-metrics {
+            font-size: 9pt;
+            color: #2563eb;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        
+        /* Languages */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .language-item {
+            text-align: center;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .language-name {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+        
+        .language-level {
+            font-size: 8pt;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            font-size: 8pt;
+            color: #94a3b8;
+        }
+        
+        /* Print Optimization */
+        @media print {
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            .container {
+                padding: 10mm;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .experience-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>{{nome}}</h1>
+            <div class="subtitle">{{cargo}}</div>
+            <div class="contact-info">
+                <div class="contact-item">{{telefone}}</div>
+                <div class="contact-item">{{email}}</div>
+                <div class="contact-item">{{localizacao}}</div>
+                {{#linkedin}}<div class="contact-item">{{linkedin}}</div>{{/linkedin}}
+                {{#github}}<div class="contact-item">{{github}}</div>{{/github}}
+            </div>
+        </div>
+
+        <!-- Summary -->
+        {{#resumo}}
+        <div class="section">
+            <h2 class="section-title">Resumo Executivo</h2>
+            <div class="summary-box">
+                <p>{{resumo}}</p>
+            </div>
+        </div>
+        {{/resumo}}
+
+        <!-- Highlights -->
+        {{#destaques}}
+        <div class="section">
+            <h2 class="section-title">Destaques Profissionais</h2>
+            <div class="highlights-grid">
+                {{#destaques}}
+                <div class="highlight-item">
+                    <div class="highlight-icon">{{icone}}</div>
+                    <div class="highlight-content">
+                        <div class="highlight-value">{{valor}}</div>
+                        <div class="highlight-label">{{label}}</div>
+                    </div>
+                </div>
+                {{/destaques}}
+            </div>
+        </div>
+        {{/destaques}}
+
+        <!-- Skills -->
+        {{#competencias}}
+        <div class="section">
+            <h2 class="section-title">Competências Técnicas</h2>
+            <div class="skills-grid">
+                {{#competencias}}
+                <div class="skill-category">
+                    <h4>{{categoria}}</h4>
+                    <ul class="skill-list">
+                        {{#skills}}
+                        <li>{{.}}</li>
+                        {{/skills}}
+                    </ul>
+                </div>
+                {{/competencias}}
+            </div>
+        </div>
+        {{/competencias}}
+
+        <!-- Experience -->
+        {{#experiencias}}
+        <div class="section">
+            <h2 class="section-title">Experiência Profissional</h2>
+            {{#experiencias}}
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">{{cargo}}</div>
+                    <div class="experience-company">{{empresa}}</div>
+                    <div class="experience-period">{{periodo}}</div>
+                </div>
+                {{#descricao}}
+                <p class="experience-description">{{descricao}}</p>
+                {{/descricao}}
+                {{#conquistas}}
+                <ul class="achievements-list">
+                    {{#conquistas}}
+                    <li>{{{.}}}</li>
+                    {{/conquistas}}
+                </ul>
+                {{/conquistas}}
+                {{#tecnologias}}
+                <div class="tech-stack">
+                    <strong>Tecnologias:</strong> {{tecnologias}}
+                </div>
+                {{/tecnologias}}
+            </div>
+            {{/experiencias}}
+        </div>
+        {{/experiencias}}
+
+        <!-- Education -->
+        {{#formacao}}
+        <div class="section">
+            <h2 class="section-title">Formação Acadêmica</h2>
+            {{#formacao}}
+            <div class="education-item">
+                <div class="education-degree">{{curso}}</div>
+                <div class="education-institution">{{instituicao}}</div>
+                <div class="education-year">{{ano}}</div>
+            </div>
+            {{/formacao}}
+        </div>
+        {{/formacao}}
+
+        <!-- Certifications -->
+        {{#certificacoes}}
+        <div class="section">
+            <h2 class="section-title">Certificações</h2>
+            <ul class="cert-list">
+                {{#certificacoes}}
+                <li>{{.}}</li>
+                {{/certificacoes}}
+            </ul>
+        </div>
+        {{/certificacoes}}
+
+        <!-- Projects -->
+        {{#projetos}}
+        <div class="section">
+            <h2 class="section-title">Projetos Destacados</h2>
+            {{#projetos}}
+            <div class="project-item">
+                <div class="project-title">{{titulo}}</div>
+                <p class="project-description">{{descricao}}</p>
+                {{#metricas}}
+                <div class="project-metrics">{{metricas}}</div>
+                {{/metricas}}
+            </div>
+            {{/projetos}}
+        </div>
+        {{/projetos}}
+
+        <!-- Languages -->
+        {{#idiomas}}
+        <div class="section">
+            <h2 class="section-title">Idiomas</h2>
+            <div class="languages-grid">
+                {{#idiomas}}
+                <div class="language-item">
+                    <div class="language-name">{{idioma}}</div>
+                    <div class="language-level">{{nivel}}</div>
+                </div>
+                {{/idiomas}}
+            </div>
+        </div>
+        {{/idiomas}}
+
+        <!-- Footer -->
+        <div class="footer">
+            Currículo gerado por JobMatch AI • {{data_geracao}}
+        </div>
+    </div>
+</body>
+</html>
