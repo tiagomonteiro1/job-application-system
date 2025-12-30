@@ -1,0 +1,401 @@
+[
+  {
+    "id": 1,
+    "titulo": "Arquiteto de Software Sênior - Projetos TI",
+    "empresa": "DOT Group",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=ece63c2be2cf9b60",
+    "requisitos": [
+      "Sólida experiência com PHP moderno e seus frameworks",
+      "Conhecimento profundo em arquitetura de software e padrões de projeto",
+      "Experiência com DDD, SOLID e Clean Architecture",
+      "Vivência em transformação de arquiteturas monolíticas",
+      "Conhecimento em práticas de CI/CD e DevOps",
+      "PHP 8.x, Vue.js, MySQL, Redis, Docker, AWS"
+    ],
+    "beneficios": [
+      "Vale alimentação/refeição (R$837)",
+      "Auxílio home office (R$100)",
+      "Plano de saúde integral sem coparticipação",
+      "Auxílio educação (R$2.000)",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em arquitetura, cloud (AWS), e-commerce, PHP avançado",
+    "destaque": "MAIS COMPATÍVEL",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 2,
+    "titulo": "Desenvolvedor(a) Backend PHP Senior - Projetos",
+    "empresa": "DOT Group",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "PHP moderno e frameworks",
+      "Trabalho colaborativo em time",
+      "Adaptação a mudanças"
+    ],
+    "beneficios": [
+      "Auxílio home office (R$100)",
+      "Auxílio-creche, educação",
+      "Assistência médica e odontológica",
+      "Seguro de vida"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em PHP, backend, trabalho em equipe",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 3,
+    "titulo": "ANALISTA/DESENVOLVEDOR SÊNIOR - PHP",
+    "empresa": "Digisystem",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Gerenciamento de estado com Redux ou Context API",
+      "Testes de frontend com Jest, React Testing Library",
+      "CI/CD e DevOps (Jenkins, GitLab CI, Docker)"
+    ],
+    "beneficios": [
+      "Assistência médica e odontológica",
+      "Vale-refeição e alimentação"
+    ],
+    "compatibilidade": 5,
+    "motivo": "React, CI/CD, Docker, DevOps combinam perfeitamente",
+    "destaque": "BOA PARA CRESCIMENTO RÁPIDO",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 4,
+    "titulo": "Senior Full Stack Software Engineer, Quote Engine",
+    "empresa": "CommandLink",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=43fec9f3bb26092e",
+    "requisitos": [
+      "5+ anos de experiência backend (PHP, Python, Go) e frontend (React)",
+      "Sistemas altamente escaláveis e concorrentes",
+      "Arquiteturas multithreaded e I/O não-bloqueante",
+      "Sistemas distribuídos (CAP, modelos de consistência)",
+      "Event-driven architectures e microserviços (Kafka, RabbitMQ)",
+      "Azure ou outras plataformas cloud",
+      "OAuth 2.0, mTLS, gestão de secrets"
+    ],
+    "beneficios": [
+      "100% remoto",
+      "Tempo livre flexível",
+      "Eventos em locais legais",
+      "Bônus de indicação"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência sênior, sistemas críticos, full stack, microserviços",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 5,
+    "titulo": "Desenvolvedor back-end (PHP/Laravel)",
+    "empresa": "Premiersoft",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Modernização de sistemas legados em PHP (5.x, 7.x e 8.x)",
+      "Melhorias arquiteturais",
+      "Boas práticas de manutenção e escalabilidade"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Experiência com Magento 1/2, modernização de sistemas",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 6,
+    "titulo": "Pessoa Desenvolvedora Backend Sênior (PHP | Node)",
+    "empresa": "Cactus Gaming",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "PHP e Node.js",
+      "Segurança nas integrações (rate limiting, autenticação, autorização)",
+      "Proteção de APIs contra ataques"
+    ],
+    "beneficios": [],
+    "compatibilidade": 5,
+    "motivo": "Segurança, APIs, Node.js, PHP - combina desenvolvimento e segurança",
+    "destaque": "ALTA VISIBILIDADE",
+    "area": "PHP Sênior + Segurança"
+  },
+  {
+    "id": 7,
+    "titulo": "Desenvolvedor PHP Senior | Exclusiva PCD",
+    "empresa": "Solutis",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Princípios ágeis e boas práticas de engenharia de software",
+      "Padrões de projeto (Design Patterns, Enterprise Integration Patterns, Microservices Patterns)"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Microserviços, padrões de projeto, metodologias ágeis",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 8,
+    "titulo": "Pessoa Desenvolvedora Fullstack Sênior",
+    "empresa": "Yampi",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "PHP (Laravel) e Vue.js",
+      "Desenvolvimento de ponta a ponta",
+      "E-commerce"
+    ],
+    "beneficios": [],
+    "compatibilidade": 5,
+    "motivo": "Laravel, Vue.js, e-commerce (experiência Magento)",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 9,
+    "titulo": "Engenheiro de Software Sênior (Purchase)",
+    "empresa": "Dafiti",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Engenheiro de Software Sênior",
+      "E-commerce",
+      "Inglês técnico (leitura e escrita)"
+    ],
+    "beneficios": [
+      "Assistência médica, odontológica",
+      "Seguro de vida",
+      "Auxílio educação"
+    ],
+    "compatibilidade": 5,
+    "motivo": "E-commerce (Magento, AEM), inglês técnico, sênior",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 10,
+    "titulo": "Desenvolvedor Back End SR",
+    "empresa": "Logcomex",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Framework Laravel e Lumen",
+      "Javascript com VueJS",
+      "Manutenções no sistema"
+    ],
+    "beneficios": [
+      "Auxílio-educação",
+      "Assistência médica e odontológica",
+      "Seguro de vida"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Laravel, Vue.js, backend",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 11,
+    "titulo": "Sr. Software Development Engineer",
+    "empresa": "CSG",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Cross-functional teams",
+      "Efficient and reliable software solutions",
+      "Industry standards"
+    ],
+    "beneficios": [
+      "Trabalho remoto"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Sênior, mas descrição genérica",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 12,
+    "titulo": "Full Stack Engineer (Team lead), Web team",
+    "empresa": "Laravel",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Team Lead",
+      "Senior contributor",
+      "Cross-product impact"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Tech Lead, Laravel, experiência de liderança",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 13,
+    "titulo": "Pentester Júnior",
+    "empresa": "#VEMPRAIT4US",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/pentester-remoto-Brazil-SRCH_KO0,16_IL.17,23_IN36.htm",
+    "requisitos": [
+      "Conhecimentos básicos de segurança ofensiva e pentest (OWASP, MITRE ATT&CK)",
+      "Noções de redes, protocolos, Linux e ambientes web",
+      "Ferramentas: Burp Suite, Nmap, SQLmap, Nikto, Metasploit",
+      "Interesse em Red Team e Ethical Hacking"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Experiência em segurança (PCI-DSS, OWASP), auditorias",
+    "destaque": "",
+    "area": "Pentester"
+  },
+  {
+    "id": 14,
+    "titulo": "[Ambev Global Tech] Red Team Engineer Pleno",
+    "empresa": "Ambev Tech",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/pentester-remoto-Brazil-SRCH_KO0,16_IL.17,23_IN36.htm",
+    "requisitos": [
+      "Penetration testing abrangente de aplicações",
+      "Red Team Engineer Pleno"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Red Team, remoto, empresa grande",
+    "destaque": "",
+    "area": "Pentester"
+  },
+  {
+    "id": 15,
+    "titulo": "Analista de Governança e Segurança da Informação Sr",
+    "empresa": "Monkey",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/pentester-remoto-Brazil-SRCH_KO0,16_IL.17,23_IN36.htm",
+    "requisitos": [
+      "Governança e Segurança da Informação",
+      "Nível Sênior"
+    ],
+    "beneficios": [
+      "Auxílio Home Office"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Sênior, governança, segurança, remoto",
+    "destaque": "",
+    "area": "Segurança"
+  },
+  {
+    "id": 16,
+    "titulo": "Desenvolvedor de Automação (N8N) Pleno",
+    "empresa": "Empresa Confidencial",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/brasil-n8n-vagas-SRCH_IL.0,6_KO7,10.htm",
+    "requisitos": [
+      "n8n",
+      "Automação",
+      "Resolução criativa de problemas"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "n8n, automação - palavras-chave específicas do perfil",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 17,
+    "titulo": "VAGA Back-End - IA/Prompt Engineering N8N",
+    "empresa": "Empresa via Programathor",
+    "localizacao": "Remoto",
+    "tipo": "PJ",
+    "link_candidatura": "https://programathor.com.br/jobs/32320-ia-prompt-engineering-n8n",
+    "requisitos": [
+      "Criação e manutenção de fluxos automatizados no N8N",
+      "Operações de atendimento via WhatsApp",
+      "SDR e suporte",
+      "IA e Prompt Engineering"
+    ],
+    "beneficios": [],
+    "compatibilidade": 5,
+    "motivo": "n8n, IA, automação, WhatsApp - palavras-chave específicas",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 18,
+    "titulo": "AI Automation Developer",
+    "empresa": "Shadow Light Studios",
+    "localizacao": "Remote - Brazil",
+    "tipo": "Contract",
+    "link_candidatura": "https://jobs.workable.com/view/peug9oYrz32g1sadtyDEC6/remote-ai-automation-developer-in-brazil-at-shadow-light-studios",
+    "requisitos": [
+      "AI tool proficiency (Cursor, Claude, ChatGPT)",
+      "Client collaboration skills",
+      "Automation development"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "AI tools (ChatGPT, Claude), automação, remoto",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 19,
+    "titulo": "Desenvolvedor Junior (Automações - n8n e vibe coding)",
+    "empresa": "E5 Inovação",
+    "localizacao": "Remoto",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.linkedin.com/jobs/view/desenvolvedor-junior-automa%C3%A7%C3%B5es-n8n-e-vibe-coding-pj-at-e5-inova%C3%A7%C3%A3o-4271616487",
+    "requisitos": [
+      "Conhecimento prático em automações e desenvolvimento com IA",
+      "n8n",
+      "Capacidade de organização e gestão de tarefas",
+      "Boa comunicação"
+    ],
+    "beneficios": [],
+    "compatibilidade": 3,
+    "motivo": "n8n e IA, mas nível júnior",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 20,
+    "titulo": "Backend Engineer (PHP) - airSlate",
+    "empresa": "airSlate",
+    "localizacao": "Rondônia/Remoto",
+    "tipo": "CLT",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=382e66715f509c47",
+    "requisitos": [
+      "PHP Backend",
+      "No-code workflow automation",
+      "Electronic signature",
+      "Document management"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "PHP, no-code automation - palavras-chave específicas",
+    "destaque": "",
+    "area": "PHP Sênior + Automação"
+  }
+]
