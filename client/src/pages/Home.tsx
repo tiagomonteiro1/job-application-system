@@ -6,16 +6,20 @@ Design: Glassmorphism Profissional
 - Tipografia Outfit + Inter
 */
 
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
 
 interface Vaga {
   id: number;
@@ -42,10 +46,14 @@ interface Curriculo {
 }
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading: authLoading, error, isAuthenticated, logout } = useAuth();
+
   const [vagas, setVagas] = useState<Vaga[]>([]);
   const [vagasFiltradas, setVagasFiltradas] = useState<Vaga[]>([]);
   const [curriculo, setCurriculo] = useState<Curriculo | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [dataLoading, setDataLoading] = useState(true);
   
   // Filtros
   const [searchTerm, setSearchTerm] = useState("");
@@ -63,12 +71,12 @@ export default function Home() {
         setVagas(vagasData);
         setVagasFiltradas(vagasData);
         setCurriculo(curriculoData);
-        setLoading(false);
+        setDataLoading(false);
       })
       .catch(error => {
         console.error('Erro ao carregar dados:', error);
         toast.error('Erro ao carregar vagas');
-        setLoading(false);
+        setDataLoading(false);
       });
   }, []);
 
@@ -111,16 +119,69 @@ export default function Home() {
     setVagasFiltradas(resultado);
   }, [searchTerm, areaFilter, compatibilidadeFilter, ordenacao, vagas]);
 
+  const [selectedVaga, setSelectedVaga] = useState<Vaga | null>(null);
+  const [showCandidaturaDialog, setShowCandidaturaDialog] = useState(false);
+
+  const { data: curriculos } = trpc.curriculo.list.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
+  const criarCandidaturaMutation = trpc.candidatura.criar.useMutation();
+  const enviarCandidaturaMutation = trpc.candidatura.enviar.useMutation();
+
+  const curriculoAnalisado = curriculos?.find(c => c.status === "analyzed");
+
   const handleEnviarCurriculo = async (vagaId: number) => {
     const vaga = vagas.find(v => v.id === vagaId);
-    if (!vaga || !curriculo) return;
+    if (!vaga) return;
 
-    // Simulação de envio (em produção, isso seria uma chamada API real)
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    if (!isAuthenticated) {
+      toast.error("Faça login para enviar candidaturas");
+      return;
+    }
 
-    toast.success(`Currículo enviado para ${vaga.empresa}!`, {
-      description: `Sua candidatura para ${vaga.titulo} foi registrada.`
-    });
+    if (!curriculoAnalisado) {
+      toast.error("Você precisa fazer upload e analisar um currículo primeiro", {
+        description: "Acesse a página 'Meu Currículo' para começar"
+      });
+      return;
+    }
+
+    setSelectedVaga(vaga);
+    setShowCandidaturaDialog(true);
+
+    try {
+      // Criar candidatura com carta de apresentação
+      const candidatura = await criarCandidaturaMutation.mutateAsync({
+        curriculoId: curriculoAnalisado.id,
+        vaga: {
+          id: vaga.id,
+          titulo: vaga.titulo,
+          empresa: vaga.empresa,
+          localizacao: vaga.localizacao,
+          tipo: vaga.tipo,
+          link_candidatura: vaga.link_candidatura,
+          area: vaga.area,
+          compatibilidade: vaga.compatibilidade,
+          requisitos: vaga.requisitos,
+          motivo: vaga.motivo,
+        },
+      });
+
+      // Marcar como enviada
+      await enviarCandidaturaMutation.mutateAsync({
+        candidaturaId: candidatura.id,
+      });
+
+      toast.success(`Candidatura enviada para ${vaga.empresa}!`, {
+        description: `Carta de apresentação gerada automaticamente`
+      });
+
+      setShowCandidaturaDialog(false);
+    } catch (error) {
+      toast.error("Erro ao enviar candidatura");
+      console.error(error);
+      setShowCandidaturaDialog(false);
+    }
   };
 
   const estatisticas = {
@@ -130,7 +191,7 @@ export default function Home() {
     areas: Array.from(new Set(vagas.map(v => v.area))).length
   };
 
-  if (loading) {
+  if (dataLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -156,12 +217,34 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">Sistema Inteligente de Candidaturas</p>
               </div>
             </div>
-            {curriculo && (
-              <div className="text-right">
-                <p className="text-sm font-medium text-foreground">{curriculo.nome}</p>
-                <p className="text-xs text-muted-foreground">{curriculo.cargo}</p>
-              </div>
-            )}
+            <div className="flex items-center gap-4">
+              <nav className="hidden md:flex items-center gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/">
+                    <Briefcase className="w-4 h-4 mr-2" />
+                    Vagas
+                  </Link>
+                </Button>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/curriculo">
+                    <FileText className="w-4 h-4 mr-2" />
+                    Meu Currículo
+                  </Link>
+                </Button>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/historico">
+                    <History className="w-4 h-4 mr-2" />
+                    Histórico
+                  </Link>
+                </Button>
+              </nav>
+              {curriculo && (
+                <div className="text-right hidden lg:block">
+                  <p className="text-sm font-medium text-foreground">{curriculo.nome}</p>
+                  <p className="text-xs text-muted-foreground">{curriculo.cargo}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
