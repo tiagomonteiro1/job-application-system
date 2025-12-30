@@ -1,0 +1,1 @@
+ALTER TABLE `vagas_automaticas` MODIFY COLUMN `vaga_url` varchar(1000) NOT NULL;

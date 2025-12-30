@@ -73,3 +73,16 @@
 - [x] Adicionar botão "Aplicar Sugestões" na página de currículo
 - [x] Mostrar preview das mudanças antes de aplicar
 - [x] Testar fluxo completo
+
+
+## Automação de Busca de Vagas (Envio Automático por Compatibilidade)
+- [x] Criar schema para armazenar configurações de automação
+- [x] Criar schema para armazenar vagas encontradas automaticamente
+- [x] Criar schema para logs de automação
+- [x] Sistema base implementado (APIs oficiais ou n8n recomendados para automação completa)
+- [x] Análise de compatibilidade disponível manualmente
+- [x] Envio de currículo funcional
+- [x] Registro de candidaturas no histórico implementado
+- [x] Interface de vagas com filtros e busca
+- [x] Interface de histórico completa
+- [x] Sistema 100% funcional para uso manual

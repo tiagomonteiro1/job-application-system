@@ -15,6 +15,20 @@
       "when": 1767127603354,
       "tag": "0001_amazing_scrambler",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1767133207823,
+      "tag": "0002_sleepy_eternity",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1767133224709,
+      "tag": "0003_elite_tarantula",
+      "breakpoints": true
     }
   ]
 }
