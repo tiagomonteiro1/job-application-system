@@ -48,3 +48,28 @@
 - [x] Verificar e corrigir todos os erros TypeScript
 - [x] Testar fluxo completo de candidatura
 - [x] Garantir sistema 100% funcional
+
+
+## Refatoração de Currículo
+- [x] Analisar currículo atual do usuário
+- [x] Criar versão refatorada profissional otimizada para ATS
+- [x] Destacar conquistas quantificáveis
+- [x] Otimizar para vagas de PHP Sênior, Pentester e Segurança
+- [x] Gerar PDF profissional do currículo
+
+
+## Atualização de Currículo - IA e Blockchain
+- [x] Adicionar competências em IA e automação (Q#, Python ML/AI)
+- [x] Incluir desenvolvimento de algoritmos quânticos
+- [x] Adicionar experiência com blockchain e aplicações quânticas
+- [x] Listar tecnologias em alta no mercado
+- [x] Gerar novo PDF atualizado
+
+
+## Funcionalidade: Aplicar Sugestões Automaticamente
+- [x] Criar tRPC procedure para aplicar sugestões da análise
+- [x] Implementar refatoração automática do currículo com IA
+- [x] Gerar PDF do currículo refatorado
+- [x] Adicionar botão "Aplicar Sugestões" na página de currículo
+- [x] Mostrar preview das mudanças antes de aplicar
+- [x] Testar fluxo completo

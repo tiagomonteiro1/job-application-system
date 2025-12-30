@@ -16,6 +16,7 @@ export default function Curriculo() {
   const { data: curriculos, isLoading } = trpc.curriculo.list.useQuery();
   const uploadMutation = trpc.curriculo.upload.useMutation();
   const analisarMutation = trpc.curriculo.analisar.useMutation();
+  const aplicarSugestoesMutation = trpc.curriculo.aplicarSugestoes.useMutation();
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -73,6 +74,35 @@ export default function Curriculo() {
       utils.curriculo.list.invalidate();
     } catch (error) {
       toast.error("Erro ao analisar currículo");
+      console.error(error);
+    }
+  };
+
+  const handleAplicarSugestoes = async (curriculoId: number) => {
+    try {
+      const result = await aplicarSugestoesMutation.mutateAsync({ curriculoId });
+      toast.success("Sugestões aplicadas com sucesso!");
+      utils.curriculo.list.invalidate();
+    } catch (error) {
+      toast.error("Erro ao aplicar sugestões");
+      console.error(error);
+    }
+  };
+
+  const handleDownloadPDF = async (markdown: string, curriculoId: number) => {
+    try {
+      // Criar elemento temporário para download
+      const element = document.createElement('a');
+      const file = new Blob([markdown], { type: 'text/markdown' });
+      element.href = URL.createObjectURL(file);
+      element.download = `curriculo_refatorado_${curriculoId}.md`;
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+      
+      toast.success("Currículo baixado! Converta para PDF usando ferramentas online ou o sistema.");
+    } catch (error) {
+      toast.error("Erro ao baixar currículo");
       console.error(error);
     }
   };
@@ -223,6 +253,27 @@ export default function Curriculo() {
                     </Button>
                   )}
 
+                  {curriculo.status === "analyzed" && curriculo.analiseIA && (
+                    <Button
+                      onClick={() => handleAplicarSugestoes(curriculo.id)}
+                      disabled={aplicarSugestoesMutation.isPending}
+                      variant="outline"
+                      className="w-full"
+                    >
+                      {aplicarSugestoesMutation.isPending ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Aplicando Sugestões...
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles className="w-4 h-4 mr-2" />
+                          Aplicar Sugestões
+                        </>
+                      )}
+                    </Button>
+                  )}
+
                   {curriculo.status === "analyzed" && (
                     <>
                       {curriculo.analiseIA && (
@@ -246,6 +297,14 @@ export default function Curriculo() {
                           <div className="p-4 rounded-lg bg-background/50 text-sm">
                             <Streamdown>{curriculo.curriculoRefatorado}</Streamdown>
                           </div>
+                          <Button
+                            onClick={() => handleDownloadPDF(curriculo.curriculoRefatorado || "", curriculo.id)}
+                            variant="outline"
+                            className="w-full mt-2"
+                          >
+                            <Download className="w-4 h-4 mr-2" />
+                            Baixar PDF
+                          </Button>
                         </div>
                       )}
 

@@ -160,4 +160,80 @@ Retorne APENAS o currículo refatorado em Markdown, sem comentários adicionais.
 
       return curriculo;
     }),
+
+  /**
+   * Aplicar sugestões da análise e refatorar currículo automaticamente
+   */
+  aplicarSugestoes: protectedProcedure
+    .input(
+      z.object({
+        curriculoId: z.number(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user.id;
+
+      // Buscar currículo
+      const curriculo = await getCurriculoById(input.curriculoId);
+      if (!curriculo || curriculo.userId !== userId) {
+        throw new Error("Currículo não encontrado");
+      }
+
+      if (curriculo.status !== "analyzed") {
+        throw new Error("Currículo precisa ser analisado primeiro");
+      }
+
+      // Buscar análise anterior (sugestões estão no campo analiseIA)
+      const analiseAnterior = curriculo.analiseIA;
+
+      // Gerar currículo refatorado com sugestões aplicadas
+      const refatoracaoResponse = await invokeLLM({
+        messages: [
+          {
+            role: "system",
+            content: `Você é um especialista em elaboração de currículos profissionais.
+
+Sua tarefa é refatorar o currículo aplicando TODAS as sugestões de melhoria fornecidas.
+
+Retorne APENAS o currículo refatorado em formato Markdown, sem comentários adicionais.
+
+Diretrizes:
+- Aplique todas as sugestões de melhoria
+- Mantenha formato profissional e otimizado para ATS
+- Use conquistas quantificáveis
+- Destaque competências-chave
+- Estrutura clara com seções bem definidas
+- Linguagem profissional e objetiva`,
+          },
+          {
+            role: "user",
+            content: `Refatore este currículo aplicando as sugestões:
+
+**CURRÍCULO ATUAL:**
+${curriculo.curriculoRefatorado || curriculo.originalText}
+
+**SUGESTÕES DA ANÁLISE:**
+${analiseAnterior}
+
+Retorne o currículo refatorado em Markdown.`,
+          },
+        ],
+      });
+
+      const curriculoRefatoradoNovo = typeof refatoracaoResponse.choices[0]?.message?.content === 'string'
+        ? refatoracaoResponse.choices[0].message.content
+        : "";
+
+      // Atualizar currículo no banco
+      await updateCurriculo(input.curriculoId, {
+        curriculoRefatorado: curriculoRefatoradoNovo,
+        status: "analyzed",
+      });
+
+      return {
+        id: input.curriculoId,
+        curriculoRefatorado: curriculoRefatoradoNovo,
+        message: "Sugestões aplicadas com sucesso!",
+      };
+    }),
 });
