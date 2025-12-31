@@ -152,3 +152,10 @@
 - [x] Integrar no GitHub Actions CI com comentários automáticos em PRs
 - [x] Adicionar scripts npm (mutation, mutation:incremental, mutation:report)
 - [x] Criar documentação completa de mutation testing
+## Badges e Documentação
+- [x] Adicionar badge de mutation score do Stryker
+- [x] Adicionar badge de status do CI/CD
+- [x] Adicionar badge de cobertura de testes
+- [x] Adicionar badges de versão Node.js e licença
+- [x] Melhorar README.md com seções organizadas
+- [x] Criar documentação BADGES.md
