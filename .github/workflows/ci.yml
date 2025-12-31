@@ -144,6 +144,73 @@ jobs:
       - name: Run format check
         run: pnpm format:check || true
 
+  mutation:
+    name: Mutation Testing
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run mutation testing
+        run: pnpm mutation
+        continue-on-error: true
+
+      - name: Upload mutation report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mutation-report
+          path: |
+            reports/mutation/
+            .stryker-tmp/incremental.json
+
+      - name: Comment PR with mutation score
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            try {
+              const report = JSON.parse(fs.readFileSync('reports/mutation/mutation-report.json', 'utf8'));
+              const score = report.mutationScore.toFixed(2);
+              const body = `## 🧬 Mutation Testing Results\n\n` +
+                `**Mutation Score:** ${score}%\n\n` +
+                `- Total Mutants: ${report.totalMutants}\n` +
+                `- Killed: ${report.killed}\n` +
+                `- Survived: ${report.survived}\n` +
+                `- Timeout: ${report.timeout}\n` +
+                `- No Coverage: ${report.noCoverage}\n\n` +
+                `[View Full Report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: body
+              });
+            } catch (error) {
+              console.log('Could not read mutation report:', error);
+            }
+
   docker:
     name: Build Docker Image
     runs-on: ubuntu-latest

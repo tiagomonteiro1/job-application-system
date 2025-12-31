@@ -141,3 +141,14 @@
 - [x] Testes de integração: storage S3
 - [x] Configurar GitHub Actions CI
 - [x] Adicionar coverage report
+
+
+## Mutation Testing com Stryker
+- [x] Instalar Stryker e dependências
+- [x] Configurar stryker.conf.json e .stryker.conf.mjs
+- [x] Configurar mutadores (arithmetic, conditional, logical, etc)
+- [x] Definir thresholds de mutation score (high: 80%, low: 60%, break: 50%)
+- [x] Configurar relatórios HTML e JSON
+- [x] Integrar no GitHub Actions CI com comentários automáticos em PRs
+- [x] Adicionar scripts npm (mutation, mutation:incremental, mutation:report)
+- [x] Criar documentação completa de mutation testing
