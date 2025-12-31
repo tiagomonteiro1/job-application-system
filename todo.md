@@ -78,3 +78,16 @@
 - [x] Verificar erros de TypeScript
 - [x] Testar sistema completo
 - [x] Garantir que todas as funcionalidades estão operacionais
+
+
+## Implementação de Notificações por WhatsApp (Frontend)
+- [x] Criar página de Notificações (/notificacoes)
+- [x] Implementar formulário de vinculação de número WhatsApp
+- [x] Adicionar toggle de ativação de notificações
+- [x] Criar seção de preferências de notificação
+- [x] Implementar gerenciamento de grupos WhatsApp (CRUD)
+- [x] Criar visualização de histórico de notificações
+- [x] Adicionar filtros no histórico (tipo, status, data)
+- [x] Implementar envio de notificação de teste
+- [x] Adicionar menu "Notificações" no header
+- [x] Testar sistema completo de notificações

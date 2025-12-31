@@ -10,6 +10,7 @@ import Curriculo from "./pages/Curriculo";
 import Historico from "./pages/Historico";
 import Planos from "./pages/Planos";
 import Assinantes from "./pages/Assinantes";
+import Notificacoes from "./pages/Notificacoes";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -21,6 +22,7 @@ function Router() {
       <Route path={"/historico"} component={Historico} />
       <Route path={"/planos"} component={Planos} />
       <Route path={"/assinantes"} component={Assinantes} />
+      <Route path={"/notificacoes"} component={Notificacoes} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
