@@ -2,15 +2,19 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { FileText, Upload, Sparkles, CheckCircle2, Loader2, Download } from "lucide-react";
+import { FileText, Upload, Sparkles, CheckCircle2, Loader2, Download, Eye } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";
+import CurriculoPreview from "@/components/CurriculoPreview";
 
 export default function Curriculo() {
   const { user, isAuthenticated } = useAuth();
   const [uploading, setUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewHTML, setPreviewHTML] = useState("");
+  const [currentCurriculoId, setCurrentCurriculoId] = useState<number | null>(null);
 
   const utils = trpc.useUtils();
   const { data: curriculos, isLoading } = trpc.curriculo.list.useQuery();
@@ -18,6 +22,7 @@ export default function Curriculo() {
   const analisarMutation = trpc.curriculo.analisar.useMutation();
   const aplicarSugestoesMutation = trpc.curriculo.aplicarSugestoes.useMutation();
   const gerarPDFMutation = trpc.curriculo.gerarPDFPremium.useMutation();
+  const [loadingPreview, setLoadingPreview] = useState(false);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -108,6 +113,28 @@ export default function Curriculo() {
     }
   };
 
+  const handleVisualizarPreview = async (curriculoId: number) => {
+    setLoadingPreview(true);
+    try {
+      toast.info("Carregando preview...");
+      
+      // Fazer requisição direta usando utils
+      const result = await utils.curriculo.gerarPreview.fetch({ curriculoId });
+      
+      if (result) {
+        setPreviewHTML(result.html);
+        setCurrentCurriculoId(curriculoId);
+        setPreviewOpen(true);
+        toast.success("✅ Preview carregado!");
+      }
+    } catch (error) {
+      toast.error("Erro ao carregar preview");
+      console.error(error);
+    } finally {
+      setLoadingPreview(false);
+    }
+  };
+
   const handleGerarPDFPremium = async (curriculoId: number) => {
     try {
       toast.info("Gerando PDF premium... Isso pode levar alguns segundos.");
@@ -117,6 +144,7 @@ export default function Curriculo() {
       window.open(result.pdfUrl, '_blank');
       
       toast.success("✅ PDF Premium gerado com sucesso! Design elegante e profissional.");
+      setPreviewOpen(false); // Fechar preview após gerar PDF
       utils.curriculo.list.invalidate();
     } catch (error) {
       toast.error("Erro ao gerar PDF premium");
@@ -324,19 +352,19 @@ export default function Curriculo() {
                               Baixar Markdown
                             </Button>
                             <Button
-                              onClick={() => handleGerarPDFPremium(curriculo.id)}
-                              disabled={gerarPDFMutation.isPending}
+                              onClick={() => handleVisualizarPreview(curriculo.id)}
+                              disabled={loadingPreview}
                               className="flex-1 glow-effect bg-gradient-to-r from-primary to-accent"
                             >
-                              {gerarPDFMutation.isPending ? (
+                              {loadingPreview ? (
                                 <>
                                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                  Gerando...
+                                  Carregando...
                                 </>
                               ) : (
                                 <>
-                                  <Sparkles className="w-4 h-4 mr-2" />
-                                  Gerar PDF Premium
+                                  <Eye className="w-4 h-4 mr-2" />
+                                  Visualizar Preview
                                 </>
                               )}
                             </Button>
@@ -378,6 +406,15 @@ export default function Curriculo() {
           )}
         </div>
       </div>
+
+      {/* Preview Dialog */}
+      <CurriculoPreview
+        open={previewOpen}
+        onOpenChange={setPreviewOpen}
+        htmlContent={previewHTML}
+        onGerarPDF={() => currentCurriculoId && handleGerarPDFPremium(currentCurriculoId)}
+        isGeneratingPDF={gerarPDFMutation.isPending}
+      />
     </div>
   );
 }

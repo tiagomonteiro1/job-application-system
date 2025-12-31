@@ -3,6 +3,7 @@ import { protectedProcedure, router } from "../_core/trpc";
 import { createCurriculo, getCurriculoById, getCurriculosByUserId, updateCurriculo } from "../db";
 import { storagePut } from "../storage";
 import { gerarPDFPremium } from "../utils/pdf-generator";
+import { gerarPreviewHTML } from "../utils/preview-generator";
 import path from "path";
 import fs from "fs/promises";
 import os from "os";
@@ -282,6 +283,32 @@ Retorne o currículo refatorado em Markdown.`,
       return {
         pdfUrl: url,
         message: "PDF premium gerado com sucesso!",
+      };
+    }),
+
+  /**
+   * Gerar preview HTML do currículo para visualização em tempo real
+   */
+  gerarPreview: protectedProcedure
+    .input(z.object({ curriculoId: z.number() }))
+    .query(async ({ ctx, input }) => {
+      const userId = ctx.user.id;
+
+      // Buscar currículo
+      const curriculo = await getCurriculoById(input.curriculoId);
+      if (!curriculo || curriculo.userId !== userId) {
+        throw new Error("Currículo não encontrado");
+      }
+
+      if (!curriculo.curriculoRefatorado) {
+        throw new Error("Currículo precisa ser refatorado primeiro");
+      }
+
+      // Gerar HTML preview
+      const htmlPreview = await gerarPreviewHTML(curriculo.curriculoRefatorado);
+
+      return {
+        html: htmlPreview,
       };
     }),
 });

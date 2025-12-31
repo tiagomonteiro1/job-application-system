@@ -98,3 +98,13 @@
 - [x] Destacar conquistas quantificáveis com boxes
 - [x] Integrar botão "Gerar PDF Premium" na interface
 - [x] Sistema completo e funcional
+
+
+## Preview em Tempo Real do Currículo
+- [x] Criar API tRPC para gerar preview HTML
+- [x] Criar componente de preview com iframe
+- [x] Adicionar botão "Visualizar Preview" na interface
+- [x] Implementar dialog/modal para exibir preview
+- [x] Adicionar botão "Gerar PDF" dentro do preview
+- [x] Preview responsivo com ajuste automático de altura
+- [x] Preview idêntico ao PDF final (mesmo template HTML)
