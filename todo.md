@@ -149,3 +149,11 @@
 - [x] Criar gerenciamento de logotipo
 - [x] Adicionar upload de logo
 - [x] Testar sistema completo
+
+
+## Correção de Erros de JSON nas APIs de Automações
+- [x] Investigar erro de JSON parse na página de automações
+- [x] Verificar router de automações no backend
+- [x] Corrigir retorno das queries (garantir arrays válidos)
+- [x] Alterar limite de 20 para 100 varreduras
+- [x] Testar APIs de automações

@@ -15,7 +15,8 @@ export const automacoesRouter = router({
       sql`SELECT * FROM usuario_credenciais WHERE userId = ${ctx.user.id} LIMIT 1`
     );
     
-    return result[0] || null;
+    const rows = Array.isArray(result) ? result : (result.rows || []);
+    return rows[0] || null;
   }),
 
   /**
@@ -93,10 +94,11 @@ export const automacoesRouter = router({
     if (!db) throw new Error("Database not available");
 
     const varreduras: any = await db.execute(
-      sql`SELECT * FROM automacoes_varredura WHERE userId = ${ctx.user.id} ORDER BY dataInicio DESC LIMIT 20`
+      sql`SELECT * FROM automacoes_varredura WHERE userId = ${ctx.user.id} ORDER BY dataInicio DESC LIMIT 100`
     );
 
-    return varreduras || [];
+    const rows = Array.isArray(varreduras) ? varreduras : (varreduras.rows || []);
+    return rows;
   }),
 
   /**
@@ -112,7 +114,8 @@ export const automacoesRouter = router({
         sql`SELECT * FROM automacoes_varredura WHERE id = ${input.varreduraId} AND userId = ${ctx.user.id} LIMIT 1`
       );
 
-      if (!varredura || varredura.length === 0) {
+      const varreduraRows = Array.isArray(varredura) ? varredura : (varredura.rows || []);
+      if (varreduraRows.length === 0) {
         throw new Error("Varredura não encontrada");
       }
 
@@ -120,9 +123,11 @@ export const automacoesRouter = router({
         sql`SELECT * FROM varredura_resultados WHERE varreduraId = ${input.varreduraId} ORDER BY createdAt DESC`
       );
 
+      const resultadosRows = Array.isArray(resultados) ? resultados : (resultados.rows || []);
+
       return {
-        ...varredura[0],
-        resultados,
+        ...varreduraRows[0],
+        resultados: resultadosRows,
       };
     }),
 });
