@@ -157,3 +157,10 @@
 - [x] Corrigir retorno das queries (garantir arrays válidos)
 - [x] Alterar limite de 20 para 100 varreduras
 - [x] Testar APIs de automações
+
+
+## Correção Definitiva de Keys em Automações
+- [x] Analisar completamente Automacoes.tsx
+- [x] Encontrar TODOS os elementos sem key
+- [x] Adicionar keys em todos os elementos (fields + buttons)
+- [x] Testar e verificar ausência de warnings

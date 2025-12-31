@@ -246,7 +246,7 @@ export default function Automacoes() {
                     </DialogHeader>
                     
                     <form onSubmit={handleSalvarCredenciais} className="space-y-4">
-                      <div>
+                      <div key="field-email">
                         <Label htmlFor="email">E-mail *</Label>
                         <Input
                           id="email"
@@ -258,7 +258,7 @@ export default function Automacoes() {
                         />
                       </div>
 
-                      <div>
+                      <div key="field-senha">
                         <Label htmlFor="senha">Senha *</Label>
                         <Input
                           id="senha"
@@ -273,7 +273,7 @@ export default function Automacoes() {
                         </p>
                       </div>
 
-                      <div>
+                      <div key="field-telefone">
                         <Label htmlFor="telefone">Telefone</Label>
                         <Input
                           id="telefone"
@@ -284,15 +284,16 @@ export default function Automacoes() {
                         />
                       </div>
 
-                      <div className="flex justify-end gap-2 pt-4">
+                      <div key="form-buttons" className="flex justify-end gap-2 pt-4">
                         <Button
+                          key="btn-cancel-cred"
                           type="button"
                           variant="outline"
                           onClick={() => setCredenciaisDialogOpen(false)}
                         >
                           Cancelar
                         </Button>
-                        <Button type="submit">
+                        <Button key="btn-submit-cred" type="submit">
                           Salvar Credenciais
                         </Button>
                       </div>
