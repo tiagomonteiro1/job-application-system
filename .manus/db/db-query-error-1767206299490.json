@@ -1,0 +1,19 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS followups (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  userId INTEGER NOT NULL,\n  candidaturaId INTEGER NOT NULL,\n  status TEXT DEFAULT 'pendente',\n  data_agendada DATETIME NOT NULL,\n  data_enviado DATETIME,\n  mensagem TEXT,\n  tipo_envio TEXT DEFAULT 'whatsapp',\n  resposta_empresa TEXT,\n  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  FOREIGN KEY (userId) REFERENCES users(id),\n  FOREIGN KEY (candidaturaId) REFERENCES candidaturas(id)\n)",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute CREATE TABLE IF NOT EXISTS followups (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  userId INTEGER NOT NULL,\n  candidaturaId INTEGER NOT NULL,\n  status TEXT DEFAULT 'pendente',\n  data_agendada DATETIME NOT NULL,\n  data_enviado DATETIME,\n  mensagem TEXT,\n  tipo_envio TEXT DEFAULT 'whatsapp',\n  resposta_empresa TEXT,\n  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  FOREIGN KEY (userId) REFERENCES users(id),\n  FOREIGN KEY (candidaturaId) REFERENCES candidaturas(id)\n)",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your TiDB version for the right syntax to use line 2 column 39 near \"AUTOINCREMENT,",
+    "  userId INTEGER NOT NULL,",
+    "  candidaturaId INTEGER NOT NULL,",
+    "  status TEXT DEFAULT 'pendente',",
+    "  data_agendada DATETIME NOT NULL,",
+    "  data_enviado DATETIME,",
+    "  mensagem TEXT,",
+    "  tipo_envio TEXT DEFAULT 'whatsapp',",
+    "  resposta_empresa TEXT,",
+    "  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,",
+    "  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,",
+    "  FOREIGN KEY (userId"
+  ]
+}

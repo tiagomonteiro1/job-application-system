@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { sql } from "drizzle-orm";
 import { protectedProcedure, router } from "../_core/trpc";
 import { createCandidatura, getCandidaturasByUserId, updateCandidatura } from "../db";
 import { getCurriculoById } from "../db";
@@ -110,6 +111,38 @@ ${curriculo.curriculoRefatorado || curriculo.originalText || "Não disponível"}
       // Incrementar contador de uso
       const mesAtual = new Date().toISOString().slice(0, 7);
       await incrementarUsoRecurso(userId, mesAtual, 'candidaturas');
+
+      // Agendar follow-up automático se configurado
+      try {
+        const configResult = await ctx.db.execute(sql`
+          SELECT * FROM followup_config WHERE userId = ${userId} AND ativo = 1 LIMIT 1
+        `);
+        
+        if (configResult.rows.length > 0) {
+          const config = configResult.rows[0] as any;
+          const dataAgendada = new Date();
+          dataAgendada.setDate(dataAgendada.getDate() + (config.dias_apos_candidatura || 7));
+          
+          // Buscar template padrão
+          const templateResult = await ctx.db.execute(sql`
+            SELECT * FROM followup_templates 
+            WHERE userId = ${userId} AND ativo = 1 
+            ORDER BY createdAt ASC LIMIT 1
+          `);
+          
+          const mensagemPadrao = templateResult.rows.length > 0 
+            ? (templateResult.rows[0] as any).mensagem
+            : `Olá! Gostaria de acompanhar o status da minha candidatura para a vaga de ${input.vaga.titulo} na ${input.vaga.empresa}. Aguardo retorno. Obrigado!`;
+          
+          await ctx.db.execute(sql`
+            INSERT INTO followups (userId, candidaturaId, data_agendada, mensagem, tipo_envio)
+            VALUES (${userId}, ${candidatura.id}, ${dataAgendada.toISOString()}, ${mensagemPadrao}, ${config.enviar_whatsapp ? 'whatsapp' : 'email'})
+          `);
+        }
+      } catch (error) {
+        console.error('Erro ao agendar follow-up:', error);
+        // Não falhar a candidatura se o follow-up falhar
+      }
 
       return candidatura;
     }),

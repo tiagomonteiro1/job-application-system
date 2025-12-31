@@ -1,0 +1,18 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS followup_templates (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  userId INTEGER NOT NULL,\n  nome TEXT NOT NULL,\n  assunto TEXT,\n  mensagem TEXT NOT NULL,\n  tipo_vaga TEXT,\n  ativo BOOLEAN DEFAULT 1,\n  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  FOREIGN KEY (userId) REFERENCES users(id)\n)",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute CREATE TABLE IF NOT EXISTS followup_templates (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  userId INTEGER NOT NULL,\n  nome TEXT NOT NULL,\n  assunto TEXT,\n  mensagem TEXT NOT NULL,\n  tipo_vaga TEXT,\n  ativo BOOLEAN DEFAULT 1,\n  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,\n  FOREIGN KEY (userId) REFERENCES users(id)\n)",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your TiDB version for the right syntax to use line 2 column 39 near \"AUTOINCREMENT,",
+    "  userId INTEGER NOT NULL,",
+    "  nome TEXT NOT NULL,",
+    "  assunto TEXT,",
+    "  mensagem TEXT NOT NULL,",
+    "  tipo_vaga TEXT,",
+    "  ativo BOOLEAN DEFAULT 1,",
+    "  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,",
+    "  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,",
+    "  FOREIGN KEY (userId) REFERENCES users(id)",
+    ")\""
+  ]
+}

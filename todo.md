@@ -204,3 +204,21 @@
 - [x] Corrigir erros de build
 - [x] Testar sistema completo
 - [x] Verificar por que novas implementações não estão visíveis (sistema funcionando)
+
+
+## Sistema de Follow-up Automático
+- [x] Criar schema para configurações de follow-up
+- [x] Criar schema para follow-ups agendados
+- [x] Criar schema para templates de mensagens
+- [x] Criar schema para histórico de follow-ups
+- [x] Criar APIs para CRUD de configurações
+- [x] Criar APIs para gerenciar follow-ups
+- [x] Criar APIs para templates
+- [x] Implementar lógica de agendamento automático (após criar candidatura)
+- [ ] Criar rotina de envio automático (implementar cron job)
+- [x] Criar página de Follow-ups (/followups)
+- [x] Criar interface de configuração
+- [x] Criar lista de follow-ups pendentes
+- [ ] Criar editor de templates (templates já funcionam via API)
+- [x] Adicionar menu Follow-ups no header
+- [x] Testar sistema completo

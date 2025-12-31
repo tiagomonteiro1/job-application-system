@@ -18,7 +18,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2 } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare } from "lucide-react";
 import LogoutButton from "@/components/LogoutButton";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
@@ -280,6 +280,12 @@ export default function Home() {
                   <Link href="/historico">
                     <History className="w-4 h-4 mr-2" />
                     Histórico
+                  </Link>
+                </Button>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/followups">
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    Follow-ups
                   </Link>
                 </Button>
                 <Button variant="ghost" size="sm" asChild>
