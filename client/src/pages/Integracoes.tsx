@@ -314,13 +314,14 @@ export default function Integracoes() {
 
                   <div className="flex justify-end gap-2 pt-4">
                     <Button
+                      key="btn-cancel"
                       type="button"
                       variant="outline"
                       onClick={() => setIntegracaoDialogOpen(false)}
                     >
                       Cancelar
                     </Button>
-                    <Button type="submit">
+                    <Button key="btn-submit" type="submit">
                       {editandoIntegracao ? 'Atualizar' : 'Criar'} Integração
                     </Button>
                   </div>
