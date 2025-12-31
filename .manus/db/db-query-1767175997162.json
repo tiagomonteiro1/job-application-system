@@ -1,0 +1,13 @@
+{
+  "query": "SHOW TABLES LIKE 'whatsapp_grupos';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute SHOW TABLES LIKE 'whatsapp_grupos';",
+  "rows": [
+    {
+      "Tables_in_D6a7XNvxZFwkFJQ8a9TQYz (whatsapp_grupos)": "whatsapp_grupos"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_D6a7XNvxZFwkFJQ8a9TQYz (whatsapp_grupos)\nwhatsapp_grupos\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}

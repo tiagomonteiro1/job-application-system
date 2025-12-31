@@ -172,7 +172,7 @@ export default function Usuarios() {
         {/* Stats Cards */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card key="stat-total" className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium text-gray-400">Total de Usuários</CardTitle>
               </CardHeader>
@@ -184,7 +184,7 @@ export default function Usuarios() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card key="stat-admins" className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium text-gray-400">Administradores</CardTitle>
               </CardHeader>
@@ -196,7 +196,7 @@ export default function Usuarios() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card key="stat-regular" className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium text-gray-400">Usuários Comuns</CardTitle>
               </CardHeader>
@@ -208,7 +208,7 @@ export default function Usuarios() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card key="stat-recent" className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium text-gray-400">Novos (30 dias)</CardTitle>
               </CardHeader>

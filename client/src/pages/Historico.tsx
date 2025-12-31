@@ -175,7 +175,7 @@ export default function Historico() {
         {/* Estatísticas */}
         {candidaturas && candidaturas.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
-            <Card className="glass-card">
+            <Card key="stat-total" className="glass-card">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
                   <FileText className="w-5 h-5 text-blue-400" />
@@ -187,7 +187,7 @@ export default function Historico() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card">
+            <Card key="stat-confirmed" className="glass-card">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
@@ -201,7 +201,7 @@ export default function Historico() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card">
+            <Card key="stat-pending" className="glass-card">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-yellow-400" />
@@ -215,7 +215,7 @@ export default function Historico() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card">
+            <Card key="stat-failed" className="glass-card">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
                   <XCircle className="w-5 h-5 text-red-400" />
@@ -229,7 +229,7 @@ export default function Historico() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card">
+            <Card key="stat-accepted" className="glass-card">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
                   <Star className="w-5 h-5 text-purple-400" />

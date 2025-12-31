@@ -18,7 +18,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -316,6 +316,12 @@ export default function Home() {
                       <Link href="/usuarios">
                         <Users className="w-4 h-4 mr-2" />
                         Usuários
+                      </Link>
+                    </Button>
+                    <Button variant="ghost" size="sm" asChild className="bg-purple-600/20 border border-purple-400/30 hover:bg-purple-600/30">
+                      <Link href="/admin">
+                        <Shield className="w-4 h-4 mr-2" />
+                        Admin
                       </Link>
                     </Button>
                     <DropdownMenu>

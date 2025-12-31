@@ -10,7 +10,8 @@ import Curriculo from "./pages/Curriculo";
 import Historico from "./pages/Historico";
 import Planos from "./pages/Planos";
 import Assinantes from "./pages/Assinantes";
-import Notificacoes from "./pages/Notificacoes";
+import Notificacoes from "@/pages/Notificacoes";
+import Admin from "@/pages/Admin";
 import Automacoes from "./pages/Automacoes";
 import Integracoes from "./pages/Integracoes";
 
@@ -27,6 +28,7 @@ function Router() {
       <Route path={"/notificacoes"} component={Notificacoes} />
       <Route path={"/automacoes"} component={Automacoes} />
       <Route path={"/integracoes"} component={Integracoes} />
+      <Route path={"/admin"} component={Admin} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
