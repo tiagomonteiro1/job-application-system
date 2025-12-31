@@ -71,6 +71,14 @@ export const candidaturas = mysqlTable("candidaturas", {
   status: mysqlEnum("status", ["pending", "sent", "viewed", "rejected", "accepted"]).default("pending").notNull(),
   /** Data de envio */
   dataEnvio: timestamp("dataEnvio"),
+  /** Status de entrega validado pelo usuário */
+  statusEntrega: mysqlEnum("status_entrega", ["pendente", "confirmado", "nao_entregue"]).default("pendente").notNull(),
+  /** Link para acessar o cadastro no site da empresa */
+  linkValidacao: text("link_validacao"),
+  /** Observações sobre a entrega (protocolo, data, etc.) */
+  observacoesEntrega: text("observacoes_entrega"),
+  /** Data de confirmação da entrega */
+  dataConfirmacao: timestamp("data_confirmacao"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -171,3 +179,81 @@ export const automacaoLogs = mysqlTable("automacao_logs", {
 
 export type AutomacaoLog = typeof automacaoLogs.$inferSelect;
 export type InsertAutomacaoLog = typeof automacaoLogs.$inferInsert;
+
+
+/**
+ * Tabela de configurações de notificação do usuário
+ * Armazena preferências de notificação via WhatsApp
+ */
+export const notificacoesConfig = mysqlTable("notificacoes_config", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  /** Número de WhatsApp do usuário (formato: +5511999999999) */
+  whatsappNumero: varchar("whatsapp_numero", { length: 20 }),
+  /** Se notificações estão ativadas */
+  notificacoesAtivadas: boolean("notificacoes_ativadas").default(false).notNull(),
+  /** Notificar quando novas vagas forem encontradas */
+  notificarNovasVagas: boolean("notificar_novas_vagas").default(true).notNull(),
+  /** Notificar quando status de candidatura mudar */
+  notificarStatusCandidatura: boolean("notificar_status_candidatura").default(true).notNull(),
+  /** Notificar lembretes de follow-up */
+  notificarFollowUp: boolean("notificar_follow_up").default(false).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type NotificacaoConfig = typeof notificacoesConfig.$inferSelect;
+export type InsertNotificacaoConfig = typeof notificacoesConfig.$inferInsert;
+
+/**
+ * Tabela de grupos WhatsApp para publicação de vagas
+ * Armazena links de grupos onde as vagas serão compartilhadas
+ */
+export const whatsappGrupos = mysqlTable("whatsapp_grupos", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  /** Nome do grupo */
+  nomeGrupo: varchar("nome_grupo", { length: 255 }).notNull(),
+  /** Link de convite do grupo WhatsApp */
+  linkGrupo: text("link_grupo").notNull(),
+  /** Se o grupo está ativo para receber notificações */
+  ativo: boolean("ativo").default(true).notNull(),
+  /** Descrição opcional do grupo */
+  descricao: text("descricao"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type WhatsappGrupo = typeof whatsappGrupos.$inferSelect;
+export type InsertWhatsappGrupo = typeof whatsappGrupos.$inferInsert;
+
+/**
+ * Tabela de histórico de notificações enviadas
+ * Registra todas as notificações enviadas via WhatsApp
+ */
+export const notificacoesHistorico = mysqlTable("notificacoes_historico", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  /** Tipo de notificação */
+  tipo: mysqlEnum("tipo", ["nova_vaga", "status_candidatura", "follow_up", "sistema"]).notNull(),
+  /** Destinatário (número WhatsApp ou ID do grupo) */
+  destinatario: varchar("destinatario", { length: 255 }).notNull(),
+  /** Título da notificação */
+  titulo: varchar("titulo", { length: 255 }).notNull(),
+  /** Mensagem enviada */
+  mensagem: text("mensagem").notNull(),
+  /** Status do envio */
+  statusEnvio: mysqlEnum("status_envio", ["pendente", "enviado", "erro", "entregue"]).notNull().default("pendente"),
+  /** Mensagem de erro (se houver) */
+  mensagemErro: text("mensagem_erro"),
+  /** ID externo da mensagem (Twilio, WhatsApp Business API, etc.) */
+  idExterno: varchar("id_externo", { length: 255 }),
+  /** Data de envio */
+  dataEnvio: timestamp("data_envio"),
+  /** Dados adicionais (JSON) */
+  dadosAdicionais: text("dados_adicionais"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type NotificacaoHistorico = typeof notificacoesHistorico.$inferSelect;
+export type InsertNotificacaoHistorico = typeof notificacoesHistorico.$inferInsert;

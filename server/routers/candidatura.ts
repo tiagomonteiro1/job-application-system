@@ -143,4 +143,63 @@ ${curriculo.curriculoRefatorado || curriculo.originalText || "Não disponível"}
 
       return { success: true };
     }),
+
+  /**
+   * Confirmar entrega de currículo
+   */
+  confirmarEntrega: protectedProcedure
+    .input(
+      z.object({
+        candidaturaId: z.number(),
+        linkValidacao: z.string().optional(),
+        observacoes: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await updateCandidatura(input.candidaturaId, {
+        statusEntrega: "confirmado",
+        linkValidacao: input.linkValidacao,
+        observacoesEntrega: input.observacoes,
+        dataConfirmacao: new Date(),
+      });
+
+      return { success: true };
+    }),
+
+  /**
+   * Marcar como não entregue
+   */
+  marcarNaoEntregue: protectedProcedure
+    .input(
+      z.object({
+        candidaturaId: z.number(),
+        observacoes: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await updateCandidatura(input.candidaturaId, {
+        statusEntrega: "nao_entregue",
+        observacoesEntrega: input.observacoes,
+      });
+
+      return { success: true };
+    }),
+
+  /**
+   * Atualizar link de validação
+   */
+  atualizarLinkValidacao: protectedProcedure
+    .input(
+      z.object({
+        candidaturaId: z.number(),
+        linkValidacao: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await updateCandidatura(input.candidaturaId, {
+        linkValidacao: input.linkValidacao,
+      });
+
+      return { success: true };
+    }),
 });
