@@ -151,16 +151,16 @@
 - [x] Testar sistema completo
 
 
-## Correção de Erros de JSON nas APIs de Automações
-- [x] Investigar erro de JSON parse na página de automações
-- [x] Verificar router de automações no backend
-- [x] Corrigir retorno das queries (garantir arrays válidos)
-- [x] Alterar limite de 20 para 100 varreduras
-- [x] Testar APIs de automações
-
-
-## Correção Definitiva de Keys em Automações
-- [x] Analisar completamente Automacoes.tsx
-- [x] Encontrar TODOS os elementos sem key
-- [x] Adicionar keys em todos os elementos (fields + buttons)
-- [x] Testar e verificar ausência de warnings
+## Varredura Completa e Correção Final de Todos os Erros
+- [x] Investigar causa raiz do erro de key em Automações
+- [x] Ler arquivo completo de Automacoes.tsx linha por linha
+- [x] Encontrar TODOS os elementos JSX que precisam de key
+- [x] Corrigir Automacoes.tsx completamente
+- [x] Varrer e corrigir Integracoes.tsx
+- [x] Varrer e corrigir Notificacoes.tsx
+- [x] Varrer e corrigir Planos.tsx
+- [x] Varrer e corrigir Assinantes.tsx
+- [x] Varrer e corrigir todas as outras páginas
+- [x] Verificar erros de TypeScript
+- [x] Verificar erros de build
+- [x] Testar sistema completo sem erros
