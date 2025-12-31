@@ -17,7 +17,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -280,6 +280,14 @@ export default function Home() {
                     Histórico
                   </Link>
                 </Button>
+                {user?.role === "admin" && (
+                  <Button variant="ghost" size="sm" asChild>
+                    <Link href="/usuarios">
+                      <Users className="w-4 h-4 mr-2" />
+                      Usuários
+                    </Link>
+                  </Button>
+                )}
               </nav>
               {curriculo && (
                 <div className="text-right hidden lg:block">

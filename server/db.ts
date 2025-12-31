@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, like, or, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users, curriculos, InsertCurriculo, Curriculo, candidaturas, InsertCandidatura, Candidatura } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -161,4 +161,87 @@ export async function updateCandidatura(id: number, data: Partial<Candidatura>):
   if (!db) throw new Error("Database not available");
 
   await db.update(candidaturas).set(data).where(eq(candidaturas.id, id));
+}
+
+
+// ========== Gerenciamento de Usuários ==========
+
+export async function getAllUsers(options?: { search?: string; limit?: number; offset?: number }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  let query = db.select().from(users);
+
+  // Aplicar filtro de busca
+  if (options?.search) {
+    const searchPattern = `%${options.search}%`;
+    query = query.where(
+      or(
+        like(users.name, searchPattern),
+        like(users.email, searchPattern)
+      )
+    ) as any;
+  }
+
+  // Ordenar por data de criação (mais recentes primeiro)
+  query = query.orderBy(desc(users.createdAt)) as any;
+
+  // Aplicar paginação
+  if (options?.limit) {
+    query = query.limit(options.limit) as any;
+  }
+  if (options?.offset) {
+    query = query.offset(options.offset) as any;
+  }
+
+  return await query;
+}
+
+export async function getUserById(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createUser(data: InsertUser) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(users).values(data);
+  return Number(result[0].insertId);
+}
+
+export async function updateUser(id: number, data: Partial<InsertUser>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(users).set({
+    ...data,
+    updatedAt: new Date(),
+  }).where(eq(users.id, id));
+}
+
+export async function deleteUser(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.delete(users).where(eq(users.id, id));
+}
+
+export async function getUserByEmail(email: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getUsersStats() {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const allUsers = await db.select().from(users);
+  return allUsers;
 }
