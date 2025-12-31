@@ -28,6 +28,7 @@ export const candidaturaRouter = router({
       z.object({
         curriculoId: z.number(),
         vaga: vagaSchema,
+        payloadPagina: z.string().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -103,6 +104,7 @@ ${curriculo.curriculoRefatorado || curriculo.originalText || "Não disponível"}
         vagaData: JSON.stringify(input.vaga),
         cartaApresentacao,
         status: "pending",
+        payloadPagina: input.payloadPagina || input.vaga.link_candidatura,
       });
       
       // Incrementar contador de uso

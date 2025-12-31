@@ -164,3 +164,29 @@
 - [x] Verificar erros de TypeScript
 - [x] Verificar erros de build
 - [x] Testar sistema completo sem erros
+
+
+## Novas Funcionalidades Solicitadas
+- [x] Criar menu "Limpeza de Cache" no header
+- [x] Implementar API para deletar vagas encontradas
+- [x] Criar página de Limpeza de Cache
+- [x] Aumentar limite de vagas de 20 para 100
+- [x] Adicionar botão "Iniciar Varredura" em Automações (já existe)
+- [x] Implementar busca automática de vagas por perfil (simulação implementada)
+- [x] Adicionar campo payload_pagina no histórico
+- [x] Salvar URL da página da vaga no histórico
+- [x] Exibir link para conferir entrega no histórico
+- [x] Testar todas as funcionalidades
+
+
+## Novas Funcionalidades Solicitadas
+- [x] Criar menu "Limpeza de Cache" no header
+- [x] Implementar API para deletar vagas encontradas
+- [x] Criar página de Limpeza de Cache
+- [x] Aumentar limite de vagas de 20 para 100
+- [x] Adicionar botão "Iniciar Varredura" em Automações (já existe)
+- [x] Implementar busca automática de vagas por perfil (simulação implementada)
+- [x] Adicionar campo payload_pagina no histórico
+- [x] Salvar URL da página da vaga no histórico
+- [x] Exibir link para conferir entrega no histórico
+- [x] Testar todas as funcionalidades

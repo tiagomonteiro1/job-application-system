@@ -79,6 +79,8 @@ export const candidaturas = mysqlTable("candidaturas", {
   observacoesEntrega: text("observacoes_entrega"),
   /** Data de confirmação da entrega */
   dataConfirmacao: timestamp("data_confirmacao"),
+  /** URL da página da vaga para conferência de entrega */
+  payloadPagina: text("payload_pagina"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

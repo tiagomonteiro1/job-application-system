@@ -1,0 +1,1 @@
+ALTER TABLE `candidaturas` ADD `payload_pagina` text;

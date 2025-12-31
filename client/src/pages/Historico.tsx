@@ -337,6 +337,19 @@ export default function Historico() {
                             </Button>
                           )}
 
+                          {/* Botão para conferir entrega via payload */}
+                          {candidatura.payloadPagina && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="bg-blue-500/10 border-blue-500/50 hover:bg-blue-500/20"
+                              onClick={() => window.open(candidatura.payloadPagina, "_blank")}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Conferir Entrega
+                            </Button>
+                          )}
+
                           {/* Botão Confirmar Entrega */}
                           {candidatura.statusEntrega === "pendente" && (
                             <Button

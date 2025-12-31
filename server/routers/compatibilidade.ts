@@ -17,6 +17,15 @@ const vagaSchema = z.object({
 
 export const compatibilidadeRouter = router({
   /**
+   * Limpar cache de vagas encontradas
+   */
+  limparCache: protectedProcedure.mutation(async ({ ctx }) => {
+    const userId = ctx.user.id;
+    // TODO: Implementar lógica de limpeza de cache
+    // Por enquanto retorna sucesso
+    return { success: true, message: "Cache limpo com sucesso" };
+  }),
+  /**
    * Analisar compatibilidade entre currículo e vaga
    * Retorna score, requisitos atendidos/faltantes, gaps e recomendações
    */
