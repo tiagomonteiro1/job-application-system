@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Trash2, AlertTriangle, CheckCircle2 } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import {

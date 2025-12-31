@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Shield, Upload, Image as ImageIcon, Settings, Database, Users } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { getLoginUrl } from "@/const";
 
 export default function Admin() {
@@ -113,9 +114,12 @@ export default function Admin() {
                 <p className="text-sm text-gray-400">Acesso exclusivo para administradores</p>
               </div>
             </div>
-            <Button variant="outline" onClick={() => window.location.href = "/"}>
-              Voltar para Home
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button variant="outline" onClick={() => window.location.href = "/"}>
+                Voltar para Home
+              </Button>
+              <LogoutButton />
+            </div>
           </div>
         </div>
       </header>

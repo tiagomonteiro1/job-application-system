@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
 import { Briefcase, Calendar, CheckCircle2, Clock, ExternalLink, FileText, History, Link2, Loader2, MapPin, Star, XCircle } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { useState } from "react";
 import { Streamdown } from "streamdown";
 import { toast } from "sonner";

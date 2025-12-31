@@ -19,6 +19,7 @@ import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
 import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2 } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -357,9 +358,12 @@ export default function Home() {
                 )}
               </nav>
               {curriculo && (
-                <div className="text-right hidden lg:block">
-                  <p className="text-sm font-medium text-foreground">{curriculo.nome}</p>
-                  <p className="text-xs text-muted-foreground">{curriculo.cargo}</p>
+                <div className="flex items-center gap-4">
+                  <div className="text-right hidden lg:block">
+                    <p className="text-sm font-medium text-foreground">{curriculo.nome}</p>
+                    <p className="text-xs text-muted-foreground">{curriculo.cargo}</p>
+                  </div>
+                  <LogoutButton />
                 </div>
               )}
             </div>

@@ -18,6 +18,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Bell, MessageCircle, Users, History, Plus, Edit, Trash2, Send, CheckCircle, XCircle, Clock } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { getLoginUrl } from "@/const";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";

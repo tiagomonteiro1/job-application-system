@@ -16,6 +16,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Plus, Edit, Trash2, DollarSign, Users, CheckCircle, XCircle, Package } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { getLoginUrl } from "@/const";
 
 // Módulos disponíveis no sistema

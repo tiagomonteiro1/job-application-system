@@ -17,6 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
 import { Plus, Edit, Trash2, UserCheck, XCircle, Calendar, DollarSign } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { getLoginUrl } from "@/const";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";

@@ -29,6 +29,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { UserPlus, Pencil, Trash2, Search, Users as UsersIcon, Shield, User } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { Link } from "wouter";
 
 export default function Usuarios() {
