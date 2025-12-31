@@ -126,3 +126,18 @@
 - [x] Criar docker-compose.yml com MySQL e MinIO
 - [x] Criar .dockerignore
 - [x] Atualizar INSTALACAO.md com instruções Docker
+
+
+## Testes Automatizados com Vitest
+- [x] Configurar Vitest e estrutura de testes
+- [x] Criar mocks para LLM e S3
+- [x] Testes unitários: upload de currículo
+- [x] Testes unitários: análise de currículo com IA
+- [x] Testes unitários: refatoração e sugestões
+- [x] Testes unitários: análise de compatibilidade
+- [x] Testes unitários: geração de carta de apresentação
+- [x] Testes de integração: banco de dados
+- [x] Testes de integração: geração de PDF
+- [x] Testes de integração: storage S3
+- [x] Configurar GitHub Actions CI
+- [x] Adicionar coverage report
