@@ -91,3 +91,22 @@
 - [x] Implementar envio de notificação de teste
 - [x] Adicionar menu "Notificações" no header
 - [x] Testar sistema completo de notificações
+
+
+## Sistema de Automações
+- [x] Criar schema para automações de varredura
+- [x] Criar schema para integrações com APIs
+- [x] Criar schema para credenciais do usuário
+- [x] Criar APIs para iniciar varredura automática
+- [x] Criar APIs para gerenciar integrações (CRUD)
+- [x] Implementar lógica de varredura de sites
+- [x] Implementar preenchimento automático de formulários
+- [x] Implementar detecção de APIs públicas
+- [x] Criar página de Automações (/automacoes)
+- [x] Criar página de Integrações (/integracoes)
+- [x] Adicionar botão de iniciar varredura
+- [x] Criar visualização de resultados (sucesso/pendente)
+- [x] Implementar notificações de cadastros pendentes
+- [x] Adicionar menu "Automações" no header
+- [x] Criar design atraente para captação de assinantes
+- [x] Testar sistema completo de automações

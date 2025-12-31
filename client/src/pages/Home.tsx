@@ -18,7 +18,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -287,6 +287,29 @@ export default function Home() {
                     Notificações
                   </Link>
                 </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                      <Bot className="w-4 h-4 mr-2" />
+                      Automações
+                      <ChevronDown className="w-3 h-3 ml-1" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem asChild>
+                      <Link href="/automacoes">
+                        <Zap className="w-4 h-4 mr-2" />
+                        Varredura Automática
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/integracoes">
+                        <Package className="w-4 h-4 mr-2" />
+                        Integrações com APIs
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 {user?.role === "admin" && (
                   <>
                     <Button variant="ghost" size="sm" asChild>

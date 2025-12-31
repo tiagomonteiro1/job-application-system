@@ -11,6 +11,8 @@ import Historico from "./pages/Historico";
 import Planos from "./pages/Planos";
 import Assinantes from "./pages/Assinantes";
 import Notificacoes from "./pages/Notificacoes";
+import Automacoes from "./pages/Automacoes";
+import Integracoes from "./pages/Integracoes";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -23,6 +25,8 @@ function Router() {
       <Route path={"/planos"} component={Planos} />
       <Route path={"/assinantes"} component={Assinantes} />
       <Route path={"/notificacoes"} component={Notificacoes} />
+      <Route path={"/automacoes"} component={Automacoes} />
+      <Route path={"/integracoes"} component={Integracoes} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
