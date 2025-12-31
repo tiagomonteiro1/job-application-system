@@ -257,3 +257,86 @@ export const notificacoesHistorico = mysqlTable("notificacoes_historico", {
 
 export type NotificacaoHistorico = typeof notificacoesHistorico.$inferSelect;
 export type InsertNotificacaoHistorico = typeof notificacoesHistorico.$inferInsert;
+
+
+/**
+ * Tabela de planos de assinatura
+ * Define os planos disponíveis com preços e módulos permitidos
+ */
+export const planos = mysqlTable("planos", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Nome do plano (ex: Básico, Premium, Enterprise) */
+  nome: varchar("nome", { length: 100 }).notNull(),
+  /** Descrição do plano */
+  descricao: text("descricao"),
+  /** Preço mensal em centavos (ex: 9900 = R$ 99,00) */
+  precoMensal: int("preco_mensal").notNull(),
+  /** Preço anual em centavos (ex: 99000 = R$ 990,00) */
+  precoAnual: int("preco_anual"),
+  /** Módulos permitidos (JSON array) */
+  modulosPermitidos: text("modulos_permitidos").notNull(),
+  /** Limite de currículos por mês */
+  limiteCurriculos: int("limite_curriculos").default(10),
+  /** Limite de candidaturas por mês */
+  limiteCandidaturas: int("limite_candidaturas").default(50),
+  /** Se o plano está ativo */
+  ativo: boolean("ativo").default(true).notNull(),
+  /** Ordem de exibição */
+  ordem: int("ordem").default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Plano = typeof planos.$inferSelect;
+export type InsertPlano = typeof planos.$inferInsert;
+
+/**
+ * Tabela de assinaturas de usuários
+ * Vincula usuários a planos com controle de validade
+ */
+export const assinaturas = mysqlTable("assinaturas", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  planoId: int("planoId").notNull(),
+  /** Status da assinatura */
+  status: mysqlEnum("status", ["ativa", "cancelada", "expirada", "trial"]).notNull().default("ativa"),
+  /** Data de início da assinatura */
+  dataInicio: timestamp("data_inicio").defaultNow().notNull(),
+  /** Data de fim da assinatura */
+  dataFim: timestamp("data_fim"),
+  /** Se renovação automática está ativada */
+  renovacaoAutomatica: boolean("renovacao_automatica").default(true).notNull(),
+  /** Método de pagamento */
+  metodoPagamento: varchar("metodo_pagamento", { length: 50 }),
+  /** ID da transação externa (Stripe, PagSeguro, etc.) */
+  transacaoId: varchar("transacao_id", { length: 255 }),
+  /** Observações */
+  observacoes: text("observacoes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Assinatura = typeof assinaturas.$inferSelect;
+export type InsertAssinatura = typeof assinaturas.$inferInsert;
+
+/**
+ * Tabela de uso de recursos por usuário
+ * Controla limites de uso mensal
+ */
+export const usoRecursos = mysqlTable("uso_recursos", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  /** Mês de referência (formato: YYYY-MM) */
+  mesReferencia: varchar("mes_referencia", { length: 7 }).notNull(),
+  /** Quantidade de currículos enviados no mês */
+  curriculosEnviados: int("curriculos_enviados").default(0),
+  /** Quantidade de candidaturas realizadas no mês */
+  candidaturasRealizadas: int("candidaturas_realizadas").default(0),
+  /** Quantidade de análises de compatibilidade realizadas */
+  analisesRealizadas: int("analises_realizadas").default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type UsoRecurso = typeof usoRecursos.$inferSelect;
+export type InsertUsoRecurso = typeof usoRecursos.$inferInsert;

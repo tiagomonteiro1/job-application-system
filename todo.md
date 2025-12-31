@@ -51,3 +51,20 @@
 - [ ] Integrar com Twilio ou WhatsApp Business API
 - [ ] Implementar envio automático quando novas vagas
 - [ ] Testar sistema completo
+
+
+## Sistema de Assinaturas e Planos
+- [x] Criar schema para planos (nome, preço, descrição, módulos permitidos)
+- [x] Criar schema para assinaturas (usuário, plano, status, data início, data fim)
+- [x] Criar APIs para CRUD de planos
+- [x] Criar APIs para CRUD de assinaturas
+- [x] Criar APIs para vincular usuário a plano
+- [x] Criar página de Categorias/Planos
+- [x] Criar formulário de cadastro de plano
+- [x] Adicionar seleção de módulos permitidos (ACL)
+- [x] Criar página de Assinantes
+- [x] Criar formulário de cadastro de assinante
+- [x] Implementar sistema ACL de controle de acesso
+- [x] Proteger rotas baseado no plano do usuário
+- [x] Adicionar menu "Assinaturas" com submenus
+- [x] Testar sistema completo

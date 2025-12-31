@@ -14,10 +14,11 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -281,12 +282,37 @@ export default function Home() {
                   </Link>
                 </Button>
                 {user?.role === "admin" && (
-                  <Button variant="ghost" size="sm" asChild>
-                    <Link href="/usuarios">
-                      <Users className="w-4 h-4 mr-2" />
-                      Usuários
-                    </Link>
-                  </Button>
+                  <>
+                    <Button variant="ghost" size="sm" asChild>
+                      <Link href="/usuarios">
+                        <Users className="w-4 h-4 mr-2" />
+                        Usuários
+                      </Link>
+                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="sm">
+                          <Package className="w-4 h-4 mr-2" />
+                          Assinaturas
+                          <ChevronDown className="w-3 h-3 ml-1" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem asChild>
+                          <Link href="/planos" className="cursor-pointer flex items-center">
+                            <Package className="w-4 h-4 mr-2" />
+                            Planos
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/assinantes" className="cursor-pointer flex items-center">
+                            <UserCheck className="w-4 h-4 mr-2" />
+                            Assinantes
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </>
                 )}
               </nav>
               {curriculo && (

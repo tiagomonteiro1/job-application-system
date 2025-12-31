@@ -3,6 +3,8 @@ import { protectedProcedure, router } from "../_core/trpc";
 import { createCandidatura, getCandidaturasByUserId, updateCandidatura } from "../db";
 import { getCurriculoById } from "../db";
 import { invokeLLM } from "../_core/llm";
+import { requireModuloAccess, requireLimiteRecurso, MODULOS } from "../acl";
+import { incrementarUsoRecurso } from "../db";
 
 const vagaSchema = z.object({
   id: z.number(),
@@ -30,6 +32,13 @@ export const candidaturaRouter = router({
     )
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
+      
+      // Verificar acesso aos módulos necessários
+      await requireModuloAccess(userId, ctx.user.role, MODULOS.CARTA);
+      await requireModuloAccess(userId, ctx.user.role, MODULOS.HISTORICO);
+      
+      // Verificar limite de candidaturas
+      await requireLimiteRecurso(userId, ctx.user.role, 'candidaturas');
 
       // Buscar currículo
       const curriculo = await getCurriculoById(input.curriculoId);
@@ -95,6 +104,10 @@ ${curriculo.curriculoRefatorado || curriculo.originalText || "Não disponível"}
         cartaApresentacao,
         status: "pending",
       });
+      
+      // Incrementar contador de uso
+      const mesAtual = new Date().toISOString().slice(0, 7);
+      await incrementarUsoRecurso(userId, mesAtual, 'candidaturas');
 
       return candidatura;
     }),
