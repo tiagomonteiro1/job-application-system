@@ -33,7 +33,7 @@
 - [x] Adicionar link para acessar cadastro no site da empresa
 - [x] Adicionar campo de observações (protocolo, data, etc.)
 - [x] Mostrar histórico de validações
-- [ ] Executar SQL no banco (aguardando usuário)
+- [x] Executar SQL no banco
 
 ## Sistema de Notificações via WhatsApp
 - [x] Criar schema para configurações de notificação
@@ -43,7 +43,7 @@
 - [x] Criar APIs para gerenciar grupos (CRUD completo)
 - [x] Criar APIs para enviar notificações
 - [x] Registrar notificacoesRouter no appRouter
-- [ ] Executar SQL para criar tabelas (aguardando usuário)
+- [x] Executar SQL para criar tabelas
 - [ ] Criar página de Notificações
 - [ ] Adicionar formulário de vinculação WhatsApp
 - [ ] Adicionar gerenciamento de grupos
@@ -68,3 +68,13 @@
 - [x] Proteger rotas baseado no plano do usuário
 - [x] Adicionar menu "Assinaturas" com submenus
 - [x] Testar sistema completo
+
+
+## Correção de Erros do Sistema
+- [x] Adicionar colunas faltantes na tabela candidaturas (status_entrega, link_validacao, observacoes_entrega, data_confirmacao)
+- [x] Verificar e corrigir schema de todas as tabelas
+- [x] Executar todos os SQLs pendentes
+- [x] Testar queries do banco de dados
+- [x] Verificar erros de TypeScript
+- [x] Testar sistema completo
+- [x] Garantir que todas as funcionalidades estão operacionais
