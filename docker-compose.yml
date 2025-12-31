@@ -1,0 +1,159 @@
+# ============================================================================
+# JobMatch AI - Docker Compose
+# ============================================================================
+# Orquestração de serviços: App + MySQL + MinIO (S3 local)
+# ============================================================================
+
+version: '3.8'
+
+services:
+  # ==========================================================================
+  # MySQL Database
+  # ==========================================================================
+  mysql:
+    image: mysql:8.0
+    container_name: jobmatch-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: jobmatch_ai
+      MYSQL_USER: jobmatch_user
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-jobmatch_password}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - jobmatch-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================================================
+  # MinIO (S3-compatible storage)
+  # ==========================================================================
+  minio:
+    image: minio/minio:latest
+    container_name: jobmatch-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+    ports:
+      - "9000:9000"  # API
+      - "9001:9001"  # Console
+    volumes:
+      - minio_data:/data
+    networks:
+      - jobmatch-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================================================
+  # MinIO Client (para criar bucket automaticamente)
+  # ==========================================================================
+  minio-init:
+    image: minio/mc:latest
+    container_name: jobmatch-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set myminio http://minio:9000 ${MINIO_ROOT_USER:-minioadmin} ${MINIO_ROOT_PASSWORD:-minioadmin123};
+      mc mb myminio/jobmatch-curriculos --ignore-existing;
+      mc anonymous set download myminio/jobmatch-curriculos;
+      exit 0;
+      "
+    networks:
+      - jobmatch-network
+
+  # ==========================================================================
+  # JobMatch AI Application
+  # ==========================================================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jobmatch-app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    environment:
+      # Database
+      DATABASE_URL: mysql://jobmatch_user:${MYSQL_PASSWORD:-jobmatch_password}@mysql:3306/jobmatch_ai
+      
+      # JWT
+      JWT_SECRET: ${JWT_SECRET:-your_super_secret_jwt_key_here_change_in_production}
+      
+      # OAuth (opcional)
+      OAUTH_SERVER_URL: ${OAUTH_SERVER_URL:-https://api.manus.im}
+      OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID:-}
+      OAUTH_CLIENT_SECRET: ${OAUTH_CLIENT_SECRET:-}
+      
+      # LLM API
+      BUILT_IN_FORGE_API_KEY: ${BUILT_IN_FORGE_API_KEY}
+      BUILT_IN_FORGE_API_URL: ${BUILT_IN_FORGE_API_URL:-https://api.openai.com/v1}
+      VITE_FRONTEND_FORGE_API_KEY: ${VITE_FRONTEND_FORGE_API_KEY}
+      VITE_FRONTEND_FORGE_API_URL: ${VITE_FRONTEND_FORGE_API_URL:-https://api.openai.com/v1}
+      
+      # S3 (MinIO)
+      S3_ENDPOINT: http://minio:9000
+      S3_ACCESS_KEY: ${MINIO_ROOT_USER:-minioadmin}
+      S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+      S3_BUCKET: jobmatch-curriculos
+      S3_REGION: us-east-1
+      S3_FORCE_PATH_STYLE: "true"
+      
+      # Frontend
+      VITE_APP_TITLE: "JobMatch AI"
+      VITE_APP_LOGO: "/logo.png"
+      VITE_APP_ID: "jobmatch-ai"
+      
+      # Server
+      PORT: 3000
+      NODE_ENV: production
+      
+      # Owner
+      OWNER_NAME: ${OWNER_NAME:-Admin}
+      OWNER_OPEN_ID: ${OWNER_OPEN_ID:-admin}
+    ports:
+      - "3000:3000"
+    volumes:
+      - app_uploads:/app/uploads
+    networks:
+      - jobmatch-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# ============================================================================
+# Networks
+# ============================================================================
+networks:
+  jobmatch-network:
+    driver: bridge
+
+# ============================================================================
+# Volumes
+# ============================================================================
+volumes:
+  mysql_data:
+    driver: local
+  minio_data:
+    driver: local
+  app_uploads:
+    driver: local

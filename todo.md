@@ -108,3 +108,21 @@
 - [x] Adicionar botão "Gerar PDF" dentro do preview
 - [x] Preview responsivo com ajuste automático de altura
 - [x] Preview idêntico ao PDF final (mesmo template HTML)
+
+
+## Documentação de Instalação
+- [x] Criar INSTALACAO.md com instruções completas
+- [x] Documentar pré-requisitos (Node.js, MySQL, pnpm, Git)
+- [x] Documentar configuração de variáveis de ambiente
+- [x] Documentar setup do banco de dados com exemplos SQL
+- [x] Adicionar seção de troubleshooting com soluções
+- [x] Incluir FAQ e estrutura do projeto
+
+
+## Scripts de Automação de Setup
+- [x] Criar setup.sh para Linux/macOS
+- [x] Criar setup.ps1 para Windows
+- [x] Criar Dockerfile para containerização
+- [x] Criar docker-compose.yml com MySQL e MinIO
+- [x] Criar .dockerignore
+- [x] Atualizar INSTALACAO.md com instruções Docker
