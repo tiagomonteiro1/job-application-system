@@ -145,7 +145,7 @@ export default function Automacoes() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <Card className="border-none shadow-lg bg-gradient-to-br from-violet-500 to-purple-600 text-white">
+          <Card key="stat-total" className="border-none shadow-lg bg-gradient-to-br from-violet-500 to-purple-600 text-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -157,7 +157,7 @@ export default function Automacoes() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg bg-gradient-to-br from-green-500 to-emerald-600 text-white">
+          <Card key="stat-success" className="border-none shadow-lg bg-gradient-to-br from-green-500 to-emerald-600 text-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -171,7 +171,7 @@ export default function Automacoes() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg bg-gradient-to-br from-yellow-500 to-orange-600 text-white">
+          <Card key="stat-pending" className="border-none shadow-lg bg-gradient-to-br from-yellow-500 to-orange-600 text-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -185,7 +185,7 @@ export default function Automacoes() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg bg-gradient-to-br from-blue-500 to-cyan-600 text-white">
+          <Card key="stat-rate" className="border-none shadow-lg bg-gradient-to-br from-blue-500 to-cyan-600 text-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
