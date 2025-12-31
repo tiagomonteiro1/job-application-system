@@ -332,7 +332,7 @@ export default function Integracoes() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <Card className="border-none shadow-lg bg-gradient-to-br from-green-500 to-emerald-600 text-white">
+          <Card key="stat-active" className="border-none shadow-lg bg-gradient-to-br from-green-500 to-emerald-600 text-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -346,7 +346,7 @@ export default function Integracoes() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
+          <Card key="stat-total" className="border-none shadow-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -358,7 +358,7 @@ export default function Integracoes() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg bg-gradient-to-br from-yellow-500 to-orange-600 text-white">
+          <Card key="stat-sent" className="border-none shadow-lg bg-gradient-to-br from-yellow-500 to-orange-600 text-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>

@@ -127,3 +127,9 @@
 - [x] Adicionar colunas faltantes em whatsapp_grupos
 - [x] Corrigir key prop no componente Automações
 - [x] Testar todas as páginas
+
+
+## Correção de Keys Props
+- [x] Adicionar keys nos cards de Automações
+- [x] Adicionar keys nos cards de Integrações
+- [x] Verificar outras páginas com múltiplos elementos
