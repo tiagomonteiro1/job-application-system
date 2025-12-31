@@ -110,3 +110,20 @@
 - [x] Adicionar menu "Automações" no header
 - [x] Criar design atraente para captação de assinantes
 - [x] Testar sistema completo de automações
+
+
+## Correção de Erros de Notificações
+- [ ] Verificar estrutura das tabelas de notificações
+- [ ] Adicionar colunas faltantes em notificacoes_config
+- [ ] Adicionar colunas faltantes em notificacoes_historico
+- [ ] Adicionar colunas faltantes em whatsapp_grupos
+- [ ] Testar página de notificações
+- [ ] Garantir que todas as queries funcionem corretamente
+
+
+## Correção de Erros Urgentes
+- [x] Adicionar colunas faltantes em notificacoes_config
+- [x] Adicionar colunas faltantes em notificacoes_historico  
+- [x] Adicionar colunas faltantes em whatsapp_grupos
+- [x] Corrigir key prop no componente Automações
+- [x] Testar todas as páginas
