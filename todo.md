@@ -253,3 +253,21 @@
 - [x] Investigar causa do erro 404 na página /automacoes
 - [x] Corrigir problema identificado (removida verificação de autenticação)
 - [x] Testar navegação e funcionalidade
+
+## Sincronização GitHub e Correções
+- [ ] Sincronizar projeto com GitHub
+- [ ] Corrigir erro JSON "Unexpected token '<'" em Automações
+- [ ] Verificar todas as páginas do sistema
+- [ ] Corrigir erros encontrados
+
+## Módulo de Marketing
+- [ ] Criar página Marketing no menu admin
+- [ ] Implementar estratégias de captação de assinantes
+- [ ] Criar seção de análise de conversão
+- [ ] Adicionar métricas de performance
+- [ ] Criar sub-item "Redes Sociais"
+- [ ] Implementar cadastro de redes sociais
+- [ ] Adicionar campos (Instagram, Facebook, LinkedIn, Twitter, TikTok, YouTube)
+- [ ] Criar sistema de tracking de origem de assinantes
+- [ ] Adicionar links de compartilhamento
+- [ ] Testar funcionalidades completas
