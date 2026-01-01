@@ -18,6 +18,8 @@ import Automacoes from "./pages/Automacoes";
 import Integracoes from "./pages/Integracoes";
 import LimpezaCache from "./pages/LimpezaCache";
 import AdminCronLogs from "./pages/AdminCronLogs";
+import Marketing from "./pages/Marketing";
+import RedesSociais from "./pages/RedesSociais";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -36,6 +38,8 @@ function Router() {
       <Route path={"/integracoes"} component={Integracoes} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/admin/cron-logs"} component={AdminCronLogs} />
+      <Route path={"/marketing"} component={Marketing} />
+      <Route path={"/marketing/redes-sociais"} component={RedesSociais} />
       <Route path={"/limpeza-cache"} component={LimpezaCache} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

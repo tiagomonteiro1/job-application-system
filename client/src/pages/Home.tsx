@@ -18,7 +18,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare, Activity } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare, Activity, Share2 } from "lucide-react";
 import LogoutButton from "@/components/LogoutButton";
 import UsageDashboard from "@/components/UsageDashboard";
 import { useEffect, useState } from "react";
@@ -344,6 +344,29 @@ export default function Home() {
                         Limpeza de Cache
                       </Link>
                     </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="sm" className="bg-purple-600/20 border border-purple-400/30 hover:bg-purple-600/30">
+                          <TrendingUp className="w-4 h-4 mr-2" />
+                          Marketing
+                          <ChevronDown className="w-3 h-3 ml-1" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem asChild>
+                          <Link href="/marketing" className="cursor-pointer flex items-center">
+                            <TrendingUp className="w-4 h-4 mr-2" />
+                            Estratégias
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/marketing/redes-sociais" className="cursor-pointer flex items-center">
+                            <Share2 className="w-4 h-4 mr-2" />
+                            Redes Sociais
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="sm">
