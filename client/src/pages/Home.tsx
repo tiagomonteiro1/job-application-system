@@ -18,7 +18,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare, Activity } from "lucide-react";
 import LogoutButton from "@/components/LogoutButton";
 import UsageDashboard from "@/components/UsageDashboard";
 import { useEffect, useState } from "react";
@@ -330,6 +330,12 @@ export default function Home() {
                       <Link href="/admin">
                         <Shield className="w-4 h-4 mr-2" />
                         Admin
+                      </Link>
+                    </Button>
+                    <Button variant="ghost" size="sm" asChild className="bg-blue-600/20 border border-blue-400/30 hover:bg-blue-600/30">
+                      <Link href="/admin/cron-logs">
+                        <Activity className="w-4 h-4 mr-2" />
+                        Logs Cron
                       </Link>
                     </Button>
                     <Button variant="ghost" size="sm" asChild className="bg-red-600/20 border border-red-400/30 hover:bg-red-600/30">

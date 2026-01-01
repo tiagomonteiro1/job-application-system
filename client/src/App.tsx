@@ -17,6 +17,7 @@ import Admin from "@/pages/Admin";
 import Automacoes from "./pages/Automacoes";
 import Integracoes from "./pages/Integracoes";
 import LimpezaCache from "./pages/LimpezaCache";
+import AdminCronLogs from "./pages/AdminCronLogs";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -34,6 +35,7 @@ function Router() {
       <Route path={"/automacoes"} component={Automacoes} />
       <Route path={"/integracoes"} component={Integracoes} />
       <Route path={"/admin"} component={Admin} />
+      <Route path={"/admin/cron-logs"} component={AdminCronLogs} />
       <Route path={"/limpeza-cache"} component={LimpezaCache} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

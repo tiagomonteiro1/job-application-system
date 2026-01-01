@@ -235,3 +235,16 @@
 - [x] Adicionar botão "Upgrade" destacado
 - [x] Integrar widget na página Home
 - [x] Testar cálculos de uso em tempo real
+
+## Painel de Administração - Logs do Cron Job
+- [x] Criar API para buscar histórico de execuções do cron
+- [x] Criar API para buscar estatísticas de envios
+- [x] Criar API para filtrar logs por período e status
+- [x] Criar página AdminCronLogs
+- [x] Adicionar tabela com histórico de execuções
+- [x] Adicionar cards de estatísticas (total enviados, taxa de sucesso, falhas)
+- [x] Implementar filtros por data e status
+- [x] Adicionar visualização detalhada de logs
+- [x] Adicionar paginação para logs
+- [x] Adicionar menu de acesso ao painel admin
+- [x] Testar funcionalidades do painel
