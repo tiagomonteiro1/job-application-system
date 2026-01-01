@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
 import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare } from "lucide-react";
 import LogoutButton from "@/components/LogoutButton";
+import UsageDashboard from "@/components/UsageDashboard";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -378,6 +379,13 @@ export default function Home() {
       </header>
 
       <div className="container py-8">
+        {/* Dashboard de Uso do Plano */}
+        {isAuthenticated && (
+          <div className="mb-8">
+            <UsageDashboard />
+          </div>
+        )}
+
         {/* Estatísticas */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="glass-card p-6 rounded-xl">

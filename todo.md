@@ -215,10 +215,23 @@
 - [x] Criar APIs para gerenciar follow-ups
 - [x] Criar APIs para templates
 - [x] Implementar lógica de agendamento automático (após criar candidatura)
-- [ ] Criar rotina de envio automático (implementar cron job)
+- [x] Criar rotina de envio automático (implementar cron job)
+- [x] Implementar serviço de cron job para verificar follow-ups pendentes
+- [x] Implementar lógica de envio automático via WhatsApp
+- [x] Implementar lógica de envio automático via Email
+- [x] Adicionar logs de execução do cron
+- [x] Testar envio automático
 - [x] Criar página de Follow-ups (/followups)
 - [x] Criar interface de configuração
 - [x] Criar lista de follow-ups pendentes
 - [ ] Criar editor de templates (templates já funcionam via API)
 - [x] Adicionar menu Follow-ups no header
 - [x] Testar sistema completo
+
+## Dashboard de Uso do Plano
+- [x] Criar API para buscar uso mensal do usuário
+- [x] Criar componente UsageDashboard
+- [x] Adicionar barras de progresso coloridas
+- [x] Adicionar botão "Upgrade" destacado
+- [x] Integrar widget na página Home
+- [x] Testar cálculos de uso em tempo real
