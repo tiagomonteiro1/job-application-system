@@ -248,3 +248,8 @@
 - [x] Adicionar paginação para logs
 - [x] Adicionar menu de acesso ao painel admin
 - [x] Testar funcionalidades do painel
+
+## Correção de Erro 404 em Automações
+- [x] Investigar causa do erro 404 na página /automacoes
+- [x] Corrigir problema identificado (removida verificação de autenticação)
+- [x] Testar navegação e funcionalidade
