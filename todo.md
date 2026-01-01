@@ -222,3 +222,8 @@
 - [ ] Criar editor de templates (templates já funcionam via API)
 - [x] Adicionar menu Follow-ups no header
 - [x] Testar sistema completo
+
+## Correção de Erros TypeScript
+- [x] Corrigir 24 erros de tipo no server/routers/followup.ts
+- [x] Adicionar tipagem explícita aos parâmetros ctx e input
+- [x] Verificar compilação TypeScript sem erros

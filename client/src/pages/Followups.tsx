@@ -25,7 +25,7 @@ export default function Followups() {
   // Queries
   const { data: config, refetch: refetchConfig } = trpc.followup.getConfig.useQuery();
   const { data: followups = [], refetch: refetchFollowups } = trpc.followup.listar.useQuery({
-    status: activeTab === "todos" ? "todos" : activeTab,
+    status: activeTab as "pendente" | "enviado" | "todos" | "respondido",
   });
 
   // Mutations
@@ -98,7 +98,7 @@ export default function Followups() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950">
-      <PageHeader />
+      <PageHeader title="Follow-ups" />
       
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center gap-3 mb-8">

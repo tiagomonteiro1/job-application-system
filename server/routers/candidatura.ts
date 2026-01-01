@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { sql } from "drizzle-orm";
 import { protectedProcedure, router } from "../_core/trpc";
-import { createCandidatura, getCandidaturasByUserId, updateCandidatura } from "../db";
+import { createCandidatura, getCandidaturasByUserId, updateCandidatura, getDb } from "../db";
 import { getCurriculoById } from "../db";
 import { invokeLLM } from "../_core/llm";
 import { requireModuloAccess, requireLimiteRecurso, MODULOS } from "../acl";
@@ -114,27 +114,29 @@ ${curriculo.curriculoRefatorado || curriculo.originalText || "Não disponível"}
 
       // Agendar follow-up automático se configurado
       try {
-        const configResult = await ctx.db.execute(sql`
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+        const configResult = await db.execute(sql`
           SELECT * FROM followup_config WHERE userId = ${userId} AND ativo = 1 LIMIT 1
         `);
         
-        if (configResult.rows.length > 0) {
-          const config = configResult.rows[0] as any;
+        if ((configResult as any).rows?.length > 0) {
+          const config = (configResult as any).rows[0] as any;
           const dataAgendada = new Date();
           dataAgendada.setDate(dataAgendada.getDate() + (config.dias_apos_candidatura || 7));
           
           // Buscar template padrão
-          const templateResult = await ctx.db.execute(sql`
+          const templateResult = await db.execute(sql`
             SELECT * FROM followup_templates 
             WHERE userId = ${userId} AND ativo = 1 
             ORDER BY createdAt ASC LIMIT 1
           `);
           
-          const mensagemPadrao = templateResult.rows.length > 0 
-            ? (templateResult.rows[0] as any).mensagem
+          const mensagemPadrao = (templateResult as any).rows?.length > 0 
+            ? ((templateResult as any).rows[0] as any).mensagem
             : `Olá! Gostaria de acompanhar o status da minha candidatura para a vaga de ${input.vaga.titulo} na ${input.vaga.empresa}. Aguardo retorno. Obrigado!`;
           
-          await ctx.db.execute(sql`
+          await db.execute(sql`
             INSERT INTO followups (userId, candidaturaId, data_agendada, mensagem, tipo_envio)
             VALUES (${userId}, ${candidatura.id}, ${dataAgendada.toISOString()}, ${mensagemPadrao}, ${config.enviar_whatsapp ? 'whatsapp' : 'email'})
           `);
