@@ -52,19 +52,18 @@ export default function Automacoes() {
   const salvarCredenciais = trpc.automacoes.salvarCredenciais.useMutation();
   const iniciarVarredura = trpc.automacoes.iniciarVarredura.useMutation();
 
-  // Autenticação opcional - página acessível sem login
-  // if (authLoading) {
-  //   return (
-  //     <div className="min-h-screen flex items-center justify-center">
-  //       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-  //     </div>
-  //   );
-  // }
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
-  // if (!user) {
-  //   window.location.href = getLoginUrl();
-  //   return null;
-  // }
+  if (!user) {
+    window.location.href = getLoginUrl();
+    return null;
+  }
 
   const handleSalvarCredenciais = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -1,18 +1,15 @@
 import { z } from "zod";
-import { router, protectedProcedure } from "../_core/trpc";
-import { getDb } from "../db";
+import { router, protectedProcedure } from "../trpc";
+import { db } from "../db";
 import { sql } from "drizzle-orm";
 
 export const followupRouter = router({
   // Configurações
   getConfig: protectedProcedure.query(async ({ ctx }) => {
-    const db = await getDb();
-    if (!db) throw new Error('Database not available');
-    
-    const result: any = await db.execute(sql`
+    const result = await db.execute(sql`
       SELECT * FROM followup_config WHERE userId = ${ctx.user.id} LIMIT 1
     `);
-    return result[0] || null;
+    return result.rows[0] || null;
   }),
 
   saveConfig: protectedProcedure
@@ -24,15 +21,12 @@ export const followupRouter = router({
       horario_envio: z.string(),
     }))
     .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       // Verificar se já existe configuração
-      const existing: any = await db.execute(sql`
+      const existing = await db.execute(sql`
         SELECT id FROM followup_config WHERE userId = ${ctx.user.id} LIMIT 1
       `);
 
-      if (existing && existing.length > 0) {
+      if (existing.rows.length > 0) {
         // Atualizar
         await db.execute(sql`
           UPDATE followup_config 
@@ -61,9 +55,6 @@ export const followupRouter = router({
       status: z.enum(['todos', 'pendente', 'enviado', 'respondido']).optional(),
     }).optional())
     .query(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       let query = sql`
         SELECT f.*, c.vagaData
         FROM followups f
@@ -77,8 +68,8 @@ export const followupRouter = router({
 
       query = sql`${query} ORDER BY f.data_agendada DESC LIMIT 100`;
 
-      const result: any = await db.execute(query);
-      return result || [];
+      const result = await db.execute(query);
+      return result.rows || [];
     }),
 
   marcarEnviado: protectedProcedure
@@ -87,9 +78,6 @@ export const followupRouter = router({
       resposta_empresa: z.string().optional(),
     }))
     .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       await db.execute(sql`
         UPDATE followups
         SET status = ${input.resposta_empresa ? 'respondido' : 'enviado'},
@@ -105,9 +93,6 @@ export const followupRouter = router({
   cancelar: protectedProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       await db.execute(sql`
         DELETE FROM followups
         WHERE id = ${input.id} AND userId = ${ctx.user.id}
@@ -118,15 +103,12 @@ export const followupRouter = router({
 
   // Templates
   listarTemplates: protectedProcedure.query(async ({ ctx }) => {
-    const db = await getDb();
-    if (!db) throw new Error('Database not available');
-    
-    const result: any = await db.execute(sql`
+    const result = await db.execute(sql`
       SELECT * FROM followup_templates 
       WHERE userId = ${ctx.user.id} AND ativo = 1
       ORDER BY nome ASC
     `);
-    return result || [];
+    return result.rows || [];
   }),
 
   criarTemplate: protectedProcedure
@@ -137,9 +119,6 @@ export const followupRouter = router({
       tipo_vaga: z.string().optional(),
     }))
     .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       await db.execute(sql`
         INSERT INTO followup_templates (userId, nome, assunto, mensagem, tipo_vaga)
         VALUES (${ctx.user.id}, ${input.nome}, ${input.assunto || null}, ${input.mensagem}, ${input.tipo_vaga || null})
@@ -157,9 +136,6 @@ export const followupRouter = router({
       tipo_vaga: z.string().optional(),
     }))
     .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       await db.execute(sql`
         UPDATE followup_templates
         SET nome = ${input.nome},
@@ -176,9 +152,6 @@ export const followupRouter = router({
   deletarTemplate: protectedProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       await db.execute(sql`
         DELETE FROM followup_templates
         WHERE id = ${input.id} AND userId = ${ctx.user.id}
@@ -196,9 +169,6 @@ export const followupRouter = router({
       tipo_envio: z.enum(['whatsapp', 'email']),
     }))
     .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new Error('Database not available');
-      
       await db.execute(sql`
         INSERT INTO followups (userId, candidaturaId, data_agendada, mensagem, tipo_envio)
         VALUES (${ctx.user.id}, ${input.candidaturaId}, ${input.data_agendada}, ${input.mensagem}, ${input.tipo_envio})
