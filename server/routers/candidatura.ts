@@ -1,8 +1,11 @@
 import { z } from "zod";
+import { sql } from "drizzle-orm";
 import { protectedProcedure, router } from "../_core/trpc";
-import { createCandidatura, getCandidaturasByUserId, updateCandidatura } from "../db";
+import { createCandidatura, getCandidaturasByUserId, updateCandidatura, getDb } from "../db";
 import { getCurriculoById } from "../db";
 import { invokeLLM } from "../_core/llm";
+import { requireModuloAccess, requireLimiteRecurso, MODULOS } from "../acl";
+import { incrementarUsoRecurso } from "../db";
 
 const vagaSchema = z.object({
   id: z.number(),
@@ -26,10 +29,18 @@ export const candidaturaRouter = router({
       z.object({
         curriculoId: z.number(),
         vaga: vagaSchema,
+        payloadPagina: z.string().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
+      
+      // Verificar acesso aos módulos necessários
+      await requireModuloAccess(userId, ctx.user.role, MODULOS.CARTA);
+      await requireModuloAccess(userId, ctx.user.role, MODULOS.HISTORICO);
+      
+      // Verificar limite de candidaturas
+      await requireLimiteRecurso(userId, ctx.user.role, 'candidaturas');
 
       // Buscar currículo
       const curriculo = await getCurriculoById(input.curriculoId);
@@ -94,7 +105,46 @@ ${curriculo.curriculoRefatorado || curriculo.originalText || "Não disponível"}
         vagaData: JSON.stringify(input.vaga),
         cartaApresentacao,
         status: "pending",
+        payloadPagina: input.payloadPagina || input.vaga.link_candidatura,
       });
+      
+      // Incrementar contador de uso
+      const mesAtual = new Date().toISOString().slice(0, 7);
+      await incrementarUsoRecurso(userId, mesAtual, 'candidaturas');
+
+      // Agendar follow-up automático se configurado
+      try {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+        const configResult = await db.execute(sql`
+          SELECT * FROM followup_config WHERE userId = ${userId} AND ativo = 1 LIMIT 1
+        `);
+        
+        if ((configResult as any).rows?.length > 0) {
+          const config = (configResult as any).rows[0] as any;
+          const dataAgendada = new Date();
+          dataAgendada.setDate(dataAgendada.getDate() + (config.dias_apos_candidatura || 7));
+          
+          // Buscar template padrão
+          const templateResult = await db.execute(sql`
+            SELECT * FROM followup_templates 
+            WHERE userId = ${userId} AND ativo = 1 
+            ORDER BY createdAt ASC LIMIT 1
+          `);
+          
+          const mensagemPadrao = (templateResult as any).rows?.length > 0 
+            ? ((templateResult as any).rows[0] as any).mensagem
+            : `Olá! Gostaria de acompanhar o status da minha candidatura para a vaga de ${input.vaga.titulo} na ${input.vaga.empresa}. Aguardo retorno. Obrigado!`;
+          
+          await db.execute(sql`
+            INSERT INTO followups (userId, candidaturaId, data_agendada, mensagem, tipo_envio)
+            VALUES (${userId}, ${candidatura.id}, ${dataAgendada.toISOString()}, ${mensagemPadrao}, ${config.enviar_whatsapp ? 'whatsapp' : 'email'})
+          `);
+        }
+      } catch (error) {
+        console.error('Erro ao agendar follow-up:', error);
+        // Não falhar a candidatura se o follow-up falhar
+      }
 
       return candidatura;
     }),
@@ -139,6 +189,65 @@ ${curriculo.curriculoRefatorado || curriculo.originalText || "Não disponível"}
     .mutation(async ({ ctx, input }) => {
       await updateCandidatura(input.candidaturaId, {
         status: input.status,
+      });
+
+      return { success: true };
+    }),
+
+  /**
+   * Confirmar entrega de currículo
+   */
+  confirmarEntrega: protectedProcedure
+    .input(
+      z.object({
+        candidaturaId: z.number(),
+        linkValidacao: z.string().optional(),
+        observacoes: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await updateCandidatura(input.candidaturaId, {
+        statusEntrega: "confirmado",
+        linkValidacao: input.linkValidacao,
+        observacoesEntrega: input.observacoes,
+        dataConfirmacao: new Date(),
+      });
+
+      return { success: true };
+    }),
+
+  /**
+   * Marcar como não entregue
+   */
+  marcarNaoEntregue: protectedProcedure
+    .input(
+      z.object({
+        candidaturaId: z.number(),
+        observacoes: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await updateCandidatura(input.candidaturaId, {
+        statusEntrega: "nao_entregue",
+        observacoesEntrega: input.observacoes,
+      });
+
+      return { success: true };
+    }),
+
+  /**
+   * Atualizar link de validação
+   */
+  atualizarLinkValidacao: protectedProcedure
+    .input(
+      z.object({
+        candidaturaId: z.number(),
+        linkValidacao: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await updateCandidatura(input.candidaturaId, {
+        linkValidacao: input.linkValidacao,
       });
 
       return { success: true };

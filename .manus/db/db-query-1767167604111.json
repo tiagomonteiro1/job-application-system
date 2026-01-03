@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE candidaturas ADD COLUMN data_confirmacao TIMESTAMP NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute ALTER TABLE candidaturas ADD COLUMN data_confirmacao TIMESTAMP NULL;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 445
+}

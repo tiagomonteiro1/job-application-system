@@ -5,6 +5,14 @@ import { publicProcedure, router } from "./_core/trpc";
 import { curriculoRouter } from "./routers/curriculo";
 import { candidaturaRouter } from "./routers/candidatura";
 import { compatibilidadeRouter } from "./routers/compatibilidade";
+import { usuariosRouter } from "./routers/usuarios";
+import { notificacoesRouter } from "./routers/notificacoes";
+import { planoRouter } from "./routers/plano";
+import { assinaturaRouter } from "./routers/assinatura";
+import { aclRouter } from "./routers/acl";
+import { automacoesRouter } from "./routers/automacoes";
+import { integracoesRouter } from "./routers/integracoes";
+import { followupRouter } from "./routers/followup";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -24,6 +32,14 @@ export const appRouter = router({
   curriculo: curriculoRouter,
   candidatura: candidaturaRouter,
   compatibilidade: compatibilidadeRouter,
+  usuarios: usuariosRouter,
+  notificacoes: notificacoesRouter,
+  plano: planoRouter,
+  assinatura: assinaturaRouter,
+  acl: aclRouter,
+  automacoes: automacoesRouter,
+  integracoes: integracoesRouter,
+  followup: followupRouter,
 });
 
 export type AppRouter = typeof appRouter;

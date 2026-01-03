@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
 import { FileText, Upload, Sparkles, CheckCircle2, Loader2, Download, Eye } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";

@@ -71,6 +71,16 @@ export const candidaturas = mysqlTable("candidaturas", {
   status: mysqlEnum("status", ["pending", "sent", "viewed", "rejected", "accepted"]).default("pending").notNull(),
   /** Data de envio */
   dataEnvio: timestamp("dataEnvio"),
+  /** Status de entrega validado pelo usuário */
+  statusEntrega: mysqlEnum("status_entrega", ["pendente", "confirmado", "nao_entregue"]).default("pendente").notNull(),
+  /** Link para acessar o cadastro no site da empresa */
+  linkValidacao: text("link_validacao"),
+  /** Observações sobre a entrega (protocolo, data, etc.) */
+  observacoesEntrega: text("observacoes_entrega"),
+  /** Data de confirmação da entrega */
+  dataConfirmacao: timestamp("data_confirmacao"),
+  /** URL da página da vaga para conferência de entrega */
+  payloadPagina: text("payload_pagina"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -171,3 +181,164 @@ export const automacaoLogs = mysqlTable("automacao_logs", {
 
 export type AutomacaoLog = typeof automacaoLogs.$inferSelect;
 export type InsertAutomacaoLog = typeof automacaoLogs.$inferInsert;
+
+
+/**
+ * Tabela de configurações de notificação do usuário
+ * Armazena preferências de notificação via WhatsApp
+ */
+export const notificacoesConfig = mysqlTable("notificacoes_config", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  /** Número de WhatsApp do usuário (formato: +5511999999999) */
+  whatsappNumero: varchar("whatsapp_numero", { length: 20 }),
+  /** Se notificações estão ativadas */
+  notificacoesAtivadas: boolean("notificacoes_ativadas").default(false).notNull(),
+  /** Notificar quando novas vagas forem encontradas */
+  notificarNovasVagas: boolean("notificar_novas_vagas").default(true).notNull(),
+  /** Notificar quando status de candidatura mudar */
+  notificarStatusCandidatura: boolean("notificar_status_candidatura").default(true).notNull(),
+  /** Notificar lembretes de follow-up */
+  notificarFollowUp: boolean("notificar_follow_up").default(false).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type NotificacaoConfig = typeof notificacoesConfig.$inferSelect;
+export type InsertNotificacaoConfig = typeof notificacoesConfig.$inferInsert;
+
+/**
+ * Tabela de grupos WhatsApp para publicação de vagas
+ * Armazena links de grupos onde as vagas serão compartilhadas
+ */
+export const whatsappGrupos = mysqlTable("whatsapp_grupos", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  /** Nome do grupo */
+  nomeGrupo: varchar("nome_grupo", { length: 255 }).notNull(),
+  /** Link de convite do grupo WhatsApp */
+  linkGrupo: text("link_grupo").notNull(),
+  /** Se o grupo está ativo para receber notificações */
+  ativo: boolean("ativo").default(true).notNull(),
+  /** Descrição opcional do grupo */
+  descricao: text("descricao"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type WhatsappGrupo = typeof whatsappGrupos.$inferSelect;
+export type InsertWhatsappGrupo = typeof whatsappGrupos.$inferInsert;
+
+/**
+ * Tabela de histórico de notificações enviadas
+ * Registra todas as notificações enviadas via WhatsApp
+ */
+export const notificacoesHistorico = mysqlTable("notificacoes_historico", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  /** Tipo de notificação */
+  tipo: mysqlEnum("tipo", ["nova_vaga", "status_candidatura", "follow_up", "sistema"]).notNull(),
+  /** Destinatário (número WhatsApp ou ID do grupo) */
+  destinatario: varchar("destinatario", { length: 255 }).notNull(),
+  /** Título da notificação */
+  titulo: varchar("titulo", { length: 255 }).notNull(),
+  /** Mensagem enviada */
+  mensagem: text("mensagem").notNull(),
+  /** Status do envio */
+  statusEnvio: mysqlEnum("status_envio", ["pendente", "enviado", "erro", "entregue"]).notNull().default("pendente"),
+  /** Mensagem de erro (se houver) */
+  mensagemErro: text("mensagem_erro"),
+  /** ID externo da mensagem (Twilio, WhatsApp Business API, etc.) */
+  idExterno: varchar("id_externo", { length: 255 }),
+  /** Data de envio */
+  dataEnvio: timestamp("data_envio"),
+  /** Dados adicionais (JSON) */
+  dadosAdicionais: text("dados_adicionais"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type NotificacaoHistorico = typeof notificacoesHistorico.$inferSelect;
+export type InsertNotificacaoHistorico = typeof notificacoesHistorico.$inferInsert;
+
+
+/**
+ * Tabela de planos de assinatura
+ * Define os planos disponíveis com preços e módulos permitidos
+ */
+export const planos = mysqlTable("planos", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Nome do plano (ex: Básico, Premium, Enterprise) */
+  nome: varchar("nome", { length: 100 }).notNull(),
+  /** Descrição do plano */
+  descricao: text("descricao"),
+  /** Preço mensal em centavos (ex: 9900 = R$ 99,00) */
+  precoMensal: int("preco_mensal").notNull(),
+  /** Preço anual em centavos (ex: 99000 = R$ 990,00) */
+  precoAnual: int("preco_anual"),
+  /** Módulos permitidos (JSON array) */
+  modulosPermitidos: text("modulos_permitidos").notNull(),
+  /** Limite de currículos por mês */
+  limiteCurriculos: int("limite_curriculos").default(10),
+  /** Limite de candidaturas por mês */
+  limiteCandidaturas: int("limite_candidaturas").default(50),
+  /** Se o plano está ativo */
+  ativo: boolean("ativo").default(true).notNull(),
+  /** Ordem de exibição */
+  ordem: int("ordem").default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Plano = typeof planos.$inferSelect;
+export type InsertPlano = typeof planos.$inferInsert;
+
+/**
+ * Tabela de assinaturas de usuários
+ * Vincula usuários a planos com controle de validade
+ */
+export const assinaturas = mysqlTable("assinaturas", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  planoId: int("planoId").notNull(),
+  /** Status da assinatura */
+  status: mysqlEnum("status", ["ativa", "cancelada", "expirada", "trial"]).notNull().default("ativa"),
+  /** Data de início da assinatura */
+  dataInicio: timestamp("data_inicio").defaultNow().notNull(),
+  /** Data de fim da assinatura */
+  dataFim: timestamp("data_fim"),
+  /** Se renovação automática está ativada */
+  renovacaoAutomatica: boolean("renovacao_automatica").default(true).notNull(),
+  /** Método de pagamento */
+  metodoPagamento: varchar("metodo_pagamento", { length: 50 }),
+  /** ID da transação externa (Stripe, PagSeguro, etc.) */
+  transacaoId: varchar("transacao_id", { length: 255 }),
+  /** Observações */
+  observacoes: text("observacoes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Assinatura = typeof assinaturas.$inferSelect;
+export type InsertAssinatura = typeof assinaturas.$inferInsert;
+
+/**
+ * Tabela de uso de recursos por usuário
+ * Controla limites de uso mensal
+ */
+export const usoRecursos = mysqlTable("uso_recursos", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  /** Mês de referência (formato: YYYY-MM) */
+  mesReferencia: varchar("mes_referencia", { length: 7 }).notNull(),
+  /** Quantidade de currículos enviados no mês */
+  curriculosEnviados: int("curriculos_enviados").default(0),
+  /** Quantidade de candidaturas realizadas no mês */
+  candidaturasRealizadas: int("candidaturas_realizadas").default(0),
+  /** Quantidade de análises de compatibilidade realizadas */
+  analisesRealizadas: int("analises_realizadas").default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type UsoRecurso = typeof usoRecursos.$inferSelect;
+export type InsertUsoRecurso = typeof usoRecursos.$inferInsert;
