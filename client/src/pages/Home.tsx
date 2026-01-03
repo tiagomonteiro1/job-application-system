@@ -14,10 +14,12 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -280,11 +282,94 @@ export default function Home() {
                     Histórico
                   </Link>
                 </Button>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/followups">
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    Follow-ups
+                  </Link>
+                </Button>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/notificacoes">
+                    <Bell className="w-4 h-4 mr-2" />
+                    Notificações
+                  </Link>
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                      <Bot className="w-4 h-4 mr-2" />
+                      Automações
+                      <ChevronDown className="w-3 h-3 ml-1" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem asChild>
+                      <Link href="/automacoes">
+                        <Zap className="w-4 h-4 mr-2" />
+                        Varredura Automática
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/integracoes">
+                        <Package className="w-4 h-4 mr-2" />
+                        Integrações com APIs
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                {user?.role === "admin" && (
+                  <>
+                    <Button variant="ghost" size="sm" asChild>
+                      <Link href="/usuarios">
+                        <Users className="w-4 h-4 mr-2" />
+                        Usuários
+                      </Link>
+                    </Button>
+                    <Button variant="ghost" size="sm" asChild className="bg-purple-600/20 border border-purple-400/30 hover:bg-purple-600/30">
+                      <Link href="/admin">
+                        <Shield className="w-4 h-4 mr-2" />
+                        Admin
+                      </Link>
+                    </Button>
+                    <Button variant="ghost" size="sm" asChild className="bg-red-600/20 border border-red-400/30 hover:bg-red-600/30">
+                      <Link href="/limpeza-cache">
+                        <Trash2 className="w-4 h-4 mr-2" />
+                        Limpeza de Cache
+                      </Link>
+                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="sm">
+                          <Package className="w-4 h-4 mr-2" />
+                          Assinaturas
+                          <ChevronDown className="w-3 h-3 ml-1" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem asChild>
+                          <Link href="/planos" className="cursor-pointer flex items-center">
+                            <Package className="w-4 h-4 mr-2" />
+                            Planos
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/assinantes" className="cursor-pointer flex items-center">
+                            <UserCheck className="w-4 h-4 mr-2" />
+                            Assinantes
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </>
+                )}
               </nav>
               {curriculo && (
-                <div className="text-right hidden lg:block">
-                  <p className="text-sm font-medium text-foreground">{curriculo.nome}</p>
-                  <p className="text-xs text-muted-foreground">{curriculo.cargo}</p>
+                <div className="flex items-center gap-4">
+                  <div className="text-right hidden lg:block">
+                    <p className="text-sm font-medium text-foreground">{curriculo.nome}</p>
+                    <p className="text-xs text-muted-foreground">{curriculo.cargo}</p>
+                  </div>
+                  <LogoutButton />
                 </div>
               )}
             </div>

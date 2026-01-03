@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS automacoes_varredura (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL,\n  status ENUM('em_andamento', 'concluida', 'erro') DEFAULT 'em_andamento' NOT NULL,\n  totalSites INT DEFAULT 0 NOT NULL,\n  sucessos INT DEFAULT 0 NOT NULL,\n  pendentes INT DEFAULT 0 NOT NULL,\n  erros INT DEFAULT 0 NOT NULL,\n  dataInicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  dataFim TIMESTAMP NULL,\n  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute CREATE TABLE IF NOT EXISTS automacoes_varredura (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL,\n  status ENUM('em_andamento', 'concluida', 'erro') DEFAULT 'em_andamento' NOT NULL,\n  totalSites INT DEFAULT 0 NOT NULL,\n  sucessos INT DEFAULT 0 NOT NULL,\n  pendentes INT DEFAULT 0 NOT NULL,\n  erros INT DEFAULT 0 NOT NULL,\n  dataInicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  dataFim TIMESTAMP NULL,\n  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 434
+}

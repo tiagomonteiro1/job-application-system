@@ -5,16 +5,36 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Landing from "./pages/Landing";
+import Followups from "./pages/Followups";
+import Usuarios from "./pages/Usuarios";
 import Curriculo from "./pages/Curriculo";
 import Historico from "./pages/Historico";
+import Planos from "./pages/Planos";
+import Assinantes from "./pages/Assinantes";
+import Notificacoes from "@/pages/Notificacoes";
+import Admin from "@/pages/Admin";
+import Automacoes from "./pages/Automacoes";
+import Integracoes from "./pages/Integracoes";
+import LimpezaCache from "./pages/LimpezaCache";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+        <Route path="/landing" component={Landing} />
+        <Route path="/followups" component={Followups} />
+      <Route path={"/usuarios"} component={Usuarios} />
       <Route path={"/curriculo"} component={Curriculo} />
       <Route path={"/historico"} component={Historico} />
+      <Route path={"/planos"} component={Planos} />
+      <Route path={"/assinantes"} component={Assinantes} />
+      <Route path={"/notificacoes"} component={Notificacoes} />
+      <Route path={"/automacoes"} component={Automacoes} />
+      <Route path={"/integracoes"} component={Integracoes} />
+      <Route path={"/admin"} component={Admin} />
+      <Route path={"/limpeza-cache"} component={LimpezaCache} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

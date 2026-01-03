@@ -3,9 +3,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
-import { Briefcase, Calendar, Clock, ExternalLink, FileText, History, Loader2, MapPin, Star } from "lucide-react";
+import { Briefcase, Calendar, CheckCircle2, Clock, ExternalLink, FileText, History, Link2, Loader2, MapPin, Star, XCircle } from "lucide-react";
+import LogoutButton from "@/components/LogoutButton";
+import { useState } from "react";
 import { Streamdown } from "streamdown";
 import { toast } from "sonner";
 
@@ -13,7 +18,16 @@ export default function Historico() {
   const { user, isAuthenticated } = useAuth();
   const { data: candidaturas, isLoading } = trpc.candidatura.historico.useQuery();
   const atualizarStatusMutation = trpc.candidatura.atualizarStatus.useMutation();
+  const confirmarEntregaMutation = trpc.candidatura.confirmarEntrega.useMutation();
+  const marcarNaoEntregueMutation = trpc.candidatura.marcarNaoEntregue.useMutation();
+  const atualizarLinkMutation = trpc.candidatura.atualizarLinkValidacao.useMutation();
   const utils = trpc.useUtils();
+
+  const [linkValidacao, setLinkValidacao] = useState("");
+  const [observacoes, setObservacoes] = useState("");
+  const [candidaturaAtual, setCandidaturaAtual] = useState<number | null>(null);
+  const [showConfirmarDialog, setShowConfirmarDialog] = useState(false);
+  const [showNaoEntregueDialog, setShowNaoEntregueDialog] = useState(false);
 
   const handleAtualizarStatus = async (candidaturaId: number, status: string) => {
     try {
@@ -25,6 +39,44 @@ export default function Historico() {
       utils.candidatura.historico.invalidate();
     } catch (error) {
       toast.error("Erro ao atualizar status");
+    }
+  };
+
+  const handleConfirmarEntrega = async () => {
+    if (!candidaturaAtual) return;
+
+    try {
+      await confirmarEntregaMutation.mutateAsync({
+        candidaturaId: candidaturaAtual,
+        linkValidacao: linkValidacao || undefined,
+        observacoes: observacoes || undefined,
+      });
+      toast.success("Entrega confirmada!");
+      utils.candidatura.historico.invalidate();
+      setShowConfirmarDialog(false);
+      setLinkValidacao("");
+      setObservacoes("");
+      setCandidaturaAtual(null);
+    } catch (error) {
+      toast.error("Erro ao confirmar entrega");
+    }
+  };
+
+  const handleMarcarNaoEntregue = async () => {
+    if (!candidaturaAtual) return;
+
+    try {
+      await marcarNaoEntregueMutation.mutateAsync({
+        candidaturaId: candidaturaAtual,
+        observacoes: observacoes || undefined,
+      });
+      toast.success("Marcado como não entregue");
+      utils.candidatura.historico.invalidate();
+      setShowNaoEntregueDialog(false);
+      setObservacoes("");
+      setCandidaturaAtual(null);
+    } catch (error) {
+      toast.error("Erro ao marcar como não entregue");
     }
   };
 
@@ -62,6 +114,32 @@ export default function Historico() {
     }
   };
 
+  const getStatusEntregaColor = (status: string) => {
+    switch (status) {
+      case "pendente":
+        return "bg-gray-500/20 text-gray-500";
+      case "confirmado":
+        return "bg-green-500/20 text-green-500";
+      case "nao_entregue":
+        return "bg-red-500/20 text-red-500";
+      default:
+        return "bg-gray-500/20 text-gray-500";
+    }
+  };
+
+  const getStatusEntregaLabel = (status: string) => {
+    switch (status) {
+      case "pendente":
+        return "Pendente";
+      case "confirmado":
+        return "Confirmado";
+      case "nao_entregue":
+        return "Não Entregue";
+      default:
+        return status;
+    }
+  };
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -76,7 +154,7 @@ export default function Historico() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-purple-950 to-slate-950">
       {/* Header */}
       <header className="glass-card border-b border-border/50 sticky top-0 z-50 backdrop-blur-xl">
         <div className="container py-6">
@@ -98,161 +176,341 @@ export default function Historico() {
         {/* Estatísticas */}
         {candidaturas && candidaturas.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
-            <Card className="glass-card p-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-foreground">{candidaturas.length}</p>
-                <p className="text-sm text-muted-foreground">Total</p>
-              </div>
+            <Card key="stat-total" className="glass-card">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3">
+                  <FileText className="w-5 h-5 text-blue-400" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Total</p>
+                    <p className="text-2xl font-bold">{candidaturas.length}</p>
+                  </div>
+                </div>
+              </CardContent>
             </Card>
-            <Card className="glass-card p-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-yellow-500">
-                  {candidaturas.filter((c) => c.status === "pending").length}
-                </p>
-                <p className="text-sm text-muted-foreground">Pendentes</p>
-              </div>
+
+            <Card key="stat-confirmed" className="glass-card">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Confirmadas</p>
+                    <p className="text-2xl font-bold">
+                      {candidaturas.filter((c: any) => c.statusEntrega === "confirmado").length}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
             </Card>
-            <Card className="glass-card p-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-blue-500">
-                  {candidaturas.filter((c) => c.status === "sent").length}
-                </p>
-                <p className="text-sm text-muted-foreground">Enviados</p>
-              </div>
+
+            <Card key="stat-pending" className="glass-card">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-yellow-400" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Pendentes</p>
+                    <p className="text-2xl font-bold">
+                      {candidaturas.filter((c: any) => c.statusEntrega === "pendente").length}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
             </Card>
-            <Card className="glass-card p-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-purple-500">
-                  {candidaturas.filter((c) => c.status === "viewed").length}
-                </p>
-                <p className="text-sm text-muted-foreground">Visualizados</p>
-              </div>
+
+            <Card key="stat-failed" className="glass-card">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3">
+                  <XCircle className="w-5 h-5 text-red-400" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Não Entregues</p>
+                    <p className="text-2xl font-bold">
+                      {candidaturas.filter((c: any) => c.statusEntrega === "nao_entregue").length}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
             </Card>
-            <Card className="glass-card p-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-green-500">
-                  {candidaturas.filter((c) => c.status === "accepted").length}
-                </p>
-                <p className="text-sm text-muted-foreground">Aceitos</p>
-              </div>
+
+            <Card key="stat-accepted" className="glass-card">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3">
+                  <Star className="w-5 h-5 text-purple-400" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Aceitas</p>
+                    <p className="text-2xl font-bold">
+                      {candidaturas.filter((c: any) => c.status === "accepted").length}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
             </Card>
           </div>
         )}
 
         {/* Lista de Candidaturas */}
-        <div className="space-y-6">
-          {isLoading ? (
-            <div className="text-center py-12">
-              <Loader2 className="w-8 h-8 animate-spin mx-auto text-primary" />
-            </div>
-          ) : candidaturas && candidaturas.length > 0 ? (
-            candidaturas.map((candidatura) => {
-              const vaga = candidatura.vagaData as any;
-              
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : !candidaturas || candidaturas.length === 0 ? (
+          <Card className="glass-card">
+            <CardContent className="py-12 text-center">
+              <FileText className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-lg font-medium mb-2">Nenhuma candidatura encontrada</p>
+              <p className="text-muted-foreground">
+                Comece enviando seu currículo para as vagas disponíveis
+              </p>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="space-y-4">
+            {candidaturas.map((candidatura: any) => {
+              const vaga = candidatura.vagaData;
               return (
-                <Card key={candidatura.id} className="glass-card hover:glow-effect transition-all">
-                  <CardHeader>
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <CardTitle className="text-xl mb-2">{vaga.titulo}</CardTitle>
-                        <CardDescription className="flex items-center gap-2">
-                          <Briefcase className="w-4 h-4" />
-                          {vaga.empresa}
-                        </CardDescription>
-                      </div>
-                      <Badge className={getStatusColor(candidatura.status)}>
-                        {getStatusLabel(candidatura.status)}
-                      </Badge>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        {vaga.localizacao}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        Candidatura: {new Date(candidatura.createdAt).toLocaleDateString("pt-BR")}
-                      </div>
-                      {candidatura.dataEnvio && (
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          Enviado: {new Date(candidatura.dataEnvio).toLocaleDateString("pt-BR")}
-                        </div>
-                      )}
-                      <div className="flex items-center gap-1">
-                        {Array.from({ length: vaga.compatibilidade }).map((_, i) => (
-                          <Star key={i} className="w-3 h-3 fill-accent text-accent" />
-                        ))}
-                      </div>
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="space-y-4">
-                    {/* Carta de Apresentação */}
-                    {candidatura.cartaApresentacao && (
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" className="w-full">
-                            <FileText className="w-4 h-4 mr-2" />
-                            Ver Carta de Apresentação
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                          <DialogHeader>
-                            <DialogTitle>Carta de Apresentação</DialogTitle>
-                            <DialogDescription>
-                              Gerada automaticamente pela IA para {vaga.empresa}
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="prose prose-sm dark:prose-invert max-w-none">
-                            <Streamdown>{candidatura.cartaApresentacao}</Streamdown>
+                <Card key={candidatura.id} className="glass-card hover:border-primary/50 transition-all">
+                  <CardContent className="p-6">
+                    <div className="flex flex-col lg:flex-row gap-6">
+                      {/* Informações da Vaga */}
+                      <div className="flex-1 space-y-4">
+                        <div>
+                          <div className="flex items-start justify-between gap-4 mb-2">
+                            <h3 className="text-xl font-bold text-foreground">{vaga.titulo}</h3>
+                            <div className="flex gap-2">
+                              <Badge className={getStatusColor(candidatura.status)}>
+                                {getStatusLabel(candidatura.status)}
+                              </Badge>
+                              <Badge className={getStatusEntregaColor(candidatura.statusEntrega)}>
+                                {getStatusEntregaLabel(candidatura.statusEntrega)}
+                              </Badge>
+                            </div>
                           </div>
-                        </DialogContent>
-                      </Dialog>
-                    )}
+                          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-2">
+                              <Briefcase className="w-4 h-4" />
+                              {vaga.empresa}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <MapPin className="w-4 h-4" />
+                              {vaga.localizacao}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4" />
+                              {new Date(candidatura.createdAt).toLocaleDateString("pt-BR")}
+                            </div>
+                            {candidatura.dataConfirmacao && (
+                              <div className="flex items-center gap-2 text-green-400">
+                                <CheckCircle2 className="w-4 h-4" />
+                                Confirmado em {new Date(candidatura.dataConfirmacao).toLocaleDateString("pt-BR")}
+                              </div>
+                            )}
+                          </div>
+                        </div>
 
-                    {/* Ações */}
-                    <div className="flex gap-2">
-                      <Select
-                        value={candidatura.status}
-                        onValueChange={(value) => handleAtualizarStatus(candidatura.id, value)}
-                      >
-                        <SelectTrigger className="flex-1">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="pending">Pendente</SelectItem>
-                          <SelectItem value="sent">Enviado</SelectItem>
-                          <SelectItem value="viewed">Visualizado</SelectItem>
-                          <SelectItem value="rejected">Rejeitado</SelectItem>
-                          <SelectItem value="accepted">Aceito</SelectItem>
-                        </SelectContent>
-                      </Select>
+                        {/* Observações de Entrega */}
+                        {candidatura.observacoesEntrega && (
+                          <div className="bg-muted/30 rounded-lg p-4">
+                            <p className="text-sm font-medium mb-1">Observações:</p>
+                            <p className="text-sm text-muted-foreground">{candidatura.observacoesEntrega}</p>
+                          </div>
+                        )}
 
-                      <Button variant="outline" size="icon" asChild>
-                        <a href={vaga.link_candidatura} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      </Button>
+                        {/* Ações */}
+                        <div className="flex flex-wrap gap-2">
+                          {/* Link para vaga original */}
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => window.open(vaga.link_candidatura, "_blank")}
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            Ver Vaga
+                          </Button>
+
+                          {/* Link de validação (se existir) */}
+                          {candidatura.linkValidacao && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="bg-green-500/10 border-green-500/50 hover:bg-green-500/20"
+                              onClick={() => window.open(candidatura.linkValidacao, "_blank")}
+                            >
+                              <Link2 className="w-4 h-4 mr-2" />
+                              Acessar Cadastro
+                            </Button>
+                          )}
+
+                          {/* Botão para conferir entrega via payload */}
+                          {candidatura.payloadPagina && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="bg-blue-500/10 border-blue-500/50 hover:bg-blue-500/20"
+                              onClick={() => window.open(candidatura.payloadPagina, "_blank")}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Conferir Entrega
+                            </Button>
+                          )}
+
+                          {/* Botão Confirmar Entrega */}
+                          {candidatura.statusEntrega === "pendente" && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="bg-green-500/10 border-green-500/50 hover:bg-green-500/20"
+                              onClick={() => {
+                                setCandidaturaAtual(candidatura.id);
+                                setLinkValidacao(candidatura.linkValidacao || "");
+                                setObservacoes(candidatura.observacoesEntrega || "");
+                                setShowConfirmarDialog(true);
+                              }}
+                            >
+                              <CheckCircle2 className="w-4 h-4 mr-2" />
+                              Confirmar Entrega
+                            </Button>
+                          )}
+
+                          {/* Botão Não Entregue */}
+                          {candidatura.statusEntrega === "pendente" && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="bg-red-500/10 border-red-500/50 hover:bg-red-500/20"
+                              onClick={() => {
+                                setCandidaturaAtual(candidatura.id);
+                                setObservacoes(candidatura.observacoesEntrega || "");
+                                setShowNaoEntregueDialog(true);
+                              }}
+                            >
+                              <XCircle className="w-4 h-4 mr-2" />
+                              Não Entregue
+                            </Button>
+                          )}
+
+                          {/* Ver Carta de Apresentação */}
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <Button variant="outline" size="sm">
+                                <FileText className="w-4 h-4 mr-2" />
+                                Ver Carta
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                              <DialogHeader>
+                                <DialogTitle>Carta de Apresentação</DialogTitle>
+                                <DialogDescription>
+                                  {vaga.empresa} - {vaga.titulo}
+                                </DialogDescription>
+                              </DialogHeader>
+                              <div className="prose prose-invert max-w-none">
+                                <Streamdown>{candidatura.cartaApresentacao}</Streamdown>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+
+                          {/* Atualizar Status */}
+                          <Select
+                            value={candidatura.status}
+                            onValueChange={(value) => handleAtualizarStatus(candidatura.id, value)}
+                          >
+                            <SelectTrigger className="w-[180px]">
+                              <SelectValue placeholder="Atualizar status" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="pending">Pendente</SelectItem>
+                              <SelectItem value="sent">Enviado</SelectItem>
+                              <SelectItem value="viewed">Visualizado</SelectItem>
+                              <SelectItem value="rejected">Rejeitado</SelectItem>
+                              <SelectItem value="accepted">Aceito</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
               );
-            })
-          ) : (
-            <Card className="glass-card p-12 text-center">
-              <History className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">
-                Nenhuma candidatura enviada
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Suas candidaturas aparecerão aqui após o envio
-              </p>
-            </Card>
-          )}
-        </div>
+            })}
+          </div>
+        )}
       </div>
+
+      {/* Dialog Confirmar Entrega */}
+      <Dialog open={showConfirmarDialog} onOpenChange={setShowConfirmarDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Confirmar Entrega de Currículo</DialogTitle>
+            <DialogDescription>
+              Adicione o link do seu cadastro no site da empresa e observações sobre o envio
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="link">Link do Cadastro (opcional)</Label>
+              <Input
+                id="link"
+                placeholder="https://empresa.com/meu-cadastro"
+                value={linkValidacao}
+                onChange={(e) => setLinkValidacao(e.target.value)}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Cole aqui o link para acessar seu cadastro no site da empresa
+              </p>
+            </div>
+            <div>
+              <Label htmlFor="obs">Observações (opcional)</Label>
+              <Textarea
+                id="obs"
+                placeholder="Ex: Protocolo #12345, Enviado em 31/12/2024 às 14:30"
+                value={observacoes}
+                onChange={(e) => setObservacoes(e.target.value)}
+                rows={3}
+              />
+            </div>
+            <div className="flex gap-2 justify-end">
+              <Button variant="outline" onClick={() => setShowConfirmarDialog(false)}>
+                Cancelar
+              </Button>
+              <Button onClick={handleConfirmarEntrega}>
+                <CheckCircle2 className="w-4 h-4 mr-2" />
+                Confirmar Entrega
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Dialog Não Entregue */}
+      <Dialog open={showNaoEntregueDialog} onOpenChange={setShowNaoEntregueDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Marcar como Não Entregue</DialogTitle>
+            <DialogDescription>
+              Adicione observações sobre por que o currículo não foi entregue
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="obs-nao-entregue">Observações (opcional)</Label>
+              <Textarea
+                id="obs-nao-entregue"
+                placeholder="Ex: Site fora do ar, Vaga já preenchida, Requisitos não atendidos"
+                value={observacoes}
+                onChange={(e) => setObservacoes(e.target.value)}
+                rows={3}
+              />
+            </div>
+            <div className="flex gap-2 justify-end">
+              <Button variant="outline" onClick={() => setShowNaoEntregueDialog(false)}>
+                Cancelar
+              </Button>
+              <Button variant="destructive" onClick={handleMarcarNaoEntregue}>
+                <XCircle className="w-4 h-4 mr-2" />
+                Marcar como Não Entregue
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

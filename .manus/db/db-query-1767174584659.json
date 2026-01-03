@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS notificacoes_config (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL UNIQUE,\n  whatsapp_numero VARCHAR(20),\n  notificacoes_ativadas BOOLEAN DEFAULT FALSE NOT NULL,\n  notificar_novas_vagas BOOLEAN DEFAULT TRUE NOT NULL,\n  notificar_status_candidatura BOOLEAN DEFAULT TRUE NOT NULL,\n  notificar_follow_up BOOLEAN DEFAULT TRUE NOT NULL,\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,\n  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute CREATE TABLE IF NOT EXISTS notificacoes_config (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL UNIQUE,\n  whatsapp_numero VARCHAR(20),\n  notificacoes_ativadas BOOLEAN DEFAULT FALSE NOT NULL,\n  notificar_novas_vagas BOOLEAN DEFAULT TRUE NOT NULL,\n  notificar_status_candidatura BOOLEAN DEFAULT TRUE NOT NULL,\n  notificar_follow_up BOOLEAN DEFAULT TRUE NOT NULL,\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,\n  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 320
+}

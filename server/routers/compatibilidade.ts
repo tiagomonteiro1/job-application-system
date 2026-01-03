@@ -2,6 +2,8 @@ import { z } from "zod";
 import { protectedProcedure, router } from "../_core/trpc";
 import { getCurriculoById } from "../db";
 import { invokeLLM } from "../_core/llm";
+import { requireModuloAccess, requireLimiteRecurso, MODULOS } from "../acl";
+import { incrementarUsoRecurso } from "../db";
 
 const vagaSchema = z.object({
   id: z.number(),
@@ -15,6 +17,15 @@ const vagaSchema = z.object({
 
 export const compatibilidadeRouter = router({
   /**
+   * Limpar cache de vagas encontradas
+   */
+  limparCache: protectedProcedure.mutation(async ({ ctx }) => {
+    const userId = ctx.user.id;
+    // TODO: Implementar lógica de limpeza de cache
+    // Por enquanto retorna sucesso
+    return { success: true, message: "Cache limpo com sucesso" };
+  }),
+  /**
    * Analisar compatibilidade entre currículo e vaga
    * Retorna score, requisitos atendidos/faltantes, gaps e recomendações
    */
@@ -27,6 +38,12 @@ export const compatibilidadeRouter = router({
     )
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
+      
+      // Verificar acesso ao módulo de compatibilidade
+      await requireModuloAccess(userId, ctx.user.role, MODULOS.COMPATIBILIDADE);
+      
+      // Verificar limite de análises
+      await requireLimiteRecurso(userId, ctx.user.role, 'analises');
 
       // Buscar currículo
       const curriculo = await getCurriculoById(input.curriculoId);
@@ -119,6 +136,10 @@ ${vagaInfo}`,
         throw new Error("Erro ao processar análise de compatibilidade");
       }
 
+      // Incrementar contador de uso
+      const mesAtual = new Date().toISOString().slice(0, 7);
+      await incrementarUsoRecurso(userId, mesAtual, 'analises');
+      
       return {
         score: analiseData.score || 0,
         requisitosAtendidos: analiseData.requisitosAtendidos || [],

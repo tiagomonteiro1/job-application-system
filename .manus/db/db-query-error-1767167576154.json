@@ -1,0 +1,8 @@
+{
+  "query": "ALTER TABLE candidaturas \nADD COLUMN IF NOT EXISTS status_entrega ENUM('pendente', 'confirmado', 'nao_entregue') DEFAULT 'pendente' NOT NULL AFTER dataEnvio,\nADD COLUMN IF NOT EXISTS link_validacao TEXT AFTER status_entrega,\nADD COLUMN IF NOT EXISTS observacoes_entrega TEXT AFTER link_validacao,\nADD COLUMN IF NOT EXISTS data_confirmacao TIMESTAMP NULL AFTER observacoes_entrega;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute ALTER TABLE candidaturas \nADD COLUMN IF NOT EXISTS status_entrega ENUM('pendente', 'confirmado', 'nao_entregue') DEFAULT 'pendente' NOT NULL AFTER dataEnvio,\nADD COLUMN IF NOT EXISTS link_validacao TEXT AFTER status_entrega,\nADD COLUMN IF NOT EXISTS observacoes_entrega TEXT AFTER link_validacao,\nADD COLUMN IF NOT EXISTS data_confirmacao TIMESTAMP NULL AFTER observacoes_entrega;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'status_entrega' in 'candidaturas'"
+  ]
+}

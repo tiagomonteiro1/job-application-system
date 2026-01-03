@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS varredura_resultados (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  varreduraId INT NOT NULL,\n  siteName VARCHAR(255) NOT NULL,\n  siteUrl VARCHAR(500) NOT NULL,\n  status ENUM('sucesso', 'pendente', 'erro') NOT NULL,\n  mensagem TEXT,\n  linkContinuar VARCHAR(500),\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  FOREIGN KEY (varreduraId) REFERENCES automacoes_varredura(id) ON DELETE CASCADE\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3DAEqhg1F1qJfLL.root --database D6a7XNvxZFwkFJQ8a9TQYz --execute CREATE TABLE IF NOT EXISTS varredura_resultados (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  varreduraId INT NOT NULL,\n  siteName VARCHAR(255) NOT NULL,\n  siteUrl VARCHAR(500) NOT NULL,\n  status ENUM('sucesso', 'pendente', 'erro') NOT NULL,\n  mensagem TEXT,\n  linkContinuar VARCHAR(500),\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  FOREIGN KEY (varreduraId) REFERENCES automacoes_varredura(id) ON DELETE CASCADE\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 308
+}
