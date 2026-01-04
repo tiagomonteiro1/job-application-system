@@ -18,7 +18,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare, Activity, BarChart3 } from "lucide-react";
 import LogoutButton from "@/components/LogoutButton";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
@@ -320,7 +320,7 @@ export default function Home() {
                 {user?.role === "admin" && (
                   <>
                     <Button variant="ghost" size="sm" asChild>
-                      <Link href="/usuarios">
+                      <Link href="/admin/usuarios">
                         <Users className="w-4 h-4 mr-2" />
                         Usuários
                       </Link>
@@ -360,6 +360,35 @@ export default function Home() {
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="sm" className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-400/30 hover:from-purple-600/30 hover:to-pink-600/30">
+                          <BarChart3 className="w-4 h-4 mr-2" />
+                          Marketing
+                          <ChevronDown className="w-3 h-3 ml-1" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem asChild>
+                          <Link href="/marketing" className="cursor-pointer flex items-center">
+                            <BarChart3 className="w-4 h-4 mr-2" />
+                            Estratégias
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/marketing/redes-sociais" className="cursor-pointer flex items-center">
+                            <MessageSquare className="w-4 h-4 mr-2" />
+                            Redes Sociais
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                    <Button variant="ghost" size="sm" asChild className="bg-blue-600/20 border border-blue-400/30 hover:bg-blue-600/30">
+                      <Link href="/admin/cron-logs">
+                        <Activity className="w-4 h-4 mr-2" />
+                        Logs Cron
+                      </Link>
+                    </Button>
                   </>
                 )}
               </nav>

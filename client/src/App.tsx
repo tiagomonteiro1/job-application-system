@@ -17,6 +17,8 @@ import Admin from "@/pages/Admin";
 import Automacoes from "./pages/Automacoes";
 import Integracoes from "./pages/Integracoes";
 import LimpezaCache from "./pages/LimpezaCache";
+import Login from "./pages/Login";
+import AdminUsuarios from "./pages/AdminUsuarios";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -26,6 +28,7 @@ function Router() {
         <Route path="/landing" component={Landing} />
         <Route path="/followups" component={Followups} />
       <Route path={"/usuarios"} component={Usuarios} />
+      <Route path={"/admin/usuarios"} component={AdminUsuarios} />
       <Route path={"/curriculo"} component={Curriculo} />
       <Route path={"/historico"} component={Historico} />
       <Route path={"/planos"} component={Planos} />
@@ -35,6 +38,8 @@ function Router() {
       <Route path={"/integracoes"} component={Integracoes} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/limpeza-cache"} component={LimpezaCache} />
+      <Route path={"/auth/login"} component={Login} />
+      <Route path={"/login"} component={Login} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
