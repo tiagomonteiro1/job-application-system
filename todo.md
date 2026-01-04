@@ -317,3 +317,38 @@
 - [x] Identificar erro exato que aparece na tela ao fazer upload - JSON.parse error (API retorna HTML)
 - [x] Corrigir rota REST para retornar JSON correto - Adicionado proxy /api no Vite
 - [x] Testar upload completo funcionando - Upload funcionando perfeitamente!
+
+
+## Integração de APIs Reais
+- [x] Integrar LinkedIn Jobs API para busca de vagas (via RapidAPI)
+- [x] Integrar Indeed API para busca de vagas (via RapidAPI)
+- [x] Integrar Gupy API para busca de vagas (web scraping)
+- [x] Integrar Adzuna API (gratuita)
+- [x] Implementar agregador de vagas de múltiplas fontes
+- [x] Criar serviço de sincronização automática
+- [x] Adicionar filtros avançados de busca
+- [x] Implementar remoção de duplicatas
+- [x] Criar tRPC router para APIs de vagas
+
+## Integração OpenAI GPT-4
+- [x] Configurar OpenAI API
+- [x] Implementar análise de currículo com GPT-4
+- [x] Implementar refatoração de currículo com GPT-4
+- [x] Criar análise de compatibilidade vaga vs currículo
+- [x] Implementar sugestões de melhoria
+- [x] Adicionar geração de carta de apresentação
+- [x] Criar sistema de pontuação de currículo
+- [x] Implementar extração de dados do currículo
+- [x] Adicionar sugestões para LinkedIn
+- [x] Criar tRPC router para OpenAI
+
+## Integração WhatsApp Business API
+- [x] Configurar WhatsApp Business API (Twilio + Meta)
+- [x] Implementar envio de notificações via WhatsApp
+- [x] Criar templates de mensagens
+- [x] Implementar follow-ups automáticos via WhatsApp
+- [x] Adicionar notificação de nova vaga
+- [x] Adicionar notificação de candidatura enviada
+- [x] Implementar resumo diário
+- [x] Criar tRPC router para WhatsApp
+- [x] Suportar Twilio e Meta WhatsApp API
