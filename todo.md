@@ -312,3 +312,8 @@
 - [x] Criar indicador de progresso na sidebar mostrando vagas analisadas
 - [x] Corrigir problema de upload de currículo
 - [ ] Criar currículo de teste em PDF e validar upload completo com S3 - BLOQUEADO: eventos onClick/onSubmit não disparam (investigação necessária)
+
+## URGENTE - Correção de Upload
+- [x] Identificar erro exato que aparece na tela ao fazer upload - JSON.parse error (API retorna HTML)
+- [x] Corrigir rota REST para retornar JSON correto - Adicionado proxy /api no Vite
+- [x] Testar upload completo funcionando - Upload funcionando perfeitamente!

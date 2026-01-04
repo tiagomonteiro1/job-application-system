@@ -41,11 +41,10 @@ export default function Curriculo() {
   };
 
   const handleUpload = async () => {
-    alert('handleUpload chamado! Arquivo: ' + selectedFile?.name);
     console.log('[Upload] Iniciando upload...', { selectedFile: selectedFile?.name });
     if (!selectedFile) {
       console.log('[Upload] Nenhum arquivo selecionado');
-      alert('Nenhum arquivo selecionado');
+      toast.error('Nenhum arquivo selecionado');
       return;
     }
 
