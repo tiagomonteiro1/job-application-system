@@ -306,3 +306,6 @@
 - [x] Configurar deep links no aplicativo Android
 - [x] Gerar APK de produção assinado - Script build-apk.sh criado
 - [x] Testar todas as funcionalidades
+
+## Melhorias de UX
+- [x] Adicionar animação de carregamento ao botão "Procurar Novas Vagas"

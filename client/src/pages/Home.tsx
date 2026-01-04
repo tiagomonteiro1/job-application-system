@@ -18,7 +18,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import CompatibilidadeAnalise from "@/components/CompatibilidadeAnalise";
 import { toast } from "sonner";
 import JobCard from "@/components/JobCard";
-import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare, Activity, BarChart3 } from "lucide-react";
+import { Briefcase, Filter, Search, Star, TrendingUp, Award, Zap, FileText, History, Menu, Users, Package, UserCheck, ChevronDown, Bell, Bot, Shield, Trash2, MessageSquare, Activity, BarChart3, Loader2 } from "lucide-react";
 import LogoutButton from "@/components/LogoutButton";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
@@ -63,6 +63,7 @@ export default function Home() {
   const [areaFilter, setAreaFilter] = useState("todas");
   const [compatibilidadeFilter, setCompatibilidadeFilter] = useState("todas");
   const [ordenacao, setOrdenacao] = useState("compatibilidade");
+  const [isSearchingVagas, setIsSearchingVagas] = useState(false);
 
   useEffect(() => {
     // Carregar vagas e currículo
@@ -679,21 +680,32 @@ export default function Home() {
 
               {/* Botão Procurar Vagas */}
               <Button 
-                onClick={() => {
+                onClick={async () => {
+                  setIsSearchingVagas(true);
                   toast.success('Buscando novas vagas...', {
                     description: 'Varredura automática em andamento'
                   });
                   // Simular busca de novas vagas
-                  setTimeout(() => {
-                    toast.success(`${vagas.length} vagas encontradas!`, {
-                      description: 'Vagas atualizadas com sucesso'
-                    });
-                  }, 2000);
+                  await new Promise(resolve => setTimeout(resolve, 2000));
+                  setIsSearchingVagas(false);
+                  toast.success(`${vagas.length} vagas encontradas!`, {
+                    description: 'Vagas atualizadas com sucesso'
+                  });
                 }}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                disabled={isSearchingVagas}
+                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:opacity-70 disabled:cursor-not-allowed transition-all"
               >
-                <Search className="w-4 h-4 mr-2" />
-                Procurar Novas Vagas
+                {isSearchingVagas ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Procurando...
+                  </>
+                ) : (
+                  <>
+                    <Search className="w-4 h-4 mr-2" />
+                    Procurar Novas Vagas
+                  </>
+                )}
               </Button>
             </div>
           </aside>
