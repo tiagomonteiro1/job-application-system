@@ -311,3 +311,4 @@
 - [x] Adicionar animação de carregamento ao botão "Procurar Novas Vagas"
 - [x] Criar indicador de progresso na sidebar mostrando vagas analisadas
 - [x] Corrigir problema de upload de currículo
+- [ ] Criar currículo de teste em PDF e validar upload completo com S3 - BLOQUEADO: eventos onClick/onSubmit não disparam (investigação necessária)

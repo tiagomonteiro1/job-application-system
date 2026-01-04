@@ -41,45 +41,70 @@ export default function Curriculo() {
   };
 
   const handleUpload = async () => {
-    if (!selectedFile) return;
+    alert('handleUpload chamado! Arquivo: ' + selectedFile?.name);
+    console.log('[Upload] Iniciando upload...', { selectedFile: selectedFile?.name });
+    if (!selectedFile) {
+      console.log('[Upload] Nenhum arquivo selecionado');
+      alert('Nenhum arquivo selecionado');
+      return;
+    }
 
     setUploading(true);
+    console.log('[Upload] Estado uploading setado para true');
     
-    // Converter para base64
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-    
-    reader.onload = async () => {
-      try {
-        const base64 = reader.result?.toString().split(",")[1];
-        if (!base64) throw new Error("Erro ao converter arquivo");
+    try {
+      // Converter para base64
+      const reader = new FileReader();
+      console.log('[Upload] FileReader criado, iniciando leitura...');
+      
+      const base64 = await new Promise<string>((resolve, reject) => {
+        reader.onload = () => {
+          console.log('[Upload] FileReader.onload disparado');
+          const result = reader.result?.toString().split(",")[1];
+          if (result) {
+            console.log('[Upload] Base64 extraído, tamanho:', result.length);
+            resolve(result);
+          } else {
+            reject(new Error("Erro ao converter arquivo"));
+          }
+        };
+        reader.onerror = () => reject(new Error("Erro ao ler arquivo"));
+        reader.readAsDataURL(selectedFile);
+      });
 
-        await uploadMutation.mutateAsync({
+      console.log('[Upload] Chamando API REST...');
+      const response = await fetch('/api/upload-curriculo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           fileBase64: base64,
           fileName: selectedFile.name,
-        });
-
-        toast.success("Currículo enviado com sucesso!", {
-          description: "Seu currículo foi carregado e está pronto para análise"
-        });
-        setSelectedFile(null);
-        utils.curriculo.list.invalidate();
-      } catch (error: any) {
-        toast.error("Erro ao enviar currículo", {
-          description: error?.message || "Tente novamente"
-        });
-        console.error("Erro no upload:", error);
-      } finally {
-        setUploading(false);
-      }
-    };
-
-    reader.onerror = () => {
-      toast.error("Erro ao ler arquivo", {
-        description: "Não foi possível processar o PDF"
+        }),
       });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Erro ao fazer upload');
+      }
+
+      const data = await response.json();
+      console.log('[Upload] Upload bem-sucedido!', data);
+      
+      toast.success("Currículo enviado com sucesso!", {
+        description: "Seu currículo foi carregado e está pronto para análise"
+      });
+      setSelectedFile(null);
+      utils.curriculo.list.invalidate();
+    } catch (error: any) {
+      console.error('[Upload] Erro:', error);
+      toast.error("Erro ao enviar currículo", {
+        description: error?.message || "Tente novamente"
+      });
+    } finally {
       setUploading(false);
-    };
+    }
   };
 
   const handleAnalisar = async (curriculoId: number) => {
@@ -193,50 +218,57 @@ export default function Curriculo() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="border-2 border-dashed border-border/50 rounded-lg p-8 text-center">
-              <input
-                type="file"
-                accept=".pdf"
-                onChange={handleFileSelect}
-                className="hidden"
-                id="file-upload"
-              />
-              <label htmlFor="file-upload" className="cursor-pointer">
-                <div className="flex flex-col items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Upload className="w-8 h-8 text-primary" />
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              if (selectedFile) {
+                handleUpload();
+              }
+            }}>
+              <div className="border-2 border-dashed border-border/50 rounded-lg p-8 text-center">
+                <input
+                  type="file"
+                  accept=".pdf"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                  id="file-upload"
+                />
+                <label htmlFor="file-upload" className="cursor-pointer">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                      <Upload className="w-8 h-8 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-foreground font-medium">
+                        {selectedFile ? selectedFile.name : "Clique para selecionar"}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        PDF até 5MB
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-foreground font-medium">
-                      {selectedFile ? selectedFile.name : "Clique para selecionar"}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      PDF até 5MB
-                    </p>
-                  </div>
-                </div>
-              </label>
-            </div>
+                </label>
+              </div>
 
-            {selectedFile && (
-              <Button
-                onClick={handleUpload}
-                disabled={uploading}
-                className="w-full glow-effect"
-              >
-                {uploading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    <Upload className="w-4 h-4 mr-2" />
-                    Enviar Currículo
-                  </>
-                )}
-              </Button>
-            )}
+              {selectedFile && (
+                <button
+                  type="submit"
+                  disabled={uploading}
+                  className="w-full mt-4 inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 glow-effect"
+                >
+                  {uploading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="w-4 h-4" />
+                      Enviar Currículo
+                    </>
+                  )}
+                </button>
+              )}
+            </form>
           </CardContent>
         </Card>
 
