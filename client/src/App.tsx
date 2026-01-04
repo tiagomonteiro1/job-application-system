@@ -18,7 +18,7 @@ import Automacoes from "./pages/Automacoes";
 import Integracoes from "./pages/Integracoes";
 import LimpezaCache from "./pages/LimpezaCache";
 import Login from "./pages/Login";
-import AdminUsuarios from "./pages/AdminUsuarios";
+import AdminUsuarios from "./pages/admin/Usuarios";
 import AdminLogin from "./pages/AdminLogin";
 
 function Router() {

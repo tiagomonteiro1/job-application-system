@@ -59,3 +59,15 @@
 - [ ] Testar notificações
 - [ ] Verificar responsividade
 - [ ] Verificar segurança
+
+## Gestão de Usuários - Em Implementação
+- [x] Criar router TRPC admin.usuarios
+- [x] Implementar procedures: list, create, update, delete, changeRole
+- [x] Criar página /admin/usuarios
+- [x] Implementar tabela com filtros (role, plano, status)
+- [x] Implementar paginação
+- [x] Criar modal de criação de usuário
+- [x] Criar modal de edição de usuário
+- [x] Adicionar botão de desativar/ativar usuário
+- [x] Adicionar item "Usuários" no menu admin
+- [x] Testar CRUD completo - Usuário criado com sucesso!

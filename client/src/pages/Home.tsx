@@ -445,6 +445,12 @@ export default function Home() {
                         Admin
                       </Link>
                     </Button>
+                    <Button variant="ghost" size="sm" asChild className="bg-blue-600/20 border border-blue-400/30 hover:bg-blue-600/30">
+                      <Link href="/admin/usuarios">
+                        <Users className="w-4 h-4 mr-2" />
+                        Usuários
+                      </Link>
+                    </Button>
                     <Button variant="ghost" size="sm" asChild className="bg-red-600/20 border border-red-400/30 hover:bg-red-600/30">
                       <Link href="/limpeza-cache">
                         <Trash2 className="w-4 h-4 mr-2" />
