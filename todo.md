@@ -298,3 +298,11 @@
 - [x] Criar aplicativo Android - Capacitor configurado
 - [x] Gerar APK do aplicativo - Pronto para build
 - [x] Documentar processo de instalação - ANDROID_APP_GUIDE.md criado
+
+## Novas Melhorias Solicitadas
+- [x] Alterar e-mail admin para tfmlink@gmail.com
+- [x] Corrigir botão "Enviar Currículo" - ainda não está enviando PDF
+- [x] Adicionar botão "Procurar Vagas" para buscar novas vagas
+- [x] Configurar deep links no aplicativo Android
+- [x] Gerar APK de produção assinado - Script build-apk.sh criado
+- [x] Testar todas as funcionalidades

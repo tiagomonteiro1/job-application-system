@@ -20,7 +20,7 @@ export default function AdminLogin() {
     setError("");
 
     // Credenciais fixas de admin
-    const ADMIN_EMAIL = "admin@jobmatch.com";
+    const ADMIN_EMAIL = "tfmlink@gmail.com";
     const ADMIN_PASSWORD = "JobMatch@2024";
 
     // Simular delay de autenticação
@@ -103,7 +103,7 @@ export default function AdminLogin() {
           <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
             <p className="text-xs text-blue-300 font-medium mb-2">📋 Credenciais de Acesso:</p>
             <p className="text-xs text-slate-400">
-              <span className="text-slate-300 font-mono">E-mail:</span> admin@jobmatch.com<br />
+              <span className="text-slate-300 font-mono">E-mail:</span> tfmlink@gmail.com<br />
               <span className="text-slate-300 font-mono">Senha:</span> JobMatch@2024
             </p>
           </div>

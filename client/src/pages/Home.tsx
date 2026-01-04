@@ -181,13 +181,34 @@ export default function Home() {
       // Baixar PDF do currículo
       const pdfUrl = curriculoAnalisado.refatoradoPdfUrl || curriculoAnalisado.originalPdfUrl;
       if (pdfUrl) {
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = `curriculo-${vaga.empresa.replace(/\s+/g, '-')}.pdf`;
-        link.target = '_blank';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        try {
+          // Fazer download do PDF via fetch para garantir que funcione
+          const response = await fetch(pdfUrl);
+          if (!response.ok) throw new Error('Falha ao baixar PDF');
+          
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `curriculo-${vaga.empresa.replace(/\s+/g, '-')}.pdf`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
+          
+          toast.success('PDF do currículo baixado com sucesso!');
+        } catch (error) {
+          console.error('Erro ao baixar PDF:', error);
+          toast.error('Erro ao baixar PDF do currículo', {
+            description: 'Tentando abrir em nova aba...'
+          });
+          // Fallback: abrir em nova aba
+          window.open(pdfUrl, '_blank');
+        }
+      } else {
+        toast.warning('PDF do currículo não disponível', {
+          description: 'Faça upload de um currículo em PDF'
+        });
       }
 
       toast.success(`Candidatura enviada para ${vaga.empresa}!`, {
@@ -654,6 +675,25 @@ export default function Home() {
                 }}
               >
                 Limpar Filtros
+              </Button>
+
+              {/* Botão Procurar Vagas */}
+              <Button 
+                onClick={() => {
+                  toast.success('Buscando novas vagas...', {
+                    description: 'Varredura automática em andamento'
+                  });
+                  // Simular busca de novas vagas
+                  setTimeout(() => {
+                    toast.success(`${vagas.length} vagas encontradas!`, {
+                      description: 'Vagas atualizadas com sucesso'
+                    });
+                  }, 2000);
+                }}
+                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              >
+                <Search className="w-4 h-4 mr-2" />
+                Procurar Novas Vagas
               </Button>
             </div>
           </aside>

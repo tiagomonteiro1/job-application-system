@@ -29,7 +29,20 @@ O aplicativo inclui os seguintes plugins nativos:
 
 ## 🔧 Como Gerar o APK
 
-### Opção 1: Usando Android Studio (Recomendado)
+### Opção 1: Script Automático (Mais Rápido)
+
+```bash
+# Executar script de build
+./build-apk.sh
+```
+
+O script irá:
+1. Fazer build do frontend
+2. Sincronizar com Capacitor
+3. Gerar APK de Debug
+4. Gerar APK de Release
+
+### Opção 2: Usando Android Studio (Recomendado)
 
 1. **Abrir o projeto no Android Studio**:
    ```bash
@@ -216,7 +229,31 @@ O app tem acesso a:
 - ✅ Splash screen customizável
 - ✅ Controle da barra de status
 - ✅ Armazenamento local (localStorage)
+- ✅ Deep Links (jobmatch://)
 - ✅ Geolocalização (se necessário)
+
+---
+
+## 🔗 Deep Links Configurados
+
+O aplicativo suporta deep links para abrir conteúdo específico:
+
+**Formato**: `jobmatch://[rota]`
+
+**Exemplos**:
+- `jobmatch://vagas` - Abre lista de vagas
+- `jobmatch://curriculo` - Abre página de currículo
+- `jobmatch://vaga/123` - Abre vaga específica
+- `jobmatch://notificacoes` - Abre notificações
+
+**Uso em links externos**:
+```html
+<a href="jobmatch://vaga/123">Abrir no App</a>
+```
+
+**Fallback para web**:
+Se o app não estiver instalado, redireciona para:
+`https://jobmatch.app/[rota]`
 
 ---
 
