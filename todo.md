@@ -280,3 +280,9 @@
 - [x] Testar sistema após atualização
 - [x] Verificar compatibilidade de todas as funcionalidades
 - [x] Garantir que não há breaking changes
+
+## Correções Solicitadas pelo Usuário
+- [x] Corrigir botão "Enviar Currículo" - não está enviando PDF
+- [x] Alterar login admin de username para e-mail
+- [x] Testar envio de currículo completo
+- [x] Testar login admin com e-mail

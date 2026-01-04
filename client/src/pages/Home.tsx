@@ -178,8 +178,20 @@ export default function Home() {
         candidaturaId: candidatura.id,
       });
 
+      // Baixar PDF do currículo
+      const pdfUrl = curriculoAnalisado.refatoradoPdfUrl || curriculoAnalisado.originalPdfUrl;
+      if (pdfUrl) {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = `curriculo-${vaga.empresa.replace(/\s+/g, '-')}.pdf`;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
       toast.success(`Candidatura enviada para ${vaga.empresa}!`, {
-        description: `Carta de apresentação gerada automaticamente`
+        description: `Carta de apresentação gerada e PDF baixado`
       });
 
       setShowCandidaturaDialog(false);
