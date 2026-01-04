@@ -1,0 +1,54 @@
+{
+  "nome": "Tiago Faria Monteiro",
+  "cargo": "Senior Software Engineer | E-commerce & Cloud Specialist | Tech Lead",
+  "localizacao": "Coqueiral – MG, Brasil",
+  "telefone": "(35) 99721-3174",
+  "email": "tfmlink@yahoo.com.br",
+  "linkedin": "linkedin.com/in/tiagofaria",
+  "github": "github.com/tfmlink1",
+  "resumo": "Engenheiro de Software com 24 anos de experiência em desenvolvimento web, e-commerce, microserviços e computação em nuvem. Especialista em JavaScript, React, APIs REST, PL/SQL e Elasticsearch, com atuação em ambientes de alta complexidade, grande volume transacional e requisitos críticos de segurança. Forte experiência como Tech Lead, liderando times, definindo arquitetura, reduzindo custos e mitigando riscos técnicos.",
+  "competencias": [
+    "JavaScript, React, Angular",
+    "Node.js, PL/SQL, APIs REST, Elasticsearch",
+    "Magento 1/2, AEM, WooCommerce",
+    "AWS, Azure, GCP, Docker, Kubernetes, CI/CD, Terraform",
+    "Microserviços, SaaS, Event-driven Architecture",
+    "OWASP, PCI-DSS, Pentest"
+  ],
+  "experiencia": [
+    {
+      "empresa": "Engineering do Brasil",
+      "cargo": "Magento PHP & Software Specialist",
+      "periodo": "2022 – Atual",
+      "descricao": [
+        "Desenvolvimento full stack com Magento, React, AEM e APIs REST",
+        "Definição e otimização de arquitetura cloud, reduzindo custos em 35% no Azure",
+        "Execução de auditorias de segurança, mitigando 90% das vulnerabilidades",
+        "Apoio técnico e definição de boas práticas para times de desenvolvimento"
+      ]
+    },
+    {
+      "empresa": "Keyrus (Projeto Sephora)",
+      "cargo": "Senior Magento & Software Developer",
+      "periodo": "2020 – 2022",
+      "descricao": [
+        "Integração entre Magento e AEM utilizando microserviços e APIs REST",
+        "Implementação de pipelines CI/CD, reduzindo o tempo de deploy em 50%"
+      ]
+    },
+    {
+      "empresa": "Accenture (Setor Bancário)",
+      "cargo": "IT Consultant",
+      "periodo": "2018 – 2020",
+      "descricao": []
+    }
+  ],
+  "areas_interesse": [
+    "Desenvolvedor PHP Sênior",
+    "Segurança da Informação",
+    "Pentester",
+    "Automação com n8n",
+    "IA e ChatGPT",
+    "No-code"
+  ]
+}

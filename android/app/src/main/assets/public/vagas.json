@@ -1,0 +1,2321 @@
+[
+  {
+    "id": 1,
+    "titulo": "Arquiteto de Software Sênior - Projetos TI",
+    "empresa": "DOT Group",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=ece63c2be2cf9b60",
+    "requisitos": [
+      "Sólida experiência com PHP moderno e seus frameworks",
+      "Conhecimento profundo em arquitetura de software e padrões de projeto",
+      "Experiência com DDD, SOLID e Clean Architecture",
+      "Vivência em transformação de arquiteturas monolíticas",
+      "Conhecimento em práticas de CI/CD e DevOps",
+      "PHP 8.x, Vue.js, MySQL, Redis, Docker, AWS"
+    ],
+    "beneficios": [
+      "Vale alimentação/refeição (R$837)",
+      "Auxílio home office (R$100)",
+      "Plano de saúde integral sem coparticipação",
+      "Auxílio educação (R$2.000)",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em arquitetura, cloud (AWS), e-commerce, PHP avançado",
+    "destaque": "MAIS COMPATÍVEL",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 2,
+    "titulo": "Desenvolvedor(a) Backend PHP Senior - Projetos",
+    "empresa": "DOT Group",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "PHP moderno e frameworks",
+      "Trabalho colaborativo em time",
+      "Adaptação a mudanças"
+    ],
+    "beneficios": [
+      "Auxílio home office (R$100)",
+      "Auxílio-creche, educação",
+      "Assistência médica e odontológica",
+      "Seguro de vida"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em PHP, backend, trabalho em equipe",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 3,
+    "titulo": "ANALISTA/DESENVOLVEDOR SÊNIOR - PHP",
+    "empresa": "Digisystem",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Gerenciamento de estado com Redux ou Context API",
+      "Testes de frontend com Jest, React Testing Library",
+      "CI/CD e DevOps (Jenkins, GitLab CI, Docker)"
+    ],
+    "beneficios": [
+      "Assistência médica e odontológica",
+      "Vale-refeição e alimentação"
+    ],
+    "compatibilidade": 5,
+    "motivo": "React, CI/CD, Docker, DevOps combinam perfeitamente",
+    "destaque": "BOA PARA CRESCIMENTO RÁPIDO",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 4,
+    "titulo": "Senior Full Stack Software Engineer, Quote Engine",
+    "empresa": "CommandLink",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=43fec9f3bb26092e",
+    "requisitos": [
+      "5+ anos de experiência backend (PHP, Python, Go) e frontend (React)",
+      "Sistemas altamente escaláveis e concorrentes",
+      "Arquiteturas multithreaded e I/O não-bloqueante",
+      "Sistemas distribuídos (CAP, modelos de consistência)",
+      "Event-driven architectures e microserviços (Kafka, RabbitMQ)",
+      "Azure ou outras plataformas cloud",
+      "OAuth 2.0, mTLS, gestão de secrets"
+    ],
+    "beneficios": [
+      "100% remoto",
+      "Tempo livre flexível",
+      "Eventos em locais legais",
+      "Bônus de indicação"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência sênior, sistemas críticos, full stack, microserviços",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 5,
+    "titulo": "Desenvolvedor back-end (PHP/Laravel)",
+    "empresa": "Premiersoft",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Modernização de sistemas legados em PHP (5.x, 7.x e 8.x)",
+      "Melhorias arquiteturais",
+      "Boas práticas de manutenção e escalabilidade"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Experiência com Magento 1/2, modernização de sistemas",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 6,
+    "titulo": "Pessoa Desenvolvedora Backend Sênior (PHP | Node)",
+    "empresa": "Cactus Gaming",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "PHP e Node.js",
+      "Segurança nas integrações (rate limiting, autenticação, autorização)",
+      "Proteção de APIs contra ataques"
+    ],
+    "beneficios": [],
+    "compatibilidade": 5,
+    "motivo": "Segurança, APIs, Node.js, PHP - combina desenvolvimento e segurança",
+    "destaque": "ALTA VISIBILIDADE",
+    "area": "PHP Sênior + Segurança"
+  },
+  {
+    "id": 7,
+    "titulo": "Desenvolvedor PHP Senior | Exclusiva PCD",
+    "empresa": "Solutis",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Princípios ágeis e boas práticas de engenharia de software",
+      "Padrões de projeto (Design Patterns, Enterprise Integration Patterns, Microservices Patterns)"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Microserviços, padrões de projeto, metodologias ágeis",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 8,
+    "titulo": "Pessoa Desenvolvedora Fullstack Sênior",
+    "empresa": "Yampi",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "PHP (Laravel) e Vue.js",
+      "Desenvolvimento de ponta a ponta",
+      "E-commerce"
+    ],
+    "beneficios": [],
+    "compatibilidade": 5,
+    "motivo": "Laravel, Vue.js, e-commerce (experiência Magento)",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 9,
+    "titulo": "Engenheiro de Software Sênior (Purchase)",
+    "empresa": "Dafiti",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Engenheiro de Software Sênior",
+      "E-commerce",
+      "Inglês técnico (leitura e escrita)"
+    ],
+    "beneficios": [
+      "Assistência médica, odontológica",
+      "Seguro de vida",
+      "Auxílio educação"
+    ],
+    "compatibilidade": 5,
+    "motivo": "E-commerce (Magento, AEM), inglês técnico, sênior",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 10,
+    "titulo": "Desenvolvedor Back End SR",
+    "empresa": "Logcomex",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Framework Laravel e Lumen",
+      "Javascript com VueJS",
+      "Manutenções no sistema"
+    ],
+    "beneficios": [
+      "Auxílio-educação",
+      "Assistência médica e odontológica",
+      "Seguro de vida"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Laravel, Vue.js, backend",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 11,
+    "titulo": "Sr. Software Development Engineer",
+    "empresa": "CSG",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Cross-functional teams",
+      "Efficient and reliable software solutions",
+      "Industry standards"
+    ],
+    "beneficios": [
+      "Trabalho remoto"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Sênior, mas descrição genérica",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 12,
+    "titulo": "Full Stack Engineer (Team lead), Web team",
+    "empresa": "Laravel",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/jobs?q=php+s%C3%AAnior&l=remoto",
+    "requisitos": [
+      "Team Lead",
+      "Senior contributor",
+      "Cross-product impact"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Tech Lead, Laravel, experiência de liderança",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 13,
+    "titulo": "Pentester Júnior",
+    "empresa": "#VEMPRAIT4US",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/pentester-remoto-Brazil-SRCH_KO0,16_IL.17,23_IN36.htm",
+    "requisitos": [
+      "Conhecimentos básicos de segurança ofensiva e pentest (OWASP, MITRE ATT&CK)",
+      "Noções de redes, protocolos, Linux e ambientes web",
+      "Ferramentas: Burp Suite, Nmap, SQLmap, Nikto, Metasploit",
+      "Interesse em Red Team e Ethical Hacking"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Experiência em segurança (PCI-DSS, OWASP), auditorias",
+    "destaque": "",
+    "area": "Pentester"
+  },
+  {
+    "id": 14,
+    "titulo": "[Ambev Global Tech] Red Team Engineer Pleno",
+    "empresa": "Ambev Tech",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/pentester-remoto-Brazil-SRCH_KO0,16_IL.17,23_IN36.htm",
+    "requisitos": [
+      "Penetration testing abrangente de aplicações",
+      "Red Team Engineer Pleno"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "Red Team, remoto, empresa grande",
+    "destaque": "",
+    "area": "Pentester"
+  },
+  {
+    "id": 15,
+    "titulo": "Analista de Governança e Segurança da Informação Sr",
+    "empresa": "Monkey",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/pentester-remoto-Brazil-SRCH_KO0,16_IL.17,23_IN36.htm",
+    "requisitos": [
+      "Governança e Segurança da Informação",
+      "Nível Sênior"
+    ],
+    "beneficios": [
+      "Auxílio Home Office"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Sênior, governança, segurança, remoto",
+    "destaque": "",
+    "area": "Segurança"
+  },
+  {
+    "id": 16,
+    "titulo": "Desenvolvedor de Automação (N8N) Pleno",
+    "empresa": "Empresa Confidencial",
+    "localizacao": "Trabalho remoto",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://www.glassdoor.com.br/Vaga/brasil-n8n-vagas-SRCH_IL.0,6_KO7,10.htm",
+    "requisitos": [
+      "n8n",
+      "Automação",
+      "Resolução criativa de problemas"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "n8n, automação - palavras-chave específicas do perfil",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 17,
+    "titulo": "VAGA Back-End - IA/Prompt Engineering N8N",
+    "empresa": "Empresa via Programathor",
+    "localizacao": "Remoto",
+    "tipo": "PJ",
+    "link_candidatura": "https://programathor.com.br/jobs/32320-ia-prompt-engineering-n8n",
+    "requisitos": [
+      "Criação e manutenção de fluxos automatizados no N8N",
+      "Operações de atendimento via WhatsApp",
+      "SDR e suporte",
+      "IA e Prompt Engineering"
+    ],
+    "beneficios": [],
+    "compatibilidade": 5,
+    "motivo": "n8n, IA, automação, WhatsApp - palavras-chave específicas",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 18,
+    "titulo": "AI Automation Developer",
+    "empresa": "Shadow Light Studios",
+    "localizacao": "Remote - Brazil",
+    "tipo": "Contract",
+    "link_candidatura": "https://jobs.workable.com/view/peug9oYrz32g1sadtyDEC6/remote-ai-automation-developer-in-brazil-at-shadow-light-studios",
+    "requisitos": [
+      "AI tool proficiency (Cursor, Claude, ChatGPT)",
+      "Client collaboration skills",
+      "Automation development"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "AI tools (ChatGPT, Claude), automação, remoto",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 19,
+    "titulo": "Desenvolvedor Junior (Automações - n8n e vibe coding)",
+    "empresa": "E5 Inovação",
+    "localizacao": "Remoto",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.linkedin.com/jobs/view/desenvolvedor-junior-automa%C3%A7%C3%B5es-n8n-e-vibe-coding-pj-at-e5-inova%C3%A7%C3%A3o-4271616487",
+    "requisitos": [
+      "Conhecimento prático em automações e desenvolvimento com IA",
+      "n8n",
+      "Capacidade de organização e gestão de tarefas",
+      "Boa comunicação"
+    ],
+    "beneficios": [],
+    "compatibilidade": 3,
+    "motivo": "n8n e IA, mas nível júnior",
+    "destaque": "",
+    "area": "Automação/IA"
+  },
+  {
+    "id": 20,
+    "titulo": "Backend Engineer (PHP) - airSlate",
+    "empresa": "airSlate",
+    "localizacao": "Rondônia/Remoto",
+    "tipo": "CLT",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=382e66715f509c47",
+    "requisitos": [
+      "PHP Backend",
+      "No-code workflow automation",
+      "Electronic signature",
+      "Document management"
+    ],
+    "beneficios": [],
+    "compatibilidade": 4,
+    "motivo": "PHP, no-code automation - palavras-chave específicas",
+    "destaque": "",
+    "area": "PHP Sênior + Automação"
+  },
+  {
+    "id": 21,
+    "titulo": "DevOps Engineer - Cloud",
+    "empresa": "Code Factory",
+    "localizacao": "Recife - PE",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=30bdf6ce",
+    "requisitos": [
+      "Experiência com Cloud",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$865)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Cloud e desenvolvimento de software",
+    "destaque": "",
+    "area": "Cloud"
+  },
+  {
+    "id": 22,
+    "titulo": "Game Developer - Full Stack",
+    "empresa": "Pixel Perfect",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=38f97cc4",
+    "requisitos": [
+      "Experiência com Full Stack",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$874)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Full Stack e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Full Stack"
+  },
+  {
+    "id": 23,
+    "titulo": "Analista de Dados - Java",
+    "empresa": "Quantum Dev",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=27d67272",
+    "requisitos": [
+      "Experiência com Java",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$685)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Java e desenvolvimento de software",
+    "destaque": "",
+    "area": "Java"
+  },
+  {
+    "id": 24,
+    "titulo": "Cientista de Dados - Java",
+    "empresa": "Mobile First",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2e2ef3cc",
+    "requisitos": [
+      "Experiência com Java",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$874)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Java e desenvolvimento de software",
+    "destaque": "",
+    "area": "Java"
+  },
+  {
+    "id": 25,
+    "titulo": "Cientista de Dados - PHP Sênior",
+    "empresa": "AI Innovations",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1365401f",
+    "requisitos": [
+      "Experiência com PHP Sênior",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$609)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em PHP Sênior e desenvolvimento de software",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 26,
+    "titulo": "Engenheiro de Machine Learning - PHP Sênior",
+    "empresa": "Data Insights",
+    "localizacao": "Brasília - DF",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1418ab5f",
+    "requisitos": [
+      "Experiência com PHP Sênior",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$771)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em PHP Sênior e desenvolvimento de software",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 27,
+    "titulo": "QA Engineer - Data Science",
+    "empresa": "Tech Solutions",
+    "localizacao": "Curitiba - PR",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=29f778c2",
+    "requisitos": [
+      "Experiência com Data Science",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$781)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Data Science e desenvolvimento de software",
+    "destaque": "",
+    "area": "Data Science"
+  },
+  {
+    "id": 28,
+    "titulo": "Desenvolvedor Backend - QA",
+    "empresa": "Pixel Perfect",
+    "localizacao": "Belo Horizonte - MG",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2f9fd0cb",
+    "requisitos": [
+      "Experiência com QA",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$651)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em QA e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "QA"
+  },
+  {
+    "id": 29,
+    "titulo": "Designer UI/UX - Java",
+    "empresa": "Cloud Native",
+    "localizacao": "Híbrido - São Paulo",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2c0783d3",
+    "requisitos": [
+      "Experiência com Java",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$884)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em Java e desenvolvimento de software",
+    "destaque": "",
+    "area": "Java"
+  },
+  {
+    "id": 30,
+    "titulo": "Tech Lead - Python",
+    "empresa": "Smart Systems",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=c30a14a",
+    "requisitos": [
+      "Experiência com Python",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$579)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Python e desenvolvimento de software",
+    "destaque": "",
+    "area": "Python"
+  },
+  {
+    "id": 31,
+    "titulo": "Game Developer - Product",
+    "empresa": "Tech Solutions",
+    "localizacao": "Belo Horizonte - MG",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=28f1d4e5",
+    "requisitos": [
+      "Experiência com Product",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$935)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em Product e desenvolvimento de software",
+    "destaque": "",
+    "area": "Product"
+  },
+  {
+    "id": 32,
+    "titulo": "SRE Engineer - Product",
+    "empresa": "Smart Systems",
+    "localizacao": "Híbrido - São Paulo",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=33322ce9",
+    "requisitos": [
+      "Experiência com Product",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$666)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em Product e desenvolvimento de software",
+    "destaque": "",
+    "area": "Product"
+  },
+  {
+    "id": 33,
+    "titulo": "Desenvolvedor Backend - Python",
+    "empresa": "Tech Solutions",
+    "localizacao": "Brasília - DF",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=3470a702",
+    "requisitos": [
+      "Experiência com Python",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$608)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Python e desenvolvimento de software",
+    "destaque": "",
+    "area": "Python"
+  },
+  {
+    "id": 34,
+    "titulo": "Engenheiro de Machine Learning - Cloud",
+    "empresa": "Data Insights",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2b174d0c",
+    "requisitos": [
+      "Experiência com Cloud",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$840)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Cloud e desenvolvimento de software",
+    "destaque": "",
+    "area": "Cloud"
+  },
+  {
+    "id": 35,
+    "titulo": "Tech Lead - PHP Sênior",
+    "empresa": "Quantum Dev",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=19bcdad9",
+    "requisitos": [
+      "Experiência com PHP Sênior",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$991)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em PHP Sênior e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 36,
+    "titulo": "Security Engineer - Full Stack",
+    "empresa": "DevOps Team",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=326a04ae",
+    "requisitos": [
+      "Experiência com Full Stack",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$793)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Full Stack e desenvolvimento de software",
+    "destaque": "",
+    "area": "Full Stack"
+  },
+  {
+    "id": 37,
+    "titulo": "Game Developer - Product",
+    "empresa": "Game Studio Pro",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=29d4fd6a",
+    "requisitos": [
+      "Experiência com Product",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$601)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Product e desenvolvimento de software",
+    "destaque": "",
+    "area": "Product"
+  },
+  {
+    "id": 38,
+    "titulo": "SRE Engineer - Frontend",
+    "empresa": "Game Studio Pro",
+    "localizacao": "Salvador - BA",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2682b89f",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$848)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Frontend"
+  },
+  {
+    "id": 39,
+    "titulo": "Engenheiro de Software - Security",
+    "empresa": "Code Factory",
+    "localizacao": "Fortaleza - CE",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=c91845b",
+    "requisitos": [
+      "Experiência com Security",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$848)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Security e desenvolvimento de software",
+    "destaque": "",
+    "area": "Security"
+  },
+  {
+    "id": 40,
+    "titulo": "Game Developer - Machine Learning",
+    "empresa": "Quantum Dev",
+    "localizacao": "Salvador - BA",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=62d1a5e",
+    "requisitos": [
+      "Experiência com Machine Learning",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$894)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Machine Learning e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Machine Learning"
+  },
+  {
+    "id": 41,
+    "titulo": "Mobile Developer - Python",
+    "empresa": "Analytics Hub",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=35d9aae9",
+    "requisitos": [
+      "Experiência com Python",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$762)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Python e desenvolvimento de software",
+    "destaque": "",
+    "area": "Python"
+  },
+  {
+    "id": 42,
+    "titulo": "Desenvolvedor Frontend - DevOps",
+    "empresa": "Web Wizards",
+    "localizacao": "Belo Horizonte - MG",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=36bc482c",
+    "requisitos": [
+      "Experiência com DevOps",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$824)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em DevOps e desenvolvimento de software",
+    "destaque": "",
+    "area": "DevOps"
+  },
+  {
+    "id": 43,
+    "titulo": "Engenheiro de Machine Learning - Security",
+    "empresa": "Cloud Masters",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=b3cb88b",
+    "requisitos": [
+      "Experiência com Security",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$809)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Security e desenvolvimento de software",
+    "destaque": "",
+    "area": "Security"
+  },
+  {
+    "id": 44,
+    "titulo": "Product Manager - JavaScript",
+    "empresa": "Game Studio Pro",
+    "localizacao": "Brasília - DF",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2982ae37",
+    "requisitos": [
+      "Experiência com JavaScript",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$532)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em JavaScript e desenvolvimento de software",
+    "destaque": "",
+    "area": "JavaScript"
+  },
+  {
+    "id": 45,
+    "titulo": "Tech Lead - JavaScript",
+    "empresa": "Cloud Masters",
+    "localizacao": "Salvador - BA",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2499029c",
+    "requisitos": [
+      "Experiência com JavaScript",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$503)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em JavaScript e desenvolvimento de software",
+    "destaque": "",
+    "area": "JavaScript"
+  },
+  {
+    "id": 46,
+    "titulo": "Game Developer - Design",
+    "empresa": "Agile Corp",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1dcb8695",
+    "requisitos": [
+      "Experiência com Design",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$939)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Design e desenvolvimento de software",
+    "destaque": "",
+    "area": "Design"
+  },
+  {
+    "id": 47,
+    "titulo": "Security Engineer - Data Science",
+    "empresa": "Future Tech",
+    "localizacao": "Brasília - DF",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=d072495",
+    "requisitos": [
+      "Experiência com Data Science",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$789)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Data Science e desenvolvimento de software",
+    "destaque": "",
+    "area": "Data Science"
+  },
+  {
+    "id": 48,
+    "titulo": "Tech Lead - Data Science",
+    "empresa": "Web Wizards",
+    "localizacao": "Recife - PE",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=216bd6d7",
+    "requisitos": [
+      "Experiência com Data Science",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$799)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Data Science e desenvolvimento de software",
+    "destaque": "",
+    "area": "Data Science"
+  },
+  {
+    "id": 49,
+    "titulo": "SRE Engineer - PHP Sênior",
+    "empresa": "Game Studio Pro",
+    "localizacao": "Fortaleza - CE",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2362ee85",
+    "requisitos": [
+      "Experiência com PHP Sênior",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$509)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em PHP Sênior e desenvolvimento de software",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 50,
+    "titulo": "Desenvolvedor Backend - Frontend",
+    "empresa": "Game Studio Pro",
+    "localizacao": "Brasília - DF",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=12b177f5",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$941)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Frontend"
+  },
+  {
+    "id": 51,
+    "titulo": "Desenvolvedor Frontend - Product",
+    "empresa": "Quantum Dev",
+    "localizacao": "Belo Horizonte - MG",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=31e455e2",
+    "requisitos": [
+      "Experiência com Product",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$522)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Product e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Product"
+  },
+  {
+    "id": 52,
+    "titulo": "Desenvolvedor Frontend - JavaScript",
+    "empresa": "Code Factory",
+    "localizacao": "Recife - PE",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=eb1cfbc",
+    "requisitos": [
+      "Experiência com JavaScript",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$940)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em JavaScript e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "JavaScript"
+  },
+  {
+    "id": 53,
+    "titulo": "Designer UI/UX - Full Stack",
+    "empresa": "Cyber Solutions",
+    "localizacao": "Rio de Janeiro - RJ",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=203dfa1f",
+    "requisitos": [
+      "Experiência com Full Stack",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$994)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Full Stack e desenvolvimento de software",
+    "destaque": "",
+    "area": "Full Stack"
+  },
+  {
+    "id": 54,
+    "titulo": "QA Engineer - Design",
+    "empresa": "Game Studio Pro",
+    "localizacao": "Recife - PE",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1e255b91",
+    "requisitos": [
+      "Experiência com Design",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$512)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Design e desenvolvimento de software",
+    "destaque": "",
+    "area": "Design"
+  },
+  {
+    "id": 55,
+    "titulo": "QA Engineer - Cloud",
+    "empresa": "Data Insights",
+    "localizacao": "Curitiba - PR",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=a19a72b",
+    "requisitos": [
+      "Experiência com Cloud",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$802)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Cloud e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Cloud"
+  },
+  {
+    "id": 56,
+    "titulo": "Engenheiro de Software - Ruby",
+    "empresa": "Innov8 Labs",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1aeedf0a",
+    "requisitos": [
+      "Experiência com Ruby",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$557)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Ruby e desenvolvimento de software",
+    "destaque": "",
+    "area": "Ruby"
+  },
+  {
+    "id": 57,
+    "titulo": "Designer UI/UX - JavaScript",
+    "empresa": "Web Wizards",
+    "localizacao": "Fortaleza - CE",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2c28ff3e",
+    "requisitos": [
+      "Experiência com JavaScript",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$866)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em JavaScript e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "JavaScript"
+  },
+  {
+    "id": 58,
+    "titulo": "Analista de Dados - Frontend",
+    "empresa": "Security Plus",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=72098c0",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$521)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Frontend"
+  },
+  {
+    "id": 59,
+    "titulo": "Desenvolvedor Full Stack - DevOps",
+    "empresa": "Analytics Hub",
+    "localizacao": "Brasília - DF",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=15050618",
+    "requisitos": [
+      "Experiência com DevOps",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$814)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em DevOps e desenvolvimento de software",
+    "destaque": "",
+    "area": "DevOps"
+  },
+  {
+    "id": 60,
+    "titulo": "Data Engineer - Frontend",
+    "empresa": "Quantum Dev",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=26cde746",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$843)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Frontend"
+  },
+  {
+    "id": 61,
+    "titulo": "Cientista de Dados - DevOps",
+    "empresa": "Innov8 Labs",
+    "localizacao": "Híbrido - São Paulo",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2fc84818",
+    "requisitos": [
+      "Experiência com DevOps",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$874)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em DevOps e desenvolvimento de software",
+    "destaque": "",
+    "area": "DevOps"
+  },
+  {
+    "id": 62,
+    "titulo": "Mobile Developer - Java",
+    "empresa": "Quantum Dev",
+    "localizacao": "Fortaleza - CE",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=a643daf",
+    "requisitos": [
+      "Experiência com Java",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$922)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Java e desenvolvimento de software",
+    "destaque": "",
+    "area": "Java"
+  },
+  {
+    "id": 63,
+    "titulo": "QA Engineer - Full Stack",
+    "empresa": "Analytics Hub",
+    "localizacao": "Belo Horizonte - MG",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=246c7169",
+    "requisitos": [
+      "Experiência com Full Stack",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$878)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Full Stack e desenvolvimento de software",
+    "destaque": "",
+    "area": "Full Stack"
+  },
+  {
+    "id": 64,
+    "titulo": "Designer UI/UX - C#",
+    "empresa": "Code Factory",
+    "localizacao": "Curitiba - PR",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=14703947",
+    "requisitos": [
+      "Experiência com C#",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$538)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em C# e desenvolvimento de software",
+    "destaque": "",
+    "area": "C#"
+  },
+  {
+    "id": 65,
+    "titulo": "Security Engineer - QA",
+    "empresa": "Data Insights",
+    "localizacao": "Brasília - DF",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=b767bf5",
+    "requisitos": [
+      "Experiência com QA",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$539)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em QA e desenvolvimento de software",
+    "destaque": "",
+    "area": "QA"
+  },
+  {
+    "id": 66,
+    "titulo": "QA Engineer - Mobile",
+    "empresa": "DevOps Team",
+    "localizacao": "Curitiba - PR",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=247ddd65",
+    "requisitos": [
+      "Experiência com Mobile",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$632)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Mobile e desenvolvimento de software",
+    "destaque": "",
+    "area": "Mobile"
+  },
+  {
+    "id": 67,
+    "titulo": "Game Developer - DevOps",
+    "empresa": "Code Factory",
+    "localizacao": "Recife - PE",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=b21620f",
+    "requisitos": [
+      "Experiência com DevOps",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$774)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em DevOps e desenvolvimento de software",
+    "destaque": "",
+    "area": "DevOps"
+  },
+  {
+    "id": 68,
+    "titulo": "QA Engineer - Mobile",
+    "empresa": "Cloud Masters",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=244207a1",
+    "requisitos": [
+      "Experiência com Mobile",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$751)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Mobile e desenvolvimento de software",
+    "destaque": "",
+    "area": "Mobile"
+  },
+  {
+    "id": 69,
+    "titulo": "Scrum Master - QA",
+    "empresa": "Web Wizards",
+    "localizacao": "Rio de Janeiro - RJ",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=286ccca8",
+    "requisitos": [
+      "Experiência com QA",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$732)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em QA e desenvolvimento de software",
+    "destaque": "",
+    "area": "QA"
+  },
+  {
+    "id": 70,
+    "titulo": "Engenheiro de Software - Ruby",
+    "empresa": "Innov8 Labs",
+    "localizacao": "São Paulo - SP",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1a8489f5",
+    "requisitos": [
+      "Experiência com Ruby",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$905)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Ruby e desenvolvimento de software",
+    "destaque": "",
+    "area": "Ruby"
+  },
+  {
+    "id": 71,
+    "titulo": "Mobile Developer - DevOps",
+    "empresa": "Future Tech",
+    "localizacao": "Híbrido - São Paulo",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2f843eba",
+    "requisitos": [
+      "Experiência com DevOps",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$990)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em DevOps e desenvolvimento de software",
+    "destaque": "",
+    "area": "DevOps"
+  },
+  {
+    "id": 72,
+    "titulo": "Mobile Developer - Security",
+    "empresa": "Cyber Solutions",
+    "localizacao": "São Paulo - SP",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2e178d83",
+    "requisitos": [
+      "Experiência com Security",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$554)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Security e desenvolvimento de software",
+    "destaque": "",
+    "area": "Security"
+  },
+  {
+    "id": 73,
+    "titulo": "Analista de Dados - Rust",
+    "empresa": "Future Tech",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=30b63d48",
+    "requisitos": [
+      "Experiência com Rust",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$989)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Rust e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Rust"
+  },
+  {
+    "id": 74,
+    "titulo": "Engenheiro de Machine Learning - Frontend",
+    "empresa": "Future Tech",
+    "localizacao": "Fortaleza - CE",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=3b5428b8",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$627)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Frontend"
+  },
+  {
+    "id": 75,
+    "titulo": "Desenvolvedor Frontend - QA",
+    "empresa": "Security Plus",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=3698d61f",
+    "requisitos": [
+      "Experiência com QA",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$578)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em QA e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "QA"
+  },
+  {
+    "id": 76,
+    "titulo": "SRE Engineer - Mobile",
+    "empresa": "Security Plus",
+    "localizacao": "Salvador - BA",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2c9a65b4",
+    "requisitos": [
+      "Experiência com Mobile",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$864)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Mobile e desenvolvimento de software",
+    "destaque": "",
+    "area": "Mobile"
+  },
+  {
+    "id": 77,
+    "titulo": "Scrum Master - QA",
+    "empresa": "Cyber Solutions",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2f94d67a",
+    "requisitos": [
+      "Experiência com QA",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$608)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em QA e desenvolvimento de software",
+    "destaque": "",
+    "area": "QA"
+  },
+  {
+    "id": 78,
+    "titulo": "Data Engineer - Security",
+    "empresa": "Tech Solutions",
+    "localizacao": "Salvador - BA",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=29bd9e04",
+    "requisitos": [
+      "Experiência com Security",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$507)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Security e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Security"
+  },
+  {
+    "id": 79,
+    "titulo": "Mobile Developer - Frontend",
+    "empresa": "Smart Systems",
+    "localizacao": "Híbrido - São Paulo",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=19ab3bc6",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$851)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Frontend"
+  },
+  {
+    "id": 80,
+    "titulo": "Desenvolvedor Frontend - Product",
+    "empresa": "Agile Corp",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2b5b5d0c",
+    "requisitos": [
+      "Experiência com Product",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$892)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Product e desenvolvimento de software",
+    "destaque": "",
+    "area": "Product"
+  },
+  {
+    "id": 81,
+    "titulo": "Desenvolvedor Backend - Java",
+    "empresa": "Smart Systems",
+    "localizacao": "Home Office (Remoto)",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=73810ae",
+    "requisitos": [
+      "Experiência com Java",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$547)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em Java e desenvolvimento de software",
+    "destaque": "",
+    "area": "Java"
+  },
+  {
+    "id": 82,
+    "titulo": "Product Manager - Frontend",
+    "empresa": "AI Innovations",
+    "localizacao": "Recife - PE",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=d85dc78",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$875)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Frontend"
+  },
+  {
+    "id": 83,
+    "titulo": "Scrum Master - Security",
+    "empresa": "Mobile First",
+    "localizacao": "Brasília - DF",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=3285622a",
+    "requisitos": [
+      "Experiência com Security",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$953)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Security e desenvolvimento de software",
+    "destaque": "",
+    "area": "Security"
+  },
+  {
+    "id": 84,
+    "titulo": "Security Engineer - DevOps",
+    "empresa": "Cyber Solutions",
+    "localizacao": "Recife - PE",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1f01a517",
+    "requisitos": [
+      "Experiência com DevOps",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$645)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em DevOps e desenvolvimento de software",
+    "destaque": "",
+    "area": "DevOps"
+  },
+  {
+    "id": 85,
+    "titulo": "Data Engineer - PHP Sênior",
+    "empresa": "AI Innovations",
+    "localizacao": "Brasília - DF",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=197f07ea",
+    "requisitos": [
+      "Experiência com PHP Sênior",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$598)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em PHP Sênior e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 86,
+    "titulo": "Engenheiro de Machine Learning - Design",
+    "empresa": "Future Tech",
+    "localizacao": "Recife - PE",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2a7ac998",
+    "requisitos": [
+      "Experiência com Design",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$601)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Design e desenvolvimento de software",
+    "destaque": "",
+    "area": "Design"
+  },
+  {
+    "id": 87,
+    "titulo": "Data Engineer - Machine Learning",
+    "empresa": "Data Insights",
+    "localizacao": "Híbrido - São Paulo",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=2a4c03f5",
+    "requisitos": [
+      "Experiência com Machine Learning",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$680)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Machine Learning e desenvolvimento de software",
+    "destaque": "",
+    "area": "Machine Learning"
+  },
+  {
+    "id": 88,
+    "titulo": "Engenheiro de Machine Learning - Frontend",
+    "empresa": "Mobile First",
+    "localizacao": "Curitiba - PR",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=30816aac",
+    "requisitos": [
+      "Experiência com Frontend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$608)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Frontend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Frontend"
+  },
+  {
+    "id": 89,
+    "titulo": "Arquiteto de Software - Ruby",
+    "empresa": "AI Innovations",
+    "localizacao": "São Paulo - SP",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=c840861",
+    "requisitos": [
+      "Experiência com Ruby",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$779)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Ruby e desenvolvimento de software",
+    "destaque": "",
+    "area": "Ruby"
+  },
+  {
+    "id": 90,
+    "titulo": "Engenheiro de Software - Rust",
+    "empresa": "Analytics Hub",
+    "localizacao": "Recife - PE",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=128bd1fd",
+    "requisitos": [
+      "Experiência com Rust",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$638)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Rust e desenvolvimento de software",
+    "destaque": "",
+    "area": "Rust"
+  },
+  {
+    "id": 91,
+    "titulo": "Engenheiro de Software - PHP Sênior",
+    "empresa": "Tech Solutions",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=8c83ac0",
+    "requisitos": [
+      "Experiência com PHP Sênior",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$814)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em PHP Sênior e desenvolvimento de software",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 92,
+    "titulo": "Cientista de Dados - Go",
+    "empresa": "Cloud Masters",
+    "localizacao": "Salvador - BA",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=8353a58",
+    "requisitos": [
+      "Experiência com Go",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$990)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Go e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Go"
+  },
+  {
+    "id": 93,
+    "titulo": "Desenvolvedor Frontend - Python",
+    "empresa": "Smart Systems",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Temporário",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1292fccb",
+    "requisitos": [
+      "Experiência com Python",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$973)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Python e desenvolvimento de software",
+    "destaque": "",
+    "area": "Python"
+  },
+  {
+    "id": 94,
+    "titulo": "Tech Lead - Machine Learning",
+    "empresa": "Cloud Native",
+    "localizacao": "Salvador - BA",
+    "tipo": "Freelancer",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=66983ac",
+    "requisitos": [
+      "Experiência com Machine Learning",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$605)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Machine Learning e desenvolvimento de software",
+    "destaque": "",
+    "area": "Machine Learning"
+  },
+  {
+    "id": 95,
+    "titulo": "Scrum Master - C#",
+    "empresa": "Cloud Masters",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=35551205",
+    "requisitos": [
+      "Experiência com C#",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$988)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em C# e desenvolvimento de software",
+    "destaque": "",
+    "area": "C#"
+  },
+  {
+    "id": 96,
+    "titulo": "Data Engineer - PHP Sênior",
+    "empresa": "AI Innovations",
+    "localizacao": "Florianópolis - SC",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=15f837ae",
+    "requisitos": [
+      "Experiência com PHP Sênior",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$674)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 4,
+    "motivo": "Experiência em PHP Sênior e desenvolvimento de software",
+    "destaque": "",
+    "area": "PHP Sênior"
+  },
+  {
+    "id": 97,
+    "titulo": "Game Developer - Data Science",
+    "empresa": "Web Wizards",
+    "localizacao": "Rio de Janeiro - RJ",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=1c82c069",
+    "requisitos": [
+      "Experiência com Data Science",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$790)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 3,
+    "motivo": "Experiência em Data Science e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Data Science"
+  },
+  {
+    "id": 98,
+    "titulo": "Game Developer - Backend",
+    "empresa": "Game Studio Pro",
+    "localizacao": "Fortaleza - CE",
+    "tipo": "PJ",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=25ba1947",
+    "requisitos": [
+      "Experiência com Backend",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$778)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 5,
+    "motivo": "Experiência em Backend e desenvolvimento de software",
+    "destaque": "",
+    "area": "Backend"
+  },
+  {
+    "id": 99,
+    "titulo": "Scrum Master - Ruby",
+    "empresa": "AI Innovations",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "Estágio",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=17c62786",
+    "requisitos": [
+      "Experiência com Ruby",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$648)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Ruby e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Ruby"
+  },
+  {
+    "id": 100,
+    "titulo": "Mobile Developer - Rust",
+    "empresa": "Data Insights",
+    "localizacao": "Porto Alegre - RS",
+    "tipo": "CLT - Tempo Integral",
+    "link_candidatura": "https://br.indeed.com/viewjob?jk=37cf24a8",
+    "requisitos": [
+      "Experiência com Rust",
+      "Conhecimento em metodologias ágeis",
+      "Inglês intermediário",
+      "Trabalho em equipe"
+    ],
+    "beneficios": [
+      "Vale alimentação (R$678)",
+      "Plano de saúde",
+      "Home office",
+      "Horário flexível"
+    ],
+    "compatibilidade": 2,
+    "motivo": "Experiência em Rust e desenvolvimento de software",
+    "destaque": "DESTAQUE",
+    "area": "Rust"
+  }
+]

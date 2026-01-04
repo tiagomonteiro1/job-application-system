@@ -1,0 +1,5 @@
+{
+	"appId": "com.jobmatch.app",
+	"appName": "JobMatch AI",
+	"webDir": "dist/public"
+}
