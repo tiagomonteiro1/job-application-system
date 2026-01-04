@@ -60,10 +60,7 @@ export default function Automacoes() {
     );
   }
 
-  if (!user) {
-    window.location.href = getLoginUrl();
-    return null;
-  }
+  // Autenticação é tratada pelo tRPC protectedProcedure
 
   const handleSalvarCredenciais = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

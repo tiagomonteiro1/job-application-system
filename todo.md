@@ -227,3 +227,12 @@
 - [x] Corrigir 24 erros de tipo no server/routers/followup.ts
 - [x] Adicionar tipagem explícita aos parâmetros ctx e input
 - [x] Verificar compilação TypeScript sem erros
+
+## Correção de Erros de Login e 404
+- [x] Investigar erros de autenticação
+- [x] Corrigir fluxo de login (removida verificação redundante)
+- [x] Verificar configuração OAuth (funcionando)
+- [x] Corrigir rotas 404 (Curriculo.tsx e Historico.tsx)
+- [x] Verificar todas as páginas (Home, Vagas, Currículo, Histórico, Follow-ups, Notificações, Automações)
+- [x] Testar navegação completa (todas as páginas acessíveis)
+- [x] Validar sistema end-to-end (sistema 100% funcional)

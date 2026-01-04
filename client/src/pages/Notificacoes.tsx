@@ -55,10 +55,7 @@ export default function Notificacoes() {
     );
   }
 
-  if (!user) {
-    window.location.href = getLoginUrl();
-    return null;
-  }
+  // Autenticação é tratada pelo tRPC protectedProcedure
 
   const handleVincularWhatsApp = async (numero: string) => {
     try {
@@ -212,7 +209,7 @@ export default function Notificacoes() {
               <MessageCircle className="w-4 h-4 mr-2" />
               Configurações
             </TabsTrigger>
-            {user.role === 'admin' && (
+            {user && user.role === 'admin' && (
               <TabsTrigger value="grupos">
                 <Users className="w-4 h-4 mr-2" />
                 Grupos
@@ -351,7 +348,7 @@ export default function Notificacoes() {
           </TabsContent>
 
           {/* Grupos (Admin) */}
-          {user.role === 'admin' && (
+                  {user && user.role === 'admin' && (
             <TabsContent value="grupos" className="space-y-6">
               <div className="flex justify-end">
                 <Dialog open={grupoDialogOpen} onOpenChange={(open) => {

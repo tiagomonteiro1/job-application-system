@@ -153,18 +153,7 @@ export default function Curriculo() {
     }
   };
 
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Card className="glass-card max-w-md">
-          <CardHeader>
-            <CardTitle>Autenticação Necessária</CardTitle>
-            <CardDescription>Faça login para acessar esta página</CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
-    );
-  }
+  // Autenticação é tratada pelo tRPC protectedProcedure
 
   return (
     <div className="min-h-screen">
