@@ -274,3 +274,9 @@
 - [x] Testar login admin em PC (login funcionando, menu admin visível)
 - [x] Testar login admin em mobile (menu hamburguer com opções admin)
 - [x] Documentar credenciais de acesso (admin / JobMatch@2024)
+
+## Atualização do Sistema
+- [x] Atualizar dependências para versões mais recentes
+- [x] Testar sistema após atualização
+- [x] Verificar compatibilidade de todas as funcionalidades
+- [x] Garantir que não há breaking changes
