@@ -44,12 +44,13 @@ export default function Curriculo() {
     if (!selectedFile) return;
 
     setUploading(true);
-    try {
-      // Converter para base64
-      const reader = new FileReader();
-      reader.readAsDataURL(selectedFile);
-      
-      reader.onload = async () => {
+    
+    // Converter para base64
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    
+    reader.onload = async () => {
+      try {
         const base64 = reader.result?.toString().split(",")[1];
         if (!base64) throw new Error("Erro ao converter arquivo");
 
@@ -58,20 +59,27 @@ export default function Curriculo() {
           fileName: selectedFile.name,
         });
 
-        toast.success("Currículo enviado com sucesso!");
+        toast.success("Currículo enviado com sucesso!", {
+          description: "Seu currículo foi carregado e está pronto para análise"
+        });
         setSelectedFile(null);
         utils.curriculo.list.invalidate();
-      };
+      } catch (error: any) {
+        toast.error("Erro ao enviar currículo", {
+          description: error?.message || "Tente novamente"
+        });
+        console.error("Erro no upload:", error);
+      } finally {
+        setUploading(false);
+      }
+    };
 
-      reader.onerror = () => {
-        throw new Error("Erro ao ler arquivo");
-      };
-    } catch (error) {
-      toast.error("Erro ao enviar currículo");
-      console.error(error);
-    } finally {
+    reader.onerror = () => {
+      toast.error("Erro ao ler arquivo", {
+        description: "Não foi possível processar o PDF"
+      });
       setUploading(false);
-    }
+    };
   };
 
   const handleAnalisar = async (curriculoId: number) => {

@@ -64,6 +64,8 @@ export default function Home() {
   const [compatibilidadeFilter, setCompatibilidadeFilter] = useState("todas");
   const [ordenacao, setOrdenacao] = useState("compatibilidade");
   const [isSearchingVagas, setIsSearchingVagas] = useState(false);
+  const [searchProgress, setSearchProgress] = useState(0);
+  const [totalVagasToSearch, setTotalVagasToSearch] = useState(0);
 
   useEffect(() => {
     // Carregar vagas e currículo
@@ -678,15 +680,42 @@ export default function Home() {
                 Limpar Filtros
               </Button>
 
+              {/* Indicador de Progresso */}
+              {isSearchingVagas && (
+                <div className="space-y-3 p-4 bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-foreground font-medium">Analisando vagas...</span>
+                    <span className="text-purple-400 font-bold">{searchProgress}/{totalVagasToSearch}</span>
+                  </div>
+                  <div className="w-full bg-background/50 rounded-full h-2 overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 ease-out"
+                      style={{ width: `${(searchProgress / totalVagasToSearch) * 100}%` }}
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {searchProgress === totalVagasToSearch ? '✅ Busca concluída!' : '🔍 Processando...'}
+                  </p>
+                </div>
+              )}
+
               {/* Botão Procurar Vagas */}
               <Button 
                 onClick={async () => {
                   setIsSearchingVagas(true);
+                  setSearchProgress(0);
+                  setTotalVagasToSearch(100);
+                  
                   toast.success('Buscando novas vagas...', {
                     description: 'Varredura automática em andamento'
                   });
-                  // Simular busca de novas vagas
-                  await new Promise(resolve => setTimeout(resolve, 2000));
+                  
+                  // Simular busca progressiva de vagas
+                  for (let i = 0; i <= 100; i += 10) {
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                    setSearchProgress(i);
+                  }
+                  
                   setIsSearchingVagas(false);
                   toast.success(`${vagas.length} vagas encontradas!`, {
                     description: 'Vagas atualizadas com sucesso'

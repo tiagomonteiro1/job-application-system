@@ -27,12 +27,6 @@ export const curriculoRouter = router({
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
       
-      // Verificar acesso ao módulo de currículo
-      await requireModuloAccess(userId, ctx.user.role, MODULOS.CURRICULO);
-      
-      // Verificar limite de currículos
-      await requireLimiteRecurso(userId, ctx.user.role, 'curriculos');
-      
       // Converter base64 para buffer
       const buffer = Buffer.from(input.fileBase64, "base64");
       

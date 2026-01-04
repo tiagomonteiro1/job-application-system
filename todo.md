@@ -309,3 +309,5 @@
 
 ## Melhorias de UX
 - [x] Adicionar animação de carregamento ao botão "Procurar Novas Vagas"
+- [x] Criar indicador de progresso na sidebar mostrando vagas analisadas
+- [x] Corrigir problema de upload de currículo
