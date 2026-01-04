@@ -84,8 +84,15 @@ export default function Curriculo() {
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Erro ao fazer upload');
+        let errorMessage = 'Erro ao fazer upload';
+        try {
+          const error = await response.json();
+          errorMessage = error.message || errorMessage;
+        } catch {
+          // Se não for JSON, pegar texto da resposta
+          errorMessage = await response.text() || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
