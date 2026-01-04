@@ -264,3 +264,13 @@
 - [x] Gerar APK de produção (documentação completa em ANDROID_BUILD_GUIDE.md)
 - [x] Testar app Android (estrutura pronta, requer Android Studio para build final)
 - [x] Documentar processo de publicação (ANDROID_BUILD_GUIDE.md completo)
+
+## Login Admin e Menu Responsivo
+- [x] Criar página de login admin com credenciais fixas
+- [x] Definir credenciais de admin (admin / JobMatch@2024)
+- [x] Implementar autenticação local para admin
+- [x] Garantir menu admin visível em desktop (verificação localStorage adicionada)
+- [x] Garantir menu admin visível em mobile (menu hamburguer com opções admin)
+- [x] Testar login admin em PC (login funcionando, menu admin visível)
+- [x] Testar login admin em mobile (menu hamburguer com opções admin)
+- [x] Documentar credenciais de acesso (admin / JobMatch@2024)

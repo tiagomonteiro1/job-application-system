@@ -19,6 +19,7 @@ import Integracoes from "./pages/Integracoes";
 import LimpezaCache from "./pages/LimpezaCache";
 import Login from "./pages/Login";
 import AdminUsuarios from "./pages/AdminUsuarios";
+import AdminLogin from "./pages/AdminLogin";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -40,6 +41,7 @@ function Router() {
       <Route path={"/limpeza-cache"} component={LimpezaCache} />
       <Route path={"/auth/login"} component={Login} />
       <Route path={"/login"} component={Login} />
+      <Route path={"/admin/login"} component={AdminLogin} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

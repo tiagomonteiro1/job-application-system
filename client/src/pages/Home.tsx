@@ -263,6 +263,84 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-4">
+              {/* Menu Mobile */}
+              <div className="md:hidden">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                      <Menu className="w-5 h-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuItem asChild>
+                      <Link href="/" className="cursor-pointer flex items-center">
+                        <Briefcase className="w-4 h-4 mr-2" />
+                        Vagas
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/curriculo" className="cursor-pointer flex items-center">
+                        <FileText className="w-4 h-4 mr-2" />
+                        Meu Currículo
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/historico" className="cursor-pointer flex items-center">
+                        <History className="w-4 h-4 mr-2" />
+                        Histórico
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/followups" className="cursor-pointer flex items-center">
+                        <MessageSquare className="w-4 h-4 mr-2" />
+                        Follow-ups
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/notificacoes" className="cursor-pointer flex items-center">
+                        <Bell className="w-4 h-4 mr-2" />
+                        Notificações
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/automacoes" className="cursor-pointer flex items-center">
+                        <Bot className="w-4 h-4 mr-2" />
+                        Automações
+                      </Link>
+                    </DropdownMenuItem>
+                    {(user?.role === "admin" || localStorage.getItem("admin_session") === "true") && (
+                      <>
+                        <DropdownMenuItem asChild>
+                          <Link href="/admin/usuarios" className="cursor-pointer flex items-center">
+                            <Users className="w-4 h-4 mr-2" />
+                            Usuários
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/admin" className="cursor-pointer flex items-center">
+                            <Shield className="w-4 h-4 mr-2" />
+                            Admin
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/marketing" className="cursor-pointer flex items-center">
+                            <BarChart3 className="w-4 h-4 mr-2" />
+                            Marketing
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/admin/cron-logs" className="cursor-pointer flex items-center">
+                            <Activity className="w-4 h-4 mr-2" />
+                            Logs Cron
+                          </Link>
+                        </DropdownMenuItem>
+                      </>
+                    )}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+              
+              {/* Menu Desktop */}
               <nav className="hidden md:flex items-center gap-2">
                 <Button variant="ghost" size="sm" asChild>
                   <Link href="/">
@@ -317,7 +395,7 @@ export default function Home() {
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-                {user?.role === "admin" && (
+                {(user?.role === "admin" || localStorage.getItem("admin_session") === "true") && (
                   <>
                     <Button variant="ghost" size="sm" asChild>
                       <Link href="/admin/usuarios">
